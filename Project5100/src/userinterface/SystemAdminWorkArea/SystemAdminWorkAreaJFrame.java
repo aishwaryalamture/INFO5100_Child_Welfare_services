@@ -5,7 +5,7 @@
 package userinterface.SystemAdminWorkArea;
 
 import userinterface.*;
-import Business.EcoSystem;
+import Business.Entity;
 import Business.DB4OUtil.DB4OUtil;
 
 /**
@@ -17,7 +17,7 @@ public class SystemAdminWorkAreaJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
-    private EcoSystem system;
+    private Entity system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
     public SystemAdminWorkAreaJFrame() {

@@ -5,10 +5,29 @@
  */
 package Business.Users;
 
+import Business.Role.Role;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author ChildWelfareServicesTeam
  */
+@Getter
+@Setter
 public class User {
     
+    public User(int id) {
+        this.userId = id++;
+    }
+    
+    private Role role;
+    private String firstName;
+    private String lastName;   
+    private String location;
+    private String mobileNumber;
+    private String username;
+    private String password;
+    private int userId;
+    //to-do Ketki
 }

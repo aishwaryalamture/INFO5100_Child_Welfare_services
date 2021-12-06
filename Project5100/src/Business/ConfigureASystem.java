@@ -1,21 +1,23 @@
 package Business;
 
+import Business.Role.SystemAdminRole;
+
 /**
  *
  * @author ChildWelfareServicesTeam
  */
 public class ConfigureASystem {
     
-    public static EcoSystem configure(){
+    public static Entity configure(){
         
-    //    EcoSystem system = EcoSystem.getInstance();
+    Entity entity = Entity.getInstance();
+    
+    //create a system admin profile on start of the project
+    entity.getUserDirectory().createUserAccount("system","admin","boston",
+            "9875436787","sysadmin","sysadmin", new SystemAdminRole());
         
-   //     Organization employee = system.getEmployeeDirectory().createEmployee("RRH");
-        
-   //     UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
-        
-     //   return system;
-     return null;
+    return entity;
+    
     }
     
 }

@@ -5,10 +5,40 @@
  */
 package Business.Users;
 
+import Business.Role.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author ChildWelfareServicesTeam
  */
 public class UserDirectory {
     
+    private int lastId = 0;
+    
+    private ArrayList<User> userList;
+
+    public UserDirectory() {
+        userList = new ArrayList();
+    }
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+    
+    public User createUserAccount(String firstName, String lastName,String location, String mobileNumber,
+            String username, String password, Role role){
+        
+        User user = new User(lastId);
+        user.setRole(role);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setLocation(location);
+        user.setMobileNumber(mobileNumber);
+        user.setUsername(username);
+        user.setPassword(password);
+        lastId = user.getUserId();
+        userList.add(user);
+        return user;
+    }
 }
