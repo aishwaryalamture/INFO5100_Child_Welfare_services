@@ -5,10 +5,29 @@
  */
 package Business.Enterprises;
 
+import Business.Organizations.OrganizationDirectory;
+import Business.Users.User;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  *
  * @author ChildWelfareServicesTeam
  */
+@Setter
+@Getter
 public class Enterprise {
+    
+    public Enterprise(int id) {
+        this.enterpriseId = id++;
+    }
+    
+    private String enterpriseName;
+    private String enterpriseAdminName;
+    private User systemAdmin;
+    private String enterpriseUsername;
+    private String password;
+    private int enterpriseId;
+    private OrganizationDirectory organizationDirectory;
     
 }
