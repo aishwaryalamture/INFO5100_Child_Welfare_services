@@ -18,7 +18,6 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private User userAccount;
     private Entity entity;
-    private EnterpriseDirectory enterpriseDirectory;
 
     /**
      * Creates new form ChildWelfareAdminWorkArea
@@ -26,14 +25,12 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
      * @param userProcessContainer
      * @param userAccount
      * @param entity
-     * @param enterpriseDirectory
      */
-    public SafetyHeadAdminWorkArea(JPanel userProcessContainer, User userAccount, Entity entity, EnterpriseDirectory enterpriseDirectory) {
+    public SafetyHeadAdminWorkArea(JPanel userProcessContainer, User userAccount, Entity entity) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = userAccount;
         this.entity = entity;
-        this.enterpriseDirectory = enterpriseDirectory;
     }
 
     /**

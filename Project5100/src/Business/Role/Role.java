@@ -38,7 +38,7 @@ public abstract class Role {
     
     public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             User userAccount,  
-            Entity entity, EnterpriseDirectory enterpriseDirectory);
+            Entity entity);
 
     @Override
     public String toString() {
