@@ -4,17 +4,36 @@
  */
 package userinterface.SafetyHeadWorkArea;
 
+import Business.Enterprises.EnterpriseDirectory;
+import Business.Entity;
+import Business.Users.User;
+import javax.swing.JPanel;
+
 /**
  *
- * @author aishwarya_30111
+ * @author ChildWelfareServicesTeam
  */
 public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private User userAccount;
+    private Entity entity;
+    private EnterpriseDirectory enterpriseDirectory;
+
     /**
      * Creates new form ChildWelfareAdminWorkArea
+     *
+     * @param userProcessContainer
+     * @param userAccount
+     * @param entity
+     * @param enterpriseDirectory
      */
-    public SafetyHeadAdminWorkArea() {
+    public SafetyHeadAdminWorkArea(JPanel userProcessContainer, User userAccount, Entity entity, EnterpriseDirectory enterpriseDirectory) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.entity = entity;
+        this.enterpriseDirectory = enterpriseDirectory;
     }
 
     /**
