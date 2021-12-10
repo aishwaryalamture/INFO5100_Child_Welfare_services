@@ -22,3 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /Project5100/nbproject/private/
+/Project5100/build/
+/Project5100/nbbuild/
+/Project5100/dist/
+/Project5100/nbdist/
+/Project5100/nbactions.xml
+/Project5100/nb-configuration.xml
