@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Entity {
-   
+
     private static Entity entity;
     private EnterpriseDirectory enterpriseDirectory;
     private UserDirectory userDirectory;

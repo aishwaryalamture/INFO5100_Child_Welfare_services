@@ -26,5 +26,5 @@ public class Organization {
     private String organizationUsername;
     private String password;
     private int organizationId; 
-    
-}
+
+    }

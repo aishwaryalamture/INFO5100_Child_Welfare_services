@@ -5,10 +5,17 @@
  */
 package Business.Role;
 
+import Business.Entity;
+import Business.Users.User;
+import javax.swing.JPanel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+
 /**
  *
  * @author ChildWelfareServicesTeam
  */
 public class HealthcareHeadRole extends Role {
-    
+    public JPanel createWorkArea(JPanel userProcessContainer, User account, Entity system) {
+        return new SystemAdminWorkAreaJPanel(userProcessContainer, system);
+    }
 }

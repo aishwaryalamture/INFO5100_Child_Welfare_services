@@ -21,7 +21,7 @@ public class Enterprise {
     public Enterprise(int id) {
         this.enterpriseId = id++;
     }
-    
+
     private String enterpriseName;
     private String enterpriseAdminName;
     private User systemAdmin;
