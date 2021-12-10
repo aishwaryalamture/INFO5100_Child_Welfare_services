@@ -5,7 +5,6 @@
  */
 package Business.Role;
 
-import Business.Enterprises.EnterpriseDirectory;
 import Business.Entity;
 import Business.Users.User;
 import javax.swing.JPanel;
@@ -18,8 +17,8 @@ import userinterface.SafetyHeadWorkArea.SafetyHeadAdminWorkArea;
 public class SafetyHeadRole extends Role {
     
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, User userAccount, Entity entity, EnterpriseDirectory enterpriseDirectory) {
+    public JPanel createWorkArea(JPanel userProcessContainer, User userAccount, Entity entity) {
         
-        return new SafetyHeadAdminWorkArea(userProcessContainer, userAccount, entity, enterpriseDirectory);
+        return new SafetyHeadAdminWorkArea(userProcessContainer, userAccount, entity);
     }
 }
