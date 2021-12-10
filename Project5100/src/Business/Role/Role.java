@@ -15,8 +15,9 @@ import javax.swing.JPanel;
 public abstract class Role {
     
     public enum RoleType{
-      
-        SysAdmin("Sysadmin");
+        
+        SafetyHead("SafetyHead"),
+        SystemAdmin("SystemAdmin");
         
         private String value;
         private RoleType(String value){
@@ -33,7 +34,7 @@ public abstract class Role {
         }
     }
     
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
+      public abstract JPanel createWorkArea(JPanel userProcessContainer, 
             User account,  
             Entity business);
 

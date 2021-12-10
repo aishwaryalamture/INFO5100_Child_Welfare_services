@@ -8,14 +8,16 @@ package Business.Role;
 import Business.Entity;
 import Business.Users.User;
 import javax.swing.JPanel;
-import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
  * @author ChildWelfareServicesTeam
  */
 public class VolunteerHeadRole extends Role {
-    public JPanel createWorkArea(JPanel userProcessContainer, User account, Entity system) {
-        return new SystemAdminWorkAreaJPanel(userProcessContainer, system);
+    
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, User userAccount, Entity entity) {
+        
+        return null;
     }
 }
