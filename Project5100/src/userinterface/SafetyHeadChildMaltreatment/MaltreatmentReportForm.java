@@ -263,6 +263,7 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         //add work request
         organization.getWorkQueue().addWorkRequest(childMaltreatmentAttributes);
         entity.getWorkQueue().addWorkRequest(childMaltreatmentAttributes);
+        JOptionPane.showMessageDialog(null, "Your Report Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnReportActionPerformed
 
 
