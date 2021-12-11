@@ -21,7 +21,9 @@ public abstract class Role {
         
         ChildWelfareAdmin("ChildWelfareAdmin"),
         SafetyHead("SafetyHead"),
-        SystemAdmin("SystemAdmin");
+        SystemAdmin("SystemAdmin"),
+        HealthcareHeadRole("HealthcareHeadRole"),
+        SystemUserRole("SystemUserRole");
         
         private String value;
         private RoleType(String value){
@@ -41,7 +43,8 @@ public abstract class Role {
     public abstract JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
             Enterprise enterprise, User user);
 
-
+    public abstract RoleType getRoleType();
+    
     @Override
     public String toString() {
         return this.getClass().getName();

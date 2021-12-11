@@ -17,10 +17,21 @@ import javax.swing.JPanel;
  */
 public class HealthcareHeadRole extends Role {
 
+    RoleType roleType;
+
+    public HealthcareHeadRole() {
+        roleType = RoleType.HealthcareHeadRole;
+    }
+
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
+    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
 
         return null;
+    }
+
+    @Override
+    public RoleType getRoleType() {
+        return roleType;
     }
 }

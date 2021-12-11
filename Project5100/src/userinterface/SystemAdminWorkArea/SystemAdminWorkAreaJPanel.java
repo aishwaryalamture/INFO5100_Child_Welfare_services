@@ -5,7 +5,6 @@
  */
 package userinterface.SystemAdminWorkArea;
 
-
 import Business.Entity;
 
 import Business.Organizations.Organization;
@@ -28,24 +27,31 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel displayPanel;
     private Entity entity;
     private User user;
-   
 
-    public SystemAdminWorkAreaJPanel(JPanel displayPanel, User user,Entity entity) {
+    public SystemAdminWorkAreaJPanel(JPanel displayPanel, Entity entity, User user) {
         initComponents();
         this.displayPanel = displayPanel;
         this.entity = entity;
         this.user = user;
-        loadData();
-    }
-    
-    private void loadData(){
-        SysAdminEnterprisesWorkArea adminWorkAreaJPanel = new SysAdminEnterprisesWorkArea(jPanelEnterprise,user, entity);
-        jPanelEnterprise.add(adminWorkAreaJPanel);
-        CardLayout cardLayout = (CardLayout) jPanelEnterprise.getLayout();
-        cardLayout.next(jPanelEnterprise);
+        loadView();
+
     }
 
-   
+    private void loadView() {
+        int selectedIndex = jTabbedSystemAdmin.getSelectedIndex();
+        if (selectedIndex == 0 || selectedIndex == -1) {
+            SysAdminEnterprisesWorkArea adminEnterpriseWorkArea = new SysAdminEnterprisesWorkArea(jPanelEnterprise, user, entity);
+            jPanelEnterprise.add(adminEnterpriseWorkArea);
+            CardLayout cardLayout = (CardLayout) jPanelEnterprise.getLayout();
+            cardLayout.next(jPanelEnterprise);
+        } else {
+            SysAdminRolesWorkArea adminRolesWorkArea = new SysAdminRolesWorkArea(jPanelAdminRoles, user, entity);
+            jPanelAdminRoles.add(adminRolesWorkArea);
+            CardLayout cardLayout = (CardLayout) jPanelAdminRoles.getLayout();
+            cardLayout.next(jPanelAdminRoles);
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,15 +64,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jTabbedSystemAdmin = new javax.swing.JTabbedPane();
         jPanelEnterprise = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTable6 = new javax.swing.JTable();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
         jPanelAdminRoles = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jButton20 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(217, 180, 74), 4));
@@ -74,130 +72,35 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jTabbedSystemAdmin.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedSystemAdmin.setToolTipText("Manage Enterprises");
+        jTabbedSystemAdmin.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedSystemAdminStateChanged(evt);
+            }
+        });
 
         jPanelEnterprise.setBackground(new java.awt.Color(172, 208, 192));
         jPanelEnterprise.setPreferredSize(new java.awt.Dimension(1030, 700));
         jPanelEnterprise.setLayout(new java.awt.CardLayout());
         jTabbedSystemAdmin.addTab("Enterprise ", new javax.swing.ImageIcon(getClass().getResource("/res/enterprise_logo.png")), jPanelEnterprise); // NOI18N
 
-        jTable6.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Organization Id", "Organization Name"
-            }
-        ));
-        jScrollPane6.setViewportView(jTable6);
-
-        jButton14.setText("CREATE");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-
-        jButton15.setText("UPDATE");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-
-        jButton16.setText("DELETE");
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton14)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton15)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton16))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(421, 421, 421)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(722, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton14)
-                    .addComponent(jButton15)
-                    .addComponent(jButton16))
-                .addContainerGap(667, Short.MAX_VALUE))
-        );
-
-        jTabbedSystemAdmin.addTab("Organization", jPanel7);
-
+        jPanelAdminRoles.setBackground(new java.awt.Color(172, 208, 192));
         jPanelAdminRoles.setLayout(new java.awt.CardLayout());
         jTabbedSystemAdmin.addTab("Admin Roles", new javax.swing.ImageIcon(getClass().getResource("/res/admin_logo.png")), jPanelAdminRoles); // NOI18N
-
-        jButton20.setText("Logout");
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addComponent(jButton20)
-                .addContainerGap(1189, Short.MAX_VALUE))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(874, Short.MAX_VALUE)
-                .addComponent(jButton20)
-                .addContainerGap())
-        );
-
-        jTabbedSystemAdmin.addTab("HomePage", jPanel9);
 
         add(jTabbedSystemAdmin, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void jTabbedSystemAdminStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedSystemAdminStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
+        if (entity != null) {
+            loadView();
+        }
+    }//GEN-LAST:event_jTabbedSystemAdminStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanelAdminRoles;
     private javax.swing.JPanel jPanelEnterprise;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedSystemAdmin;
-    private javax.swing.JTable jTable6;
     // End of variables declaration//GEN-END:variables
 }

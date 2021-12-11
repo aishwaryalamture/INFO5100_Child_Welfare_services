@@ -67,7 +67,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace pref="74" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblTitle" linkSize="5" max="32767" attributes="0"/>
+                  <Component id="lblTitle" linkSize="5" pref="49" max="32767" attributes="0"/>
                   <Component id="btnBack" linkSize="5" pref="49" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="60" max="32767" attributes="0"/>
@@ -116,6 +116,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEnterpriseName">
+      <Properties>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a9" green="b1" red="75" type="rgb"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblEnterpriseeDesc">
       <Properties>

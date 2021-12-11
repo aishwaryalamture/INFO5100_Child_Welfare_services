@@ -17,11 +17,21 @@ import javax.swing.JPanel;
  */
 public class SystemUserRole extends Role {
 
-    
+    RoleType roleType;
+
+    public SystemUserRole() {
+        roleType = RoleType.SystemUserRole;
+    }
+
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
+    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
-        
+
         return null;
+    }
+
+    @Override
+    public RoleType getRoleType() {
+        return roleType;
     }
 }
