@@ -14,13 +14,12 @@ import javax.swing.JPanel;
  *
  * @author ChildWelfareServicesTeam
  */
-public class SystemAdminRole extends Role{
-    
+public class SystemAdminRole extends Role {
+
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
+    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
-        
+
         return null;
     }
-    
 }

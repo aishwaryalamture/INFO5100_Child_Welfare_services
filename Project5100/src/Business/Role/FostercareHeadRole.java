@@ -23,5 +23,4 @@ public class FostercareHeadRole extends Role {
 
         return null;
     }
-
 }

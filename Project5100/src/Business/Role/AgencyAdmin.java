@@ -17,11 +17,13 @@ import javax.swing.JPanel;
  */
 public class AgencyAdmin extends Role {
 
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
             Enterprise enterprise, User user) {
 
         return null;
     }
+
 
 }

@@ -17,11 +17,11 @@ import javax.swing.JPanel;
  */
 public class AdoptionServicesHeadRole extends Role {
 
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
             Enterprise enterprise, User user) {
 
         return null;
     }
-
 }

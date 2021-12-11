@@ -23,5 +23,4 @@ public class HealthcareHeadRole extends Role {
 
         return null;
     }
-
 }

@@ -16,6 +16,7 @@ import javax.swing.JPanel;
  * @author ChildWelfareServicesTeam
  */
 public class SystemUserRole extends Role {
+
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
@@ -23,5 +24,4 @@ public class SystemUserRole extends Role {
         
         return null;
     }
-    
 }

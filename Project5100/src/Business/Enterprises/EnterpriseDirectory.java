@@ -15,9 +15,9 @@ import java.util.ArrayList;
  * @author ChildWelfareServicesTeam
  */
 public class EnterpriseDirectory {
-    
-     private int lastId = 0;
-    
+
+    private int lastId = 0;
+
     private ArrayList<Enterprise> enterpriseList;
 
     public EnterpriseDirectory() {
@@ -27,23 +27,20 @@ public class EnterpriseDirectory {
     public ArrayList<Enterprise> getEnterpriseList() {
         return enterpriseList;
     }
-    
-    public Enterprise createEnterprise(String enterpriseName, String enterpriseUserName, User systemAdmin, String adminName,
-            String username, String password, Role role){
-        
+
+    public Enterprise createEnterprise(String enterpriseName, String enterpriseDesc, String registrationNo) {
+
         Enterprise enterprise = new Enterprise(lastId);
         enterprise.setEnterpriseName(enterpriseName);
-        enterprise.setEnterpriseUsername(enterpriseUserName);
-        enterprise.setPassword(password);
-        enterprise.setSystemAdmin(systemAdmin);
-        enterprise.setEnterpriseAdminName(adminName);
-        
+        enterprise.setEnterpriseDesciption(enterpriseDesc);
+        enterprise.setEnterpriseRegistrationNo(registrationNo);
+
         OrganizationDirectory orgDirectory = new OrganizationDirectory();
         enterprise.setOrganizationDirectory(orgDirectory);
-        
+
         lastId = enterprise.getEnterpriseId();
         enterpriseList.add(enterprise);
         return enterprise;
     }
-    
+
 }

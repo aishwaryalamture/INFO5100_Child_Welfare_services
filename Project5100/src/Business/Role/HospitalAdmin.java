@@ -16,12 +16,10 @@ import javax.swing.JPanel;
  * @author ChildWelfareServicesTeam
  */
 public class HospitalAdmin extends Role {
-
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
             Enterprise enterprise, User user) {
 
         return null;
     }
-
 }

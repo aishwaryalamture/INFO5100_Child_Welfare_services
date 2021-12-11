@@ -23,5 +23,4 @@ public class VolunteerHeadRole extends Role {
         
         return null;
     }
-    
 }

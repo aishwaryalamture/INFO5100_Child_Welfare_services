@@ -23,5 +23,4 @@ public class InternationalDeptAdminRole extends Role {
 
         return null;
     }
-
 }

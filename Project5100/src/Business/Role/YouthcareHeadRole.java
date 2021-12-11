@@ -23,5 +23,4 @@ public class YouthcareHeadRole extends Role {
         
         return null;
     }
-    
 }

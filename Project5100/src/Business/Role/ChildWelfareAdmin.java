@@ -14,6 +14,7 @@ import javax.swing.JPanel;
  *
  * @author ChildWelfareServicesTeam
  */
+
 public class ChildWelfareAdmin extends Role {
 
     @Override
@@ -22,5 +23,4 @@ public class ChildWelfareAdmin extends Role {
 
         return null;
     }
-
 }
