@@ -102,10 +102,26 @@ public class Validator {
         }
     }
 
-    public LocalDateTime convertStringToDate(String strDate) {
+    public LocalDateTime convertStringToDateTime(String strDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime date = LocalDateTime.parse(strDate, formatter);
         return date;
+    }
+    
+    public LocalDate convertStringToDate(String strDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(strDate, formatter);
+        return date;
+
+    }
+    
+    public boolean validateMonth(String month) {
+        String monthRegex = "^[0-9]*$";
+        if (Pattern.matches(monthRegex, month)) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
