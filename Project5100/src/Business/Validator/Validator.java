@@ -108,5 +108,15 @@ public class Validator {
         return date;
 
     }
+    
+    public boolean validateMonth(String month) {
+        String monthRegex = "^[0-9]*$";
+        if (Pattern.matches(monthRegex, month)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
 }
