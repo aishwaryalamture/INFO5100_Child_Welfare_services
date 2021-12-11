@@ -58,8 +58,16 @@
                               <Component id="txtEnterpriseName5" min="-2" pref="155" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btnCreate1" min="-2" pref="115" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="1" attributes="0">
                                       <Component id="txtEnterpriseName1" min="-2" pref="155" max="-2" attributes="0"/>
@@ -111,9 +119,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                              <Component id="btnCreate1" min="-2" pref="115" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="460" max="-2" attributes="0"/>
                               <Component id="btnCreate" min="-2" pref="115" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -179,15 +185,23 @@
                                           <Component id="txtEnterpriseName4" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                                           <Component id="jLabel7" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtEnterpriseName8" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtEnterpriseName9" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                                          <Component id="jLabel11" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="txtEnterpriseName8" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                                                  <Component id="jLabel10" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="txtEnterpriseName9" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                                                  <Component id="jLabel11" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="btnCreate1" min="-2" pref="49" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -199,10 +213,7 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnCreate" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                          <Component id="btnCreate1" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnCreate" min="-2" pref="49" max="-2" attributes="0"/>
                       <EmptySpace pref="264" max="32767" attributes="0"/>
                   </Group>
               </Group>
