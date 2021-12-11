@@ -16,6 +16,7 @@ public abstract class Role {
     
     public enum RoleType{
         
+        ChildWelfareAdmin("ChildWelfareAdmin"),
         SafetyHead("SafetyHead"),
         SystemAdmin("SystemAdmin");
         

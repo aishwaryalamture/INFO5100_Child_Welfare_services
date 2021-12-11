@@ -27,15 +27,15 @@ public class Entity {
         this.enterpriseDirectory = enterpriseDirectory;
         this.userDirectory = userDirectory;
     }
-    
-    private Entity(){
+
+    private Entity() {
         enterpriseDirectory = new EnterpriseDirectory();
         userDirectory = new UserDirectory();
     }
-    
-    public static Entity getInstance(){
-        if(entity==null){
-            entity=new Entity();
+
+    public static Entity getInstance() {
+        if (entity == null) {
+            entity = new Entity();
         }
         return entity;
     }

@@ -19,15 +19,21 @@ import lombok.Setter;
 public class Enterprise {
     
     public Enterprise(int id) {
-        this.enterpriseId = id++;
+        this.enterpriseId = id+1;
     }
 
     private String enterpriseName;
+    private String enterpriseDesciption;
     private String enterpriseAdminName;
-    private User systemAdmin;
+    private String enterpriseRegistrationNo;
+    private User admin;
     private String enterpriseUsername;
     private String password;
     private int enterpriseId;
     private OrganizationDirectory organizationDirectory;
     
+    @Override
+    public String toString() {
+        return enterpriseRegistrationNo;
+    }
 }

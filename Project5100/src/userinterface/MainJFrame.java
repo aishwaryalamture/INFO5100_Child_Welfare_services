@@ -9,6 +9,7 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.Users.User;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,7 +21,6 @@ import javax.swing.JPanel;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
-    
     /**
      * Creates new form MainJFrame
      */
@@ -106,6 +106,7 @@ public class MainJFrame extends javax.swing.JFrame {
         txtUserName.setText("sysadmin");
         txtUserName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         txtUserName.setMinimumSize(new java.awt.Dimension(53, 27));
+        txtUserName.setPreferredSize(new java.awt.Dimension(0, 40));
         controlPanel.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 240, 40));
 
         lblPassword.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -115,7 +116,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         txtPassword.setText("sysadmin");
         txtPassword.setMinimumSize(new java.awt.Dimension(6, 27));
-        controlPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 240, 40));
+        txtPassword.setPreferredSize(new java.awt.Dimension(0, 40));
+        controlPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 240, 50));
 
         btnLogout.setBackground(new java.awt.Color(217, 180, 74));
         btnLogout.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -157,7 +159,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-         // Get user name
+        // Get user name
         String userName = txtUserName.getText();
         char[] passwordCharArr = txtPassword.getPassword();
         String passwordStr = String.valueOf(passwordCharArr);
@@ -184,6 +186,25 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
+
+        btnLogout.setEnabled(false);
+        btnRegister.setEnabled(true);
+        txtUserName.setEnabled(true);
+        txtPassword.setEnabled(true);
+        btnLogin.setEnabled(true);
+
+        txtUserName.setText("");
+        txtPassword.setText("");
+
+        displayPanel.removeAll();
+        JPanel blankJP = new JPanel();
+        //displayPanel.add("blank", blankJP);
+        CardLayout crdLyt = (CardLayout) displayPanel.getLayout();
+        crdLyt.next(displayPanel);
+        dB4OUtil.storeSystem(system);
+        JLabel picLabel = new JLabel(new ImageIcon(getClass().getResource("/res/cw_front_page.png")));
+        picLabel.setPreferredSize(new Dimension(50, 50));
+        displayPanel.add(picLabel);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**

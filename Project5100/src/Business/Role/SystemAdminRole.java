@@ -7,6 +7,7 @@ package Business.Role;
 import Business.Entity;
 import Business.Users.User;
 import javax.swing.JPanel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -17,7 +18,7 @@ public class SystemAdminRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, User userAccount, Entity entity) {
-        
-        return null;
+                return new SystemAdminWorkAreaJPanel(userProcessContainer,userAccount,entity);
+
     }
 }
