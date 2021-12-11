@@ -14,7 +14,7 @@ public class ConfigureASystem {
     
     //create a system admin profile on start of the project
     entity.getUserDirectory().createUserAccount("system","admin","boston",
-            "9875436787","sysadmin","sysadmin", new SystemAdminRole());
+            "9875436787","sysadmin","sysadmin","", new SystemAdminRole());
         
     return entity;
     

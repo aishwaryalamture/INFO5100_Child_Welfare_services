@@ -24,7 +24,6 @@ public class Enterprise {
 
     private String enterpriseName;
     private String enterpriseDesciption;
-    private String enterpriseAdminName;
     private String enterpriseRegistrationNo;
     private User admin;
     private String enterpriseUsername;

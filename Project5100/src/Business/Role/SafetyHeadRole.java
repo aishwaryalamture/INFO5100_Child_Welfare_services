@@ -17,7 +17,10 @@ import userinterface.SafetyHeadWorkArea.SafetyHeadAdminWorkArea;
  * @author ChildWelfareServicesTeam
  */
 public class SafetyHeadRole extends Role {
-
+RoleType roleType;
+    public SafetyHeadRole() {
+        roleType = RoleType.SafetyHead;
+    }
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
@@ -25,5 +28,10 @@ public class SafetyHeadRole extends Role {
         
         return new SafetyHeadAdminWorkArea(userProcessContainer, entity, organization, 
             enterprise, user);
+    }
+    
+     @Override
+    public RoleType getRoleType(){
+        return roleType;
     }
 }

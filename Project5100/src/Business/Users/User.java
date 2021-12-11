@@ -29,5 +29,11 @@ public class User {
     private String username;
     private String password;
     private int userId;
+    private String fullName;
+    private String emailId;
     //to-do Ketki
+    
+    public String getFullName() {
+        return firstName+" "+lastName;
+    }
 }

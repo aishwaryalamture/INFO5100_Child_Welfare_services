@@ -6,6 +6,10 @@ package userinterface;
 
 import Business.Entity;
 import Business.DB4OUtil.DB4OUtil;
+import Business.Enterprises.Enterprise;
+import Business.Organizations.Organization;
+import Business.Role.Role;
+import Business.Role.SystemAdminRole;
 import Business.Users.User;
 import java.awt.CardLayout;
 import java.awt.Dimension;
@@ -14,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.SystemUser.CreateSystemUserJPanel;
 
 /**
  *
@@ -165,9 +170,15 @@ public class MainJFrame extends javax.swing.JFrame {
         String passwordStr = String.valueOf(passwordCharArr);
 
         User loggedInUser = system.getUserDirectory().authenticateUser(userName, passwordStr);
+        Enterprise enterprise = null;
+        Organization organization = null;
+        if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemAdmin) {
+            enterprise = null;
+            organization = null;
+        }
         if (loggedInUser != null) {
             CardLayout cardLayout = (CardLayout) displayPanel.getLayout();
-            displayPanel.add("workPanel", loggedInUser.getRole().createWorkArea(displayPanel, loggedInUser, system));
+            displayPanel.add("workPanel", loggedInUser.getRole().createWorkArea(displayPanel, system, organization, enterprise, loggedInUser));
             cardLayout.next(displayPanel);
             btnLogout.setEnabled(true);
             btnRegister.setEnabled(false);
@@ -181,7 +192,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-
+        CreateSystemUserJPanel createUpdateEnterpriseJPanel = new CreateSystemUserJPanel(displayPanel, system);
+        displayPanel.add(createUpdateEnterpriseJPanel);
+        CardLayout layout = (CardLayout) displayPanel.getLayout();
+        layout.next(displayPanel);
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

@@ -35,7 +35,7 @@ public class UserDirectory {
     }
     
     public User createUserAccount(String firstName, String lastName,String location, String mobileNumber,
-            String username, String password, Role role){
+            String username, String password,String emailId, Role role){
         
         User user = new User(lastId);
         user.setRole(role);
@@ -45,6 +45,7 @@ public class UserDirectory {
         user.setMobileNumber(mobileNumber);
         user.setUsername(username);
         user.setPassword(password);
+        user.setEmailId(emailId);
         lastId = user.getUserId();
         userList.add(user);
         return user;

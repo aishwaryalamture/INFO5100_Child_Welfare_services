@@ -48,6 +48,7 @@ public class CreateUpdateEnterpriseJPanel extends javax.swing.JPanel {
             txtEnterpriseName.setText(enterprise.getEnterpriseName());
             txtRegistrationNo.setText(enterprise.getEnterpriseRegistrationNo());
             txtEnterpriseDesc.setText(enterprise.getEnterpriseDesciption());
+            txtRegistrationNo.setEnabled(false);
         }
     }
 
@@ -78,6 +79,8 @@ public class CreateUpdateEnterpriseJPanel extends javax.swing.JPanel {
         lblTitle.setText("Create Enterprises");
 
         lblEnterpriseName.setText("Enterprise Name:");
+
+        txtEnterpriseName.setSelectionColor(new java.awt.Color(117, 177, 169));
 
         lblEnterpriseeDesc.setText("Enterprise Description");
 
@@ -150,7 +153,7 @@ public class CreateUpdateEnterpriseJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                     .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -191,7 +194,7 @@ public class CreateUpdateEnterpriseJPanel extends javax.swing.JPanel {
             case CREATE_OPERATION:
                 //validate for registration number
                 for (Enterprise er : entity.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseRegistrationNo().equals(enterprise.getEnterpriseRegistrationNo())) {
+                    if (er.getEnterpriseRegistrationNo().equals(txtEnterpriseName.getText())) {
                         JOptionPane.showMessageDialog(null, "Registration Number Already Exists ", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
                         return;
                     }

@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkArea;
+package userinterface.SystemUser;
 
 /**
  *
  * @author Ketki Kule <kule.k@northeastern.edu>
  */
-public class CreateUpdateEnterpriseAdmin extends javax.swing.JPanel {
+public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form CreateUpdateEnterpriseAdmin
+     * Creates new form SystemUserWorkAreaJPanel
      */
-    public CreateUpdateEnterpriseAdmin() {
+    public SystemUserWorkAreaJPanel() {
         initComponents();
     }
 
@@ -27,19 +27,20 @@ public class CreateUpdateEnterpriseAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        lblTitle = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(172, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Welcome to Child Welfare");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 74, 310, 53));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

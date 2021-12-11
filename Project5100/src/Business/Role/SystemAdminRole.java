@@ -9,6 +9,7 @@ import Business.Entity;
 import Business.Organizations.Organization;
 import Business.Users.User;
 import javax.swing.JPanel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
 
 /**
  *
@@ -16,10 +17,21 @@ import javax.swing.JPanel;
  */
 public class SystemAdminRole extends Role {
 
+    RoleType roleType;
+
+    public SystemAdminRole() {
+        roleType = RoleType.SystemAdmin;
+    }
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
 
-        return null;
+        return new SystemAdminWorkAreaJPanel(userProcessContainer, entity, user);
+    }
+
+    @Override
+    public RoleType getRoleType() {
+        return roleType;
     }
 }
