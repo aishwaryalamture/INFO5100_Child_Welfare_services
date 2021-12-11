@@ -4,7 +4,10 @@
  */
 package Business.Role;
 
+
+import Business.Enterprises.Enterprise;
 import Business.Entity;
+import Business.Organizations.Organization;
 import Business.Users.User;
 import javax.swing.JPanel;
 
@@ -35,9 +38,9 @@ public abstract class Role {
         }
     }
     
-      public abstract JPanel createWorkArea(JPanel userProcessContainer, 
-            User account,  
-            Entity business);
+    public abstract JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
+            Enterprise enterprise, User user);
+
 
     @Override
     public String toString() {

@@ -6,7 +6,7 @@
 package Business.WorkQueue;
 
 import Business.Users.User;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,11 +19,11 @@ import lombok.Setter;
 public class WorkRequest {
     
     private String message;
-    private LocalDate resolveDate;
+    private LocalDateTime resolveDate;
     private User sender;
     private User receiver;
     private String status;
-    private LocalDate requestDate;
+    private LocalDateTime requestDate;
     private int organizationId;
     private int enterpriseId;
     

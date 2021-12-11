@@ -6,6 +6,7 @@
 package Business.Validator;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 
@@ -14,7 +15,20 @@ import java.util.regex.Pattern;
  * @author ChildWelfareServicesTeam
  */
 public class Validator {
-    
+
+    private static Validator validator;
+
+    public static Validator getInstance() {
+        if (validator == null) {
+            validator = new Validator();
+        }
+        return validator;
+    }
+
+    private Validator() {
+
+    }
+
     public boolean validateEmailAddr(String emailId) {
         String emailIdRegex = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         if (Pattern.matches(emailIdRegex, emailId)) {
@@ -23,7 +37,7 @@ public class Validator {
             return false;
         }
     }
-    
+
     public boolean validatePincode(String pincode) {
         String pinCodeRegex = "^[0-9]{5}(?:-[0-9]{4})?$";
         if (Pattern.matches(pinCodeRegex, pincode)) {
@@ -60,7 +74,7 @@ public class Validator {
             return false;
         }
     }
-    
+
     public boolean validateSSN(String socialSecurityNum) {
         String ssnRegex = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
         if (Pattern.matches(ssnRegex, socialSecurityNum)) {
@@ -88,11 +102,11 @@ public class Validator {
         }
     }
 
-    public LocalDate convertStringToDate(String strDate) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse(strDate, formatter);
+    public LocalDateTime convertStringToDate(String strDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime date = LocalDateTime.parse(strDate, formatter);
         return date;
 
     }
-    
+
 }
