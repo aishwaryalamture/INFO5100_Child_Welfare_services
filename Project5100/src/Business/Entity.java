@@ -18,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Entity {
-   
+
     private static Entity entity;
     private EnterpriseDirectory enterpriseDirectory;
     private UserDirectory userDirectory;
@@ -30,16 +30,16 @@ public class Entity {
         this.userDirectory = userDirectory;
         this.validator = validator;
     }
-    
-    private Entity(){
+
+    private Entity() {
         enterpriseDirectory = new EnterpriseDirectory();
         userDirectory = new UserDirectory();
         validator = new Validator();
     }
-    
-    public static Entity getInstance(){
-        if(entity==null){
-            entity=new Entity();
+
+    public static Entity getInstance() {
+        if (entity == null) {
+            entity = new Entity();
         }
         return entity;
     }

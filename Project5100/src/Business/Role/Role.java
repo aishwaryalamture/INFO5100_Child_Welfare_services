@@ -4,7 +4,6 @@
  */
 package Business.Role;
 
-import Business.Enterprises.EnterpriseDirectory;
 import Business.Entity;
 import Business.Users.User;
 import javax.swing.JPanel;
@@ -17,11 +16,11 @@ public abstract class Role {
     
     public enum RoleType{
         
+        ChildWelfareAdmin("ChildWelfareAdmin"),
         SafetyHead("SafetyHead"),
         SystemAdmin("SystemAdmin");
         
         private String value;
-        
         private RoleType(String value){
             this.value = value;
         }
@@ -36,14 +35,12 @@ public abstract class Role {
         }
     }
     
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
-            User userAccount,  
-            Entity entity);
+      public abstract JPanel createWorkArea(JPanel userProcessContainer, 
+            User account,  
+            Entity business);
 
     @Override
     public String toString() {
         return this.getClass().getName();
     }
-    
-    
 }

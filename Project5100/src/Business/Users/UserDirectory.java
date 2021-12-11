@@ -26,6 +26,14 @@ public class UserDirectory {
         return userList;
     }
     
+     public User authenticateUser(String username, String password){
+        for (User ua : userList)
+            if (ua.getUsername().equals(username) && ua.getPassword().equals(password)){
+                return ua;
+            }
+        return null;
+    }
+    
     public User createUserAccount(String firstName, String lastName,String location, String mobileNumber,
             String username, String password, Role role){
         

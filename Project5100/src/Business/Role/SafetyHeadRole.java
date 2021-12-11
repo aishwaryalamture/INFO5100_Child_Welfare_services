@@ -15,6 +15,7 @@ import userinterface.SafetyHeadWorkArea.SafetyHeadAdminWorkArea;
  * @author ChildWelfareServicesTeam
  */
 public class SafetyHeadRole extends Role {
+
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, User userAccount, Entity entity) {

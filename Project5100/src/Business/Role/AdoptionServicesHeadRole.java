@@ -15,10 +15,10 @@ import javax.swing.JPanel;
  */
 public class AdoptionServicesHeadRole extends Role {
 
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, User userAccount, Entity entity) {
 
         return null;
     }
-
 }
