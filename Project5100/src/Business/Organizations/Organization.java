@@ -5,6 +5,7 @@
 package Business.Organizations;
 
 import Business.Users.User;
+import Business.WorkQueue.WorkQueue;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,5 +27,5 @@ public class Organization {
     private String organizationUsername;
     private String password;
     private int organizationId; 
-    
+    private WorkQueue workQueue;
 }
