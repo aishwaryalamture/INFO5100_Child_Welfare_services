@@ -21,32 +21,39 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtChildLocation" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtChildAge" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtChildFullName" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtRemarks" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtChildGender" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="txtDiseasePeriod" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
+                      <Component id="btnSubmitRequest" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtTypeOfDisease" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtChildLocation" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtChildAge" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtChildFullName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtRemarks" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtChildGender" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtDiseasePeriod" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="127" max="32767" attributes="0"/>
-                              <Component id="btnSubmitRequest" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" pref="135" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="radioButtonYes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="radioButtonNo" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -90,19 +97,16 @@
                           <Component id="txtChildInsuranceNumber" min="-2" max="-2" attributes="0"/>
                           <Component id="txtFullNameParent" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtMobileNumberParent" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPreferredHealthCareLocation" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPreferredMentalHealthCareLocation" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="txtMentalHealthDiagnosisType" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel5" min="-2" pref="135" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="radioButtonYes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="radioButtonNo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -140,12 +144,7 @@
                   <Component id="txtRemarks" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel10" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel11" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="txtTypeOfDisease" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtDiseasePeriod" min="-2" max="-2" attributes="0"/>
@@ -171,24 +170,34 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel14" min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="txtPreferredHealthCareLocation" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPreferredMentalHealthCareLocation" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel15" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="txtChildPhysicianName" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel15" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="txtChildPhysicianName" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel16" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="txtChildPhysicianLocation" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel18" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="txtMentalHealthDiagnosisType" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel16" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="txtChildPhysicianLocation" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel17" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="txtLastCheckupDate" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -252,16 +261,6 @@
         <Property name="text" type="java.lang.String" value="jTextField5"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Type Of Disease"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtTypeOfDisease">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField5"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">
       <Properties>
         <Property name="text" type="java.lang.String" value="Disease Period (in months)"/>
@@ -284,7 +283,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mobile Numbre of Parent"/>
+        <Property name="text" type="java.lang.String" value="Mobile Number of Parent"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtMobileNumberParent">
@@ -304,10 +303,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel14">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Preferred HealthCare Location"/>
+        <Property name="text" type="java.lang.String" value="Preferred Mental HealthCare Location"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPreferredHealthCareLocation">
+    <Component class="javax.swing.JTextField" name="txtPreferredMentalHealthCareLocation">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField5"/>
       </Properties>
@@ -359,6 +358,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLastCheckupDate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField5"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel18">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mental Health Diagnosis Type"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMentalHealthDiagnosisType">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField5"/>
       </Properties>

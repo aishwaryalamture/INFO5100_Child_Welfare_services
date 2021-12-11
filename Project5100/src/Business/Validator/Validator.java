@@ -102,9 +102,15 @@ public class Validator {
         }
     }
 
-    public LocalDateTime convertStringToDate(String strDate) {
+    public LocalDateTime convertStringToDateTime(String strDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime date = LocalDateTime.parse(strDate, formatter);
+        return date;
+    }
+    
+    public LocalDate convertStringToDate(String strDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(strDate, formatter);
         return date;
 
     }

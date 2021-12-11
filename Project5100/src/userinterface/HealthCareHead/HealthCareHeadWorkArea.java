@@ -128,14 +128,14 @@ public class HealthCareHeadWorkArea extends javax.swing.JPanel {
 
         tblChildHealthDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Disease", "Disease Period", "Physician Name", "Physician Location"
+                "Disease", "Disease Period", "Physician Name", "Physician Location", "Last Checkup Date", "Mental Health Diagnosis Type"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -143,6 +143,9 @@ public class HealthCareHeadWorkArea extends javax.swing.JPanel {
             }
         });
         jScrollPane4.setViewportView(tblChildHealthDetails);
+        if (tblChildHealthDetails.getColumnModel().getColumnCount() > 0) {
+            tblChildHealthDetails.getColumnModel().getColumn(0).setPreferredWidth(10);
+        }
 
         jLabel3.setText("Work Requests: ");
 
@@ -158,22 +161,17 @@ public class HealthCareHeadWorkArea extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(84, 84, 84)
@@ -236,23 +234,18 @@ public class HealthCareHeadWorkArea extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssignToChildWelfareOfficer;
     private javax.swing.JButton btnAssignToChildWelfareOfficer1;
     private javax.swing.JButton btnRequestMoreDetails1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tblChildDetails;
     private javax.swing.JTable tblChildHealthDetails;
     private javax.swing.JTable tblHealthCareHeadWorkRequest;
-    private javax.swing.JTable tblVictimDetaiils;
     // End of variables declaration//GEN-END:variables
 
     private void populateHealthCareHeadRequests() {
@@ -313,11 +306,12 @@ public class HealthCareHeadWorkArea extends javax.swing.JPanel {
             ChildHealthAttributes cha = (ChildHealthAttributes) tblHealthCareHeadWorkRequest.getValueAt(tblHealthCareHeadWorkRequest.getSelectedRow(), 0);
             DefaultTableModel model = (DefaultTableModel) tblChildHealthDetails.getModel();
             model.setRowCount(0);
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
             row[0] = cha.getTypeOfDisease();
             row[1] = cha.getDiseasePeriod();
             row[2] = cha.getChildPhysicianName();
             row[3] = cha.getChildPhysicianLocation();
+            row[4] = cha.getLastCheckUpDate();
             model.addRow(row);
         } catch (Exception e) {
             return;

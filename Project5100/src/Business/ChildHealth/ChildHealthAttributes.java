@@ -6,6 +6,7 @@
 package Business.ChildHealth;
 
 import Business.WorkQueue.WorkRequest;
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,5 +31,6 @@ public class ChildHealthAttributes extends WorkRequest {
     private String preferredHealthCareLocation;
     private String childPhysicianName;
     private String childPhysicianLocation;
+    private LocalDate lastCheckUpDate;
     
 }
