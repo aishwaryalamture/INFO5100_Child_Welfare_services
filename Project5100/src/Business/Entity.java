@@ -8,6 +8,7 @@ package Business;
 import Business.Enterprises.EnterpriseDirectory;
 import Business.Users.UserDirectory;
 import Business.Validator.Validator;
+import Business.WorkQueue.WorkQueue;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,18 +24,21 @@ public class Entity {
     private EnterpriseDirectory enterpriseDirectory;
     private UserDirectory userDirectory;
     private Validator validator;
+    private WorkQueue workQueue;
 
-    public Entity(EnterpriseDirectory enterpriseDirectory, UserDirectory userDirectory, Validator validator) {
+    public Entity(EnterpriseDirectory enterpriseDirectory, UserDirectory userDirectory, Validator validator, WorkQueue workQueue) {
 
         this.enterpriseDirectory = enterpriseDirectory;
         this.userDirectory = userDirectory;
         this.validator = validator;
+        this.workQueue=workQueue;
     }
     
     private Entity(){
         enterpriseDirectory = new EnterpriseDirectory();
         userDirectory = new UserDirectory();
         validator = new Validator();
+        workQueue = new WorkQueue();
     }
     
     public static Entity getInstance(){

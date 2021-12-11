@@ -4,7 +4,9 @@
  */
 package Business.Role;
 
+import Business.Enterprises.Enterprise;
 import Business.Entity;
+import Business.Organizations.Organization;
 import Business.Users.User;
 import javax.swing.JPanel;
 
@@ -15,7 +17,8 @@ import javax.swing.JPanel;
 public class ChildWelfareAdmin extends Role {
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, User userAccount, Entity entity) {
+    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
+            Enterprise enterprise, User user) {
 
         return null;
     }
