@@ -15,7 +15,7 @@ import userinterface.ChildWelfareAdmin.ResolveChildWelfareRequestsJPanel;
 
 /**
  *
- * @author aishwarya_30111
+ * @author ChildWelfareServicesTeam
  */
 public class PoliceWorkArea extends javax.swing.JPanel {
 
