@@ -135,7 +135,7 @@ public class ChildWelfareHospitalRequestsJPanel extends javax.swing.JPanel {
         }
         WorkRequest workRequest = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
 
-        HospitalUnitRequestDetails requestDetails = new HospitalUnitRequestDetails(displayPanel, entity, enterprise, user, workRequest);
+        HospitalUnitRequestDetails1 requestDetails = new HospitalUnitRequestDetails1(displayPanel, entity, enterprise, user, workRequest);
         displayPanel.add(requestDetails);
         CardLayout layout = (CardLayout) displayPanel.getLayout();
         layout.next(displayPanel);
