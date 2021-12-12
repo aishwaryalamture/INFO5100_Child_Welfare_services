@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.ChildWelfareAdmin;
+package userinterface.PoliceWorkArea;
 
 import Business.Enterprises.Enterprise;
 import Business.Entity;
@@ -13,17 +13,17 @@ import Business.Role.Role;
 import Business.Users.User;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.UtilityClass;
 
 /**
  *
  * @author ChildWelfareServicesTeam
  */
-public class ResolveChildWelfareRequestsJPanel extends javax.swing.JPanel {
+public class ChildWelfarePoliceRequestsJPanel extends javax.swing.JPanel {
 
     private JPanel displayPanel;
     private Entity entity;
@@ -31,22 +31,42 @@ public class ResolveChildWelfareRequestsJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
 
     /**
-     * Creates new form ResolveChildWelfareRequestsJPanel
+     * Creates new form ChildWelfarePoliceRequestsJPanel
      */
-    public ResolveChildWelfareRequestsJPanel(JPanel displayPanel, Entity entity, Enterprise enterprise, User user) {
+    public ChildWelfarePoliceRequestsJPanel(JPanel displayPanel, Entity entity, Enterprise enterprise, User user) {
         initComponents();
         this.displayPanel = displayPanel;
         this.entity = entity;
         this.user = user;
         this.enterprise = enterprise;
-        populateData();
-
+        populateTable();
     }
 
-    private void populateData() {
-        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            comboOrganization.addItem(org.getOrganizationName());
+    public void populateTable() {
+        //Organization selectedOrganization = enterprise.getOrganizationDirectory().getOrganizationList().get(comboOrganization.getSelectedIndex());
+
+        DefaultTableModel delModel = (DefaultTableModel) tblRequest.getModel();
+        delModel.setRowCount(0);
+        ArrayList<WorkRequest> workRequestList = entity.getWorkQueue().getWorkRequestList();
+        for (WorkRequest workRequest : workRequestList) {
+            if (workRequest.getReceiver().getRole().getRoleType() == Role.RoleType.PoliceDeptAdmin) {
+                Object[] row = new Object[2];
+                row[0] = workRequest;
+                row[1] = workRequest.getStatus();
+                delModel.addRow(row);
+            }
         }
+        /*  for (WorkRequest workRequest : workRequestList) {
+            if (workRequest.getStatus().equalsIgnoreCase(Status.StatusType.NEW.getValue())
+                    || workRequest.getStatus().equalsIgnoreCase(Status.StatusType.INPROGRESS.getValue())) {
+
+                Object[] row = new Object[2];
+                row[0] = workRequest;
+                row[1] = workRequest.getStatus();
+                delModel.addRow(row);
+            }
+        }*/
+
     }
 
     /**
@@ -59,10 +79,8 @@ public class ResolveChildWelfareRequestsJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-        lblFirstName1 = new javax.swing.JLabel();
-        comboOrganization = new javax.swing.JComboBox<>();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tblOrganizationRequest = new javax.swing.JTable();
+        tblRequest = new javax.swing.JTable();
         btnDetails = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
@@ -71,22 +89,12 @@ public class ResolveChildWelfareRequestsJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Child Welfare Admin Portal");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 74, 310, 53));
+        lblTitle.setText("Police Work Area");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(569, 74, 310, 53));
 
-        lblFirstName1.setText("Select Organization:");
-        add(lblFirstName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 156, 131, 34));
-
-        comboOrganization.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboOrganizationActionPerformed(evt);
-            }
-        });
-        add(comboOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(724, 156, 256, 34));
-
-        tblOrganizationRequest.setBorder(new javax.swing.border.MatteBorder(null));
-        tblOrganizationRequest.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        tblOrganizationRequest.setModel(new javax.swing.table.DefaultTableModel(
+        tblRequest.setBorder(new javax.swing.border.MatteBorder(null));
+        tblRequest.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -105,10 +113,10 @@ public class ResolveChildWelfareRequestsJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblOrganizationRequest.setSelectionBackground(new java.awt.Color(117, 177, 169));
-        jScrollPane5.setViewportView(tblOrganizationRequest);
+        tblRequest.setSelectionBackground(new java.awt.Color(117, 177, 169));
+        jScrollPane5.setViewportView(tblRequest);
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 222, 1007, 208));
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 1007, 208));
 
         btnDetails.setBackground(new java.awt.Color(217, 180, 74));
         btnDetails.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -127,50 +135,26 @@ public class ResolveChildWelfareRequestsJPanel extends javax.swing.JPanel {
         add(btnDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrganizationActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-    }//GEN-LAST:event_comboOrganizationActionPerformed
-
     private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblOrganizationRequest.getSelectedRow();
+        int selectedRow = tblRequest.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please Select a row from table", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Organization selectedOrganization = enterprise.getOrganizationDirectory().getOrganizationList().get(comboOrganization.getSelectedIndex());
-        WorkRequest workRequest = (WorkRequest) tblOrganizationRequest.getValueAt(selectedRow, 0);
-        ChildWelfareRequestDetails childWelfareDetailsReq = new ChildWelfareRequestDetails(displayPanel, entity, enterprise, user, selectedOrganization, workRequest);
-        displayPanel.add(childWelfareDetailsReq);
+        WorkRequest workRequest = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
+
+        PoliceDeptRequestDetails requestDetails = new PoliceDeptRequestDetails(displayPanel, entity, enterprise, user, workRequest);
+        displayPanel.add(requestDetails);
         CardLayout layout = (CardLayout) displayPanel.getLayout();
         layout.next(displayPanel);
     }//GEN-LAST:event_btnDetailsActionPerformed
 
-    public void populateTable() {
-        Organization selectedOrganization = enterprise.getOrganizationDirectory().getOrganizationList().get(comboOrganization.getSelectedIndex());
-
-        DefaultTableModel delModel = (DefaultTableModel) tblOrganizationRequest.getModel();
-        delModel.setRowCount(0);
-        ArrayList<WorkRequest> workRequestList = selectedOrganization.getWorkQueue().getWorkRequestList();
-        for (WorkRequest workRequest : workRequestList) {
-            if (workRequest.getReceiver().getRole().getRoleType() == Role.RoleType.ChildWelfareAdmin) {
-
-                Object[] row = new Object[2];
-                row[0] = workRequest;
-                row[1] = workRequest.getStatus();
-                delModel.addRow(row);
-            }
-        }
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDetails;
-    private javax.swing.JComboBox<String> comboOrganization;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lblFirstName1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblOrganizationRequest;
+    private javax.swing.JTable tblRequest;
     // End of variables declaration//GEN-END:variables
 }

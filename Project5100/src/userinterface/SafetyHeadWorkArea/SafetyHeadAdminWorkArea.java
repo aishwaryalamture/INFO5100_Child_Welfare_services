@@ -9,9 +9,11 @@ import Business.Enterprises.Enterprise;
 import Business.Entity;
 import Business.Enums.Status;
 import Business.Organizations.Organization;
+import Business.Role.Role;
 import Business.Users.User;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -166,7 +168,7 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 747, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1353, Short.MAX_VALUE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,12 +201,21 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAssignToChildWelfareOfficer)
                     .addComponent(btnRequestMoreDetails))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToChildWelfareOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficerActionPerformed
-        //todo aish/ketki
+        ChildMaltreatmentAttributes cma = (ChildMaltreatmentAttributes) tblSafetyHeadWorkRequest.getValueAt(tblSafetyHeadWorkRequest.getSelectedRow(), 0);
+
+        for (User user : entity.getUserDirectory().getUserList()) {
+            if (user.getRole().getRoleType() == Role.RoleType.ChildWelfareAdmin) {
+                cma.setReceiver(user);
+                break;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Assigned To ChildWelfare Admin", "Success", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_btnAssignToChildWelfareOfficerActionPerformed
 
     private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
@@ -277,15 +288,17 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
     }
 
     private void populateReporterTable() {
-        try{
-        DefaultTableModel model = (DefaultTableModel) tblReporterDetails.getModel();
-        model.setRowCount(0);
-        Object[] row = new Object[3];
-        row[0] = user.getFirstName() + " " + user.getLastName();
-        row[1] = user.getMobileNumber();
-        row[2] = user.getLocation();
-        model.addRow(row);
-        } catch(Exception e){
+        try {
+            ChildMaltreatmentAttributes cma = (ChildMaltreatmentAttributes) tblSafetyHeadWorkRequest.getValueAt(tblSafetyHeadWorkRequest.getSelectedRow(), 0);
+            DefaultTableModel model = (DefaultTableModel) tblReporterDetails.getModel();
+            model.setRowCount(0);
+            Object[] row = new Object[4];
+            row[0] = cma.getOffenderName();
+            row[1] = cma.getOffenderLocation();
+            row[2] = cma.getOffenderGender();
+            row[3] = cma.getOffenderDescription();
+            model.addRow(row);
+        } catch (Exception e) {
             return;
         }
     }

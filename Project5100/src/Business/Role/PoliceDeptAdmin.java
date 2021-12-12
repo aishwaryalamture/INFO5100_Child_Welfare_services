@@ -11,27 +11,29 @@ import Business.Organizations.Organization;
 import Business.Users.User;
 import javax.swing.JPanel;
 import userinterface.ChildWelfareAdmin.ChildWelfareAdminWorkArea;
+import userinterface.PoliceWorkArea.PoliceWorkArea;
 
 /**
  *
  * @author ChildWelfareServicesTeam
  */
 public class PoliceDeptAdmin extends Role {
+
     Role.RoleType roleType;
+
     public PoliceDeptAdmin() {
         roleType = Role.RoleType.PoliceDeptAdmin;
     }
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
+    public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
 
-       // return new ChildWelfareAdminWorkArea(userProcessContainer,entity,enterprise,user);
-       return null;
+        return new PoliceWorkArea(userProcessContainer, entity, enterprise, user);
     }
-    
-     @Override
-    public Role.RoleType getRoleType(){
+
+    @Override
+    public Role.RoleType getRoleType() {
         return roleType;
     }
 }
