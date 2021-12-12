@@ -100,7 +100,6 @@ public class SysAdminEnterprisesWorkArea extends javax.swing.JPanel {
         tblEnterprises.setSelectionBackground(new java.awt.Color(117, 177, 169));
         jScrollPane5.setViewportView(tblEnterprises);
         if (tblEnterprises.getColumnModel().getColumnCount() > 0) {
-            tblEnterprises.getColumnModel().getColumn(0).setResizable(false);
             tblEnterprises.getColumnModel().getColumn(0).setPreferredWidth(10);
         }
 
