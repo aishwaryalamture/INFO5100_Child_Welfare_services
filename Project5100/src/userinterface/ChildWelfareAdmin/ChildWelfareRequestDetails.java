@@ -29,7 +29,7 @@ import userinterface.UtilityClass;
  * @author ChildWelfareServicesTeam
  */
 public class ChildWelfareRequestDetails extends javax.swing.JPanel {
-
+    
     private JPanel displayPanel;
     private Entity entity;
     private User user;
@@ -50,77 +50,80 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         this.workRequest = workRequest;
         populateTable();
     }
-
+    
     private void populateTable() {
         DefaultTableModel delModel = (DefaultTableModel) tblRequestDetails.getModel();
         delModel.setRowCount(0);
-
+        
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
+            btnAssignToAdoptionAgency.setVisible(false);
+            btnAssignToHospital.setVisible(false);
+            btnAssignToPolice.setVisible(true);
             ChildMaltreatmentAttributes maltreatmentWorkReq = (ChildMaltreatmentAttributes) workRequest;
             Object[] row = new Object[2];
             row[0] = "Request Date";
             row[1] = Validator.getInstance().convertLocalDateToString(maltreatmentWorkReq.getRequestDate());
-
+            
             row = new Object[2];
             row[0] = "Status";
             row[1] = maltreatmentWorkReq.getStatus();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Message";
             row[1] = maltreatmentWorkReq.getMessage();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Victim Name";
             row[1] = maltreatmentWorkReq.getFullNameVictim();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Victim Location";
             row[1] = maltreatmentWorkReq.getLocationVictim();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Relationship";
             row[1] = maltreatmentWorkReq.getRelationshipVictimOffender();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Victim Name";
             row[1] = maltreatmentWorkReq.getStatus();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Victim Age";
             row[1] = maltreatmentWorkReq.getAgeVictim();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Victim Gender";
             row[1] = maltreatmentWorkReq.getGenderVictim();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Victim Name";
             row[1] = maltreatmentWorkReq.getStatus();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Remarks (Reporting Person)";
             row[1] = maltreatmentWorkReq.getRemarks();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Type Of Abuse";
             row[1] = maltreatmentWorkReq.getTypeOfAbuse();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Sender Contact No";
             row[1] = maltreatmentWorkReq.getSender().getMobileNumber();
             delModel.addRow(row);
-
+            
             row = new Object[2];
             row[0] = "Resolve Date";
             if (maltreatmentWorkReq.getResolveDate() != null) {
@@ -128,11 +131,11 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
             } else {
                 row[1] = "Yet To Be Resolved";
             }
-
+            
             delModel.addRow(row);
-
+            
         }
-
+        
     }
 
     /**
@@ -234,12 +237,26 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
 
     private void btnAssignToAdoptionAgencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToAdoptionAgencyActionPerformed
         // TODO add your handling code here:
-
+        for (User user : entity.getUserDirectory().getUserList()) {
+            if (user.getRole().getRoleType() == Role.RoleType.AdoptionAgencyAdmin) {
+                workRequest.setReceiver(user);
+                break;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Assigned To Adoption Agency", "Success", JOptionPane.INFORMATION_MESSAGE);
+        btnBack.doClick();
     }//GEN-LAST:event_btnAssignToAdoptionAgencyActionPerformed
 
     private void btnAssignToHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToHospitalActionPerformed
         // TODO add your handling code here:
-
+        for (User user : entity.getUserDirectory().getUserList()) {
+            if (user.getRole().getRoleType() == Role.RoleType.HospitalAdmin) {
+                workRequest.setReceiver(user);
+                break;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Assigned To Hospital", "Success", JOptionPane.INFORMATION_MESSAGE);
+        btnBack.doClick();
     }//GEN-LAST:event_btnAssignToHospitalActionPerformed
 
     private void btnAssignToPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToPoliceActionPerformed
@@ -252,7 +269,7 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(null, "Assigned To Police", "Success", JOptionPane.INFORMATION_MESSAGE);
         btnBack.doClick();
-
+        
 
     }//GEN-LAST:event_btnAssignToPoliceActionPerformed
 
