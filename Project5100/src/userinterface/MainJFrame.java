@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.apache.log4j.Logger;
 import userinterface.SystemUser.CreateSystemUserJPanel;
 
 /**
@@ -31,6 +32,8 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     private Entity system;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    //initializing the logger
+    static Logger log = Logger.getLogger(MainJFrame.class.getName());
 
     public MainJFrame() {
         initComponents();
@@ -170,6 +173,7 @@ public class MainJFrame extends javax.swing.JFrame {
         User loggedInUser = system.getUserDirectory().authenticateUser(userName, passwordStr);
 
         if (loggedInUser != null) {
+            log.info("logged In username & role - " + userName + "/" + loggedInUser.getRole().getRoleType());
             Enterprise enterprise = null;
             Organization organization = null;
             if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemAdmin) {
