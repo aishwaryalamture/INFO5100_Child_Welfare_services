@@ -108,7 +108,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lbluserName.setText("UserName");
         controlPanel.add(lbluserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 200, 40));
 
-        txtUserName.setText("sysadmin");
+        txtUserName.setText("childwelfare");
         txtUserName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         txtUserName.setMinimumSize(new java.awt.Dimension(53, 27));
         txtUserName.setPreferredSize(new java.awt.Dimension(0, 40));
@@ -119,7 +119,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPassword.setText("Password");
         controlPanel.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 200, 40));
 
-        txtPassword.setText("sysadmin");
+        txtPassword.setText("childwelfare");
         txtPassword.setMinimumSize(new java.awt.Dimension(6, 27));
         txtPassword.setPreferredSize(new java.awt.Dimension(0, 40));
         controlPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 240, 50));
@@ -170,13 +170,33 @@ public class MainJFrame extends javax.swing.JFrame {
         String passwordStr = String.valueOf(passwordCharArr);
 
         User loggedInUser = system.getUserDirectory().authenticateUser(userName, passwordStr);
-        Enterprise enterprise = null;
-        Organization organization = null;
-        if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemAdmin) {
-            enterprise = null;
-            organization = null;
-        }
+
         if (loggedInUser != null) {
+            Enterprise enterprise = null;
+            Organization organization = null;
+            if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemAdmin) {
+                enterprise = null;
+                organization = null;
+            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemUserRole || loggedInUser.getRole().getRoleType() == Role.RoleType.ChildWelfareAdmin) {
+                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                        enterprise = er;
+                        organization = null;
+                    }
+                }
+            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.SafetyHead) {
+                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                        enterprise = er;
+                        for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
+                            if(org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.SafetyHead) {
+                                organization = org;
+                            }
+                        }
+                    }
+                }
+
+            }
             CardLayout cardLayout = (CardLayout) displayPanel.getLayout();
             displayPanel.add("workPanel", loggedInUser.getRole().createWorkArea(displayPanel, system, organization, enterprise, loggedInUser));
             cardLayout.next(displayPanel);

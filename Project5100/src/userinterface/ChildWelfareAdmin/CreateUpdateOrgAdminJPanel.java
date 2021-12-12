@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkArea;
+package userinterface.ChildWelfareAdmin;
 
+import userinterface.SystemAdminWorkArea.*;
 import Business.Enterprises.Enterprise;
 import Business.Entity;
+import Business.Organizations.Organization;
 import Business.Role.ChildWelfareAdmin;
+import Business.Role.HealthcareHeadRole;
 import Business.Role.PoliceDeptAdmin;
 import Business.Role.Role;
+import Business.Role.SafetyHeadRole;
 import Business.Role.SystemAdminRole;
 import Business.Users.User;
 import Business.Validator.Validator;
@@ -31,9 +35,9 @@ import userinterface.UtilityClass;
  *
  * @author ChildWelfareServicesTeam
  */
-public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
+public class CreateUpdateOrgAdminJPanel extends javax.swing.JPanel {
 
-    private JPanel enterprisePanel;
+    private JPanel childWelfareOrgAdminPanel;
     private Entity entity;
     private User user;
     private static final int CREATE_OPERATION = 0;
@@ -41,25 +45,27 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
     private int operationId;
     private Enterprise enterprise;
     private Role role;
+    private Organization organization;
 
     /**
      * Creates new form CreateUpdateAdminRolesJPanel
      */
-    public CreateUpdateAdminRolesJPanel(JPanel enterprisePanel, User user, Entity entity, int operationId, Enterprise enterprise, Role role) {
+    public CreateUpdateOrgAdminJPanel(JPanel enterprisePanel, User user, Entity entity, int operationId, Enterprise enterprise,Organization organization) {
         initComponents();
-        this.enterprisePanel = enterprisePanel;
+        this.childWelfareOrgAdminPanel = enterprisePanel;
         this.entity = entity;
         this.user = user;
         this.operationId = operationId;
         this.enterprise = enterprise;
+        this.organization = organization;
         loadData();
     }
 
     private void loadData() {
-        for (Enterprise p : entity.getEnterpriseDirectory().getEnterpriseList()) {
-            comboEnterprise.addItem(p.getEnterpriseName());
-            if (operationId == UPDATE_OPERATION && p.getEnterpriseName().equals(enterprise.getEnterpriseName())) {
-                comboEnterprise.setSelectedItem(p.getEnterpriseName());
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            comboEnterprise.addItem(org.getOrganizationName());
+            if (operationId == UPDATE_OPERATION && org.getOrganizationName().equals(organization.getOrganizationName())) {
+                comboEnterprise.setSelectedItem(org.getOrganizationName());
             }
         }
         if (operationId == UPDATE_OPERATION) {
@@ -76,55 +82,9 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
             
         }
 
-        //loadMapData();
     }
 
-    private void loadMapData() {
-        JFrame test = new JFrame("Google Maps");
-
-        try {
-            String latitude = "40.714728";
-            String longitude = "-73.998672";
-
-            String imageUrl = "https://maps.googleapis.com/maps/api/staticmap?center="
-                    + latitude
-                    + ","
-                    + longitude
-                    + "&zoom=11&size=612x612&scale=2&maptype=roadmap";
-            String destinationFile = "image.jpg";
-
-            // read the map image from Google
-            // then save it to a local file: image.jpg
-            //
-            URL url = new URL(imageUrl);
-            InputStream is = url.openStream();
-            OutputStream os = new FileOutputStream(destinationFile);
-
-            byte[] b = new byte[2048];
-            int length;
-
-            while ((length = is.read(b)) != -1) {
-                os.write(b, 0, length);
-            }
-
-            is.close();
-            os.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-        // create a GUI component that loads the image: image.jpg
-        //
-        ImageIcon imageIcon = new ImageIcon((new ImageIcon("image.jpg"))
-                .getImage().getScaledInstance(630, 600,
-                        java.awt.Image.SCALE_SMOOTH));
-        test.add(new JLabel(imageIcon));
-
-        // show the GUI window
-        test.setVisible(true);
-        test.pack();
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -215,7 +175,7 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
             }
         });
 
-        lblFirstName1.setText("Select Enterprise:");
+        lblFirstName1.setText("Select Organization:");
 
         comboEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,17 +223,21 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(145, 145, 145)
-                                .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(144, 144, 144)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(595, Short.MAX_VALUE))
+                                .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(493, 493, 493)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFirstName1))
+                        .addGap(144, 144, 144)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(590, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblEmail, lblFirstName, lblFirstName1, lblLastName, lblLocation, lblMobileNo, lblPassword, lblUsername});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -321,13 +285,13 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-        enterprisePanel.remove(this);
-        Component[] componentArray = enterprisePanel.getComponents();
+        childWelfareOrgAdminPanel.remove(this);
+        Component[] componentArray = childWelfareOrgAdminPanel.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SysAdminRolesWorkArea workArea = (SysAdminRolesWorkArea) component;
+        ChildWelfareOrgAdminRolesWorkArea workArea = (ChildWelfareOrgAdminRolesWorkArea) component;
         workArea.populateTable();
-        CardLayout layout = (CardLayout) enterprisePanel.getLayout();
-        layout.previous(enterprisePanel);
+        CardLayout layout = (CardLayout) childWelfareOrgAdminPanel.getLayout();
+        layout.previous(childWelfareOrgAdminPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -360,24 +324,24 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
                     }
                 }
 
-                Enterprise selectedEnterprise = entity.getEnterpriseDirectory().getEnterpriseList().get(comboEnterprise.getSelectedIndex());
+                Organization selectedOrg = enterprise.getOrganizationDirectory().getOrganizationList().get(comboEnterprise.getSelectedIndex());
                 //admin already exists for this enterprise 
-                if (selectedEnterprise.getAdmin() != null) {
-                    JOptionPane.showMessageDialog(null, "Admin Already Exists For This Enterprise", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
+                if (selectedOrg.getOrganizationAdmin()!= null) {
+                    JOptionPane.showMessageDialog(null, "Admin Already Exists For This Organization", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
                 Role role = new ChildWelfareAdmin();
-                if (selectedEnterprise.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                    role = new ChildWelfareAdmin();
+                if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
+                    role = new SafetyHeadRole();
 
-                } else if (selectedEnterprise.getEnterpriseName().equals(UtilityClass.Enterprises.PoliceDept.getValue())) {
-                    role = new PoliceDeptAdmin();
+                } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
+                    role = new HealthcareHeadRole();
                 }
 
                 User user = entity.getUserDirectory().createUserAccount(txtFirstName.getText(), txtLastName.getText(), txtLocation.getText(),
                         txtMobileNo.getText(), txtUsername.getText(), txtPassword.getText(), txtEmail.getText(), role);
-                selectedEnterprise.setAdmin(user);
+                selectedOrg.setOrganizationAdmin(user);
 
                 JOptionPane.showMessageDialog(null, "New Admin Registered", "Success", JOptionPane.INFORMATION_MESSAGE);
                 btnBack.doClick();
@@ -404,7 +368,7 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
                     }
                 }
 
-                JOptionPane.showMessageDialog(null, "Admin Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Organization Admin Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
                 btnBack.doClick();
 
                 break;

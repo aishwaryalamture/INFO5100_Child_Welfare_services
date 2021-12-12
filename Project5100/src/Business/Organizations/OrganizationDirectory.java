@@ -5,6 +5,7 @@
 package Business.Organizations;
 
 import Business.Users.User;
+import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
 
 /**
@@ -25,16 +26,13 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(String orgName, String orgUserName, User orgAdmin, String adminName,
-            String username, String password){
+    public Organization createOrganization(String orgName,String organizationDesc, String registrationNo){
         
         Organization org = new Organization(lastId);
         org.setOrganizationName(orgName);
-        org.setOrganizationUsername(orgUserName);
-        org.setPassword(password);
-        org.setOrganizationAdmin(orgAdmin);
-        org.setOrganizationAdminName(adminName);
-        
+        org.setOrganizationDesciption(organizationDesc);
+        org.setOrganizationRegistrationNo(registrationNo);
+        org.setWorkQueue(new WorkQueue());
         lastId = org.getOrganizationId();
         organizationList.add(org);
         return org;

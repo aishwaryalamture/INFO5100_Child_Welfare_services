@@ -18,7 +18,7 @@ import lombok.Setter;
 public class User {
     
     public User(int id) {
-        this.userId = id++;
+        this.userId = id+1;
     }
     
     private Role role;

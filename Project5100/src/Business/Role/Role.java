@@ -23,6 +23,7 @@ public abstract class Role {
         SafetyHead("SafetyHead"),
         SystemAdmin("SystemAdmin"),
         HealthcareHeadRole("HealthcareHeadRole"),
+        PoliceDeptAdmin("PoliceDeptAdmin"),
         SystemUserRole("SystemUserRole");
         
         private String value;

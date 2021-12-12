@@ -5,17 +5,36 @@
  */
 package userinterface.SystemUser;
 
+import Business.ChildMaltreatment.ChildMaltreatmentAttributes;
+import Business.Enterprises.Enterprise;
+import Business.Entity;
+import Business.Organizations.Organization;
+import Business.Users.User;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import userinterface.SafetyHeadChildMaltreatment.MaltreatmentReportForm;
+import userinterface.UtilityClass;
+
 /**
  *
- * @author Ketki Kule <kule.k@northeastern.edu>
+ * @author ChildWelfareServicesTeam
  */
 public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
+
+    private JPanel displayPanel;
+    private Entity entity;
+    private User user;
+    private Enterprise enterprise;
 
     /**
      * Creates new form SystemUserWorkAreaJPanel
      */
-    public SystemUserWorkAreaJPanel() {
+    public SystemUserWorkAreaJPanel(JPanel displayPanel, Entity entity, Enterprise enterprise, User user) {
         initComponents();
+        this.displayPanel = displayPanel;
+        this.entity = entity;
+        this.enterprise = enterprise;
+        this.user = user;
     }
 
     /**
@@ -28,6 +47,9 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btn = new javax.swing.JButton();
+        btnReportMaltreatment = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -37,10 +59,63 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Welcome to Child Welfare");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 74, 310, 53));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/build_brighter_tomorrow.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 220, 260));
+
+        btn.setBackground(new java.awt.Color(217, 180, 74));
+        btn.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btn.setForeground(new java.awt.Color(255, 255, 255));
+        btn.setContentAreaFilled(false);
+        btn.setOpaque(true);
+        btn.setPreferredSize(new java.awt.Dimension(210, 34));
+        btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActionPerformed(evt);
+            }
+        });
+        add(btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 230, 60));
+
+        btnReportMaltreatment.setBackground(new java.awt.Color(217, 180, 74));
+        btnReportMaltreatment.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnReportMaltreatment.setForeground(new java.awt.Color(255, 255, 255));
+        btnReportMaltreatment.setText("Report Maltreatment");
+        btnReportMaltreatment.setContentAreaFilled(false);
+        btnReportMaltreatment.setOpaque(true);
+        btnReportMaltreatment.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnReportMaltreatment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportMaltreatmentActionPerformed(evt);
+            }
+        });
+        add(btnReportMaltreatment, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 230, 60));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btnActionPerformed
+
+    private void btnReportMaltreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportMaltreatmentActionPerformed
+        // TODO add your handling code here:
+
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
+                MaltreatmentReportForm createUpdateEnterpriseJPanel = new MaltreatmentReportForm(displayPanel, entity, org, enterprise, user);
+                displayPanel.add(createUpdateEnterpriseJPanel);
+                CardLayout layout = (CardLayout) displayPanel.getLayout();
+                layout.next(displayPanel);
+            }
+        }
+
+
+    }//GEN-LAST:event_btnReportMaltreatmentActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn;
+    private javax.swing.JButton btnReportMaltreatment;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

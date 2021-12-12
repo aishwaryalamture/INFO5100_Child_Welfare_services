@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ketki Kule <kule.k@northeastern.edu>
+ * @author ChildWelfareServicesTeam
  */
 public class SysAdminEnterprisesWorkArea extends javax.swing.JPanel {
 
@@ -74,6 +74,7 @@ public class SysAdminEnterprisesWorkArea extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(172, 208, 192));
         setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblEnterprises.setBorder(new javax.swing.border.MatteBorder(null));
         tblEnterprises.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -103,6 +104,8 @@ public class SysAdminEnterprisesWorkArea extends javax.swing.JPanel {
             tblEnterprises.getColumnModel().getColumn(0).setPreferredWidth(10);
         }
 
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 177, 1007, 208));
+
         btnCreate.setBackground(new java.awt.Color(217, 180, 74));
         btnCreate.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         btnCreate.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,6 +117,7 @@ public class SysAdminEnterprisesWorkArea extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 444, 115, 49));
 
         btnUpdate.setBackground(new java.awt.Color(217, 180, 74));
         btnUpdate.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -126,6 +130,7 @@ public class SysAdminEnterprisesWorkArea extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 444, 115, 49));
 
         btnDelete.setBackground(new java.awt.Color(217, 180, 74));
         btnDelete.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -138,6 +143,7 @@ public class SysAdminEnterprisesWorkArea extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(871, 444, 115, 49));
 
         lblTitleEnterprises.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         lblTitleEnterprises.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,42 +152,7 @@ public class SysAdminEnterprisesWorkArea extends javax.swing.JPanel {
         lblTitleEnterprises.setMaximumSize(new java.awt.Dimension(210, 34));
         lblTitleEnterprises.setMinimumSize(new java.awt.Dimension(210, 34));
         lblTitleEnterprises.setPreferredSize(new java.awt.Dimension(280, 34));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(417, 417, 417)
-                        .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(560, 560, 560)
-                        .addComponent(lblTitleEnterprises, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(234, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(lblTitleEnterprises, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(395, Short.MAX_VALUE))
-        );
+        add(lblTitleEnterprises, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 64, -1, 53));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
