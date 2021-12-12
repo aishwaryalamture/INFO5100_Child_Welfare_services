@@ -12,9 +12,14 @@ import Business.Enums.Status;
 import Business.Organizations.Organization;
 import Business.Users.User;
 import Business.Validator.Validator;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.SystemUser.SystemUserWorkAreaJPanel;
 
 /**
  *
@@ -47,6 +52,8 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.user = user;
         this.childMentalHealthAttributes = new ChildMentalHealthAttributes();
+        Date date = new Date();
+        jDateChooser1.setMaxSelectableDate(date);
     }
 
     /**
@@ -59,7 +66,7 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        btnSubmitRequest = new javax.swing.JButton();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtChildLocation = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -67,7 +74,6 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtChildAge = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtChildGender = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtRemarks = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -88,236 +94,158 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
         radioButtonYes = new javax.swing.JRadioButton();
         radioButtonNo = new javax.swing.JRadioButton();
         jLabel17 = new javax.swing.JLabel();
-        txtLastCheckupDate = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         txtMentalHealthDiagnosisType = new javax.swing.JTextField();
+        btnSubmitRequest = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel7 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        btnBoy = new javax.swing.JRadioButton();
+        btnGirl = new javax.swing.JRadioButton();
 
+        setBackground(new java.awt.Color(172, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Child Location");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 192, -1, -1));
+        add(txtChildLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 186, 132, -1));
+
+        jLabel2.setText("Child Full Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 155, -1, -1));
+        add(txtChildFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 149, 132, -1));
+
+        jLabel3.setText("Child Age");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 223, -1, -1));
+        add(txtChildAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 223, 132, -1));
+
+        jLabel4.setText("Child Gender");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 268, -1, -1));
+
+        jLabel10.setText("Remarks");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 299, -1, 21));
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 300, 134, -1));
+
+        jLabel12.setText("Disease Period (in months)");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 338, -1, 21));
+        add(txtDiseasePeriod, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 340, 134, -1));
+
+        jLabel6.setText("Full Name of Parent");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 458, -1, -1));
+        add(txtFullNameParent, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 455, 134, -1));
+
+        jLabel9.setText("Mobile Number of Parent");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 492, -1, 21));
+        add(txtMobileNumberParent, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 493, 134, -1));
+
+        jLabel13.setText("Child Insurance Number");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 531, -1, 21));
+        add(txtChildInsuranceNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 532, 134, -1));
+
+        jLabel14.setText("Preferred Mental HealthCare Location");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 416, -1, 21));
+        add(txtPreferredMentalHealthCareLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 417, 134, -1));
+
+        jLabel15.setText("Child Physician Name");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 570, -1, 21));
+        add(txtChildPhysicianName, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 571, 134, -1));
+
+        jLabel16.setText("Child Physician Location");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 609, -1, 21));
+        add(txtChildPhysicianLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 610, 134, -1));
+
+        jLabel5.setText("Are you parent of the child?");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 107, 135, 24));
+
+        radioButtonYes.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup1.add(radioButtonYes);
+        radioButtonYes.setText("Yes");
+        add(radioButtonYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 109, -1, -1));
+
+        radioButtonNo.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup1.add(radioButtonNo);
+        radioButtonNo.setText("No");
+        add(radioButtonNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 110, -1, -1));
+
+        jLabel17.setText("Last Checkup Date");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 636, -1, 21));
+
+        jLabel18.setText("Mental Health Diagnosis Type");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 377, -1, 21));
+        add(txtMentalHealthDiagnosisType, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 378, 134, -1));
+
+        btnSubmitRequest.setBackground(new java.awt.Color(217, 180, 74));
+        btnSubmitRequest.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnSubmitRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmitRequest.setText("Submit Request");
+        btnSubmitRequest.setContentAreaFilled(false);
+        btnSubmitRequest.setOpaque(true);
         btnSubmitRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitRequestActionPerformed(evt);
             }
         });
+        add(btnSubmitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 686, 136, 49));
+        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 637, 134, -1));
 
-        jLabel1.setText("Child Location");
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel7.setText("Child Mental HealthCare Service Request Form");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 51, -1, -1));
 
-        txtChildLocation.setText("jTextField1");
+        btnBack.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("<< Back");
+        btnBack.setContentAreaFilled(false);
+        btnBack.setOpaque(true);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 55, 100, 34));
 
-        jLabel2.setText("Child Full Name");
+        btnBoy.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup2.add(btnBoy);
+        btnBoy.setText("Boy");
+        add(btnBoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 260, -1, -1));
 
-        txtChildFullName.setText("jTextField1");
-
-        jLabel3.setText("Child Age");
-
-        txtChildAge.setText("jTextField1");
-
-        jLabel4.setText("Child Gender");
-
-        txtChildGender.setText("jTextField1");
-
-        jLabel10.setText("Remarks");
-
-        txtRemarks.setText("jTextField5");
-
-        jLabel12.setText("Disease Period (in months)");
-
-        txtDiseasePeriod.setText("jTextField5");
-
-        jLabel6.setText("Full Name of Parent");
-
-        txtFullNameParent.setText("jTextField5");
-
-        jLabel9.setText("Mobile Number of Parent");
-
-        txtMobileNumberParent.setText("jTextField5");
-
-        jLabel13.setText("Child Insurance Number");
-
-        txtChildInsuranceNumber.setText("jTextField5");
-
-        jLabel14.setText("Preferred Mental HealthCare Location");
-
-        txtPreferredMentalHealthCareLocation.setText("jTextField5");
-
-        jLabel15.setText("Child Physician Name");
-
-        txtChildPhysicianName.setText("jTextField5");
-
-        jLabel16.setText("Child Physician Location");
-
-        txtChildPhysicianLocation.setText("jTextField5");
-
-        jLabel5.setText("Are you parent of the child?");
-
-        buttonGroup1.add(radioButtonYes);
-        radioButtonYes.setText("Yes");
-
-        buttonGroup1.add(radioButtonNo);
-        radioButtonNo.setText("No");
-
-        jLabel17.setText("Last Checkup Date");
-
-        txtLastCheckupDate.setText("jTextField5");
-
-        jLabel18.setText("Mental Health Diagnosis Type");
-
-        txtMentalHealthDiagnosisType.setText("jTextField5");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel12))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDiseasePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                        .addComponent(btnSubmitRequest)))
-                .addGap(91, 91, 91))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(radioButtonYes)
-                        .addGap(31, 31, 31)
-                        .addComponent(radioButtonNo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(102, 102, 102)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel9))
-                                .addGap(97, 97, 97))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addGap(87, 87, 87)
-                                        .addComponent(txtLastCheckupDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel16)
-                                            .addGap(87, 87, 87)
-                                            .addComponent(txtChildPhysicianLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel14)
-                                            .addComponent(jLabel13)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel15)
-                                                .addGap(87, 87, 87)
-                                                .addComponent(txtChildPhysicianName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtChildInsuranceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFullNameParent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMobileNumberParent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPreferredMentalHealthCareLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel18)
-                                .addGap(87, 87, 87)
-                                .addComponent(txtMentalHealthDiagnosisType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioButtonYes)
-                    .addComponent(radioButtonNo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtDiseasePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnSubmitRequest))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFullNameParent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMobileNumberParent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtChildInsuranceNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreferredMentalHealthCareLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtChildPhysicianName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtChildPhysicianLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMentalHealthDiagnosisType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLastCheckupDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        btnGirl.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup2.add(btnGirl);
+        btnGirl.setText("Girl");
+        add(btnGirl, new org.netbeans.lib.awtextra.AbsoluteConstraints(639, 260, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
+        
         //validate input
+        if ((!btnBoy.isEnabled() && !btnGirl.isEnabled()) || txtChildFullName.getText().isEmpty() || txtChildAge.getText().isEmpty()
+                || txtChildLocation.getText().isEmpty()
+                || txtDiseasePeriod.getText().isEmpty()
+                ){
+            JOptionPane.showMessageDialog(null, "Child Name, Age, Location, Gender, Disease period cannot be empty ",
+                    "Empty Fields", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if ((!radioButtonYes.isEnabled() && !radioButtonNo.isEnabled()) || txtFullNameParent.getText().isEmpty() || txtMobileNumberParent.getText().isEmpty()
+                || txtPreferredMentalHealthCareLocation.getText().isEmpty() || jDateChooser1.getDate().toString().isEmpty()
+                || txtChildPhysicianLocation.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Fields cannot be empty ",
+                    "Empty Fields", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         boolean isValid = Validator.getInstance().validateEmailAddr(txtMobileNumberParent.getText());
         if (!isValid) {
             JOptionPane.showMessageDialog(null, "Please enter email address in format - a@b.c", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
+            return;
         }
         //validate diseasePeriod
         isValid = Validator.getInstance().validateAllDigits(txtDiseasePeriod.getText());
         if (!isValid) {
             JOptionPane.showMessageDialog(null, "Please enter valid disease period in number of months", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
         //save form
@@ -328,12 +256,28 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
         organization.getWorkQueue().addWorkRequest(childMentalHealthAttributes);
         entity.getWorkQueue().addWorkRequest(childMentalHealthAttributes);
         JOptionPane.showMessageDialog(null, "Your Request Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_btnSubmitRequestActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemUserWorkAreaJPanel workArea = (SystemUserWorkAreaJPanel) component;
+        workArea.setVisible(true);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JRadioButton btnBoy;
+    private javax.swing.JRadioButton btnGirl;
     private javax.swing.JButton btnSubmitRequest;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -348,19 +292,18 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton radioButtonNo;
     private javax.swing.JRadioButton radioButtonYes;
     private javax.swing.JTextField txtChildAge;
     private javax.swing.JTextField txtChildFullName;
-    private javax.swing.JTextField txtChildGender;
     private javax.swing.JTextField txtChildInsuranceNumber;
     private javax.swing.JTextField txtChildLocation;
     private javax.swing.JTextField txtChildPhysicianLocation;
     private javax.swing.JTextField txtChildPhysicianName;
     private javax.swing.JTextField txtDiseasePeriod;
     private javax.swing.JTextField txtFullNameParent;
-    private javax.swing.JTextField txtLastCheckupDate;
     private javax.swing.JTextField txtMentalHealthDiagnosisType;
     private javax.swing.JTextField txtMobileNumberParent;
     private javax.swing.JTextField txtPreferredMentalHealthCareLocation;
@@ -368,27 +311,43 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void saveChildMentalHealthForm() {
-        childMentalHealthAttributes.setChildFullName(txtChildFullName.getText());
-        childMentalHealthAttributes.setChildGender(txtChildGender.getText());
-        childMentalHealthAttributes.setChildInsuranceNumber(txtChildInsuranceNumber.getText());
-        childMentalHealthAttributes.setChildLocation(txtChildLocation.getText());
-        childMentalHealthAttributes.setChildPhysicianName(txtChildPhysicianName.getText());
-        childMentalHealthAttributes.setChildPhysicianLocation(txtChildPhysicianName.getText());
+        childMentalHealthAttributes.setChildFullName(
+        Optional.of(txtChildFullName.getText()).orElse(""));
+
+        if (btnBoy.isEnabled()) {
+            childMentalHealthAttributes.setChildGender("Male");
+        } else {
+            childMentalHealthAttributes.setChildGender("Female");
+        }
+        
+        childMentalHealthAttributes.setChildInsuranceNumber(
+        Optional.of(txtChildInsuranceNumber.getText()).orElse(""));
+        childMentalHealthAttributes.setChildLocation(
+        Optional.of(txtChildLocation.getText()).orElse(""));
+        childMentalHealthAttributes.setChildPhysicianName(
+        Optional.of(txtChildPhysicianName.getText()).orElse(""));
+        childMentalHealthAttributes.setChildPhysicianLocation(
+        Optional.of(txtChildPhysicianName.getText()).orElse(""));
         
         if (radioButtonYes.isEnabled()) {
             childMentalHealthAttributes.setParentMobileNumber(user.getMobileNumber());
             childMentalHealthAttributes.setParentFullName(user.getFirstName() + " " + user.getLastName());
         }
         
-        childMentalHealthAttributes.setParentMobileNumber(txtMobileNumberParent.getText());
-        childMentalHealthAttributes.setParentFullName(txtFullNameParent.getText());
-        childMentalHealthAttributes.setRemarks(txtRemarks.getText());
-        childMentalHealthAttributes.setPreferredHealthCareLocation(txtPreferredMentalHealthCareLocation.getText());
+        childMentalHealthAttributes.setParentMobileNumber(
+        Optional.of(txtMobileNumberParent.getText()).orElse(""));
+        childMentalHealthAttributes.setParentFullName(
+        Optional.of(txtFullNameParent.getText()).orElse(""));
+        childMentalHealthAttributes.setRemarks(Optional.of(txtRemarks.getText()).orElse(""));
+        childMentalHealthAttributes.setPreferredHealthCareLocation(
+        Optional.of(txtPreferredMentalHealthCareLocation.getText()).orElse(""));
         childMentalHealthAttributes.setTypeOfDisease("Mental Health");
         childMentalHealthAttributes.setDiseasePeriod(Integer.parseInt(txtDiseasePeriod.getText()));
-        childMentalHealthAttributes.setRemarks(txtRemarks.getText());
-        childMentalHealthAttributes.setLastCheckUpDate(Validator.getInstance().convertStringToDate(txtLastCheckupDate.getText()));
-        childMentalHealthAttributes.setMentalHealthDiagnosisType(txtMentalHealthDiagnosisType.getText());
+        
+        childMentalHealthAttributes.setLastCheckUpDate(
+                Validator.getInstance().convertStringToDate(jDateChooser1.getDate().toString()));
+        childMentalHealthAttributes.setMentalHealthDiagnosisType(
+                Optional.of(txtMentalHealthDiagnosisType.getText()).orElse(""));
         
         String age = txtChildAge.getText();
         if (age != null) {

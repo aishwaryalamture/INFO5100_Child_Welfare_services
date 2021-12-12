@@ -62,7 +62,6 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVictimDetaiils = new javax.swing.JTable();
-        btnAssignToChildWelfareOfficer = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSafetyHeadWorkRequest = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -71,8 +70,11 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
         tblReporterDetails = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         btnRequestMoreDetails = new javax.swing.JButton();
+        btnAssignToChildWelfareOfficer = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(178, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblVictimDetaiils.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,12 +101,7 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
             tblVictimDetaiils.getColumnModel().getColumn(4).setHeaderValue("Relationship with alleged offender");
         }
 
-        btnAssignToChildWelfareOfficer.setText("Assign to Child Welfare Officer");
-        btnAssignToChildWelfareOfficer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignToChildWelfareOfficerActionPerformed(evt);
-            }
-        });
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 292, 1023, 42));
 
         tblSafetyHeadWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,9 +122,13 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
             tblSafetyHeadWorkRequest.getColumnModel().getColumn(3).setHeaderValue("Age");
         }
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 125, 1023, 105));
+
         jLabel1.setText("Victim Details:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 261, -1, -1));
 
         jLabel2.setText("Offender Details:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 376, -1, -1));
 
         tblReporterDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,59 +152,49 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
             tblReporterDetails.getColumnModel().getColumn(2).setPreferredWidth(10);
         }
 
-        jLabel3.setText("Work Requests: ");
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 407, 1023, 42));
 
+        jLabel3.setText("Work Requests: ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 94, -1, -1));
+
+        btnRequestMoreDetails.setBackground(new java.awt.Color(217, 180, 74));
+        btnRequestMoreDetails.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnRequestMoreDetails.setForeground(new java.awt.Color(255, 255, 255));
         btnRequestMoreDetails.setText("Request More Details");
+        btnRequestMoreDetails.setContentAreaFilled(false);
+        btnRequestMoreDetails.setOpaque(true);
+        btnRequestMoreDetails.setPreferredSize(new java.awt.Dimension(210, 34));
         btnRequestMoreDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestMoreDetailsActionPerformed(evt);
             }
         });
+        add(btnRequestMoreDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 504, 172, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1353, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAssignToChildWelfareOfficer)
-                                .addGap(67, 67, 67)
-                                .addComponent(btnRequestMoreDetails)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(13, 13, 13))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssignToChildWelfareOfficer)
-                    .addComponent(btnRequestMoreDetails))
-                .addContainerGap(213, Short.MAX_VALUE))
-        );
+        btnAssignToChildWelfareOfficer.setBackground(new java.awt.Color(217, 180, 74));
+        btnAssignToChildWelfareOfficer.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnAssignToChildWelfareOfficer.setForeground(new java.awt.Color(255, 255, 255));
+        btnAssignToChildWelfareOfficer.setText("Assign to Child Welfare Officer");
+        btnAssignToChildWelfareOfficer.setContentAreaFilled(false);
+        btnAssignToChildWelfareOfficer.setOpaque(true);
+        btnAssignToChildWelfareOfficer.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnAssignToChildWelfareOfficer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignToChildWelfareOfficerActionPerformed(evt);
+            }
+        });
+        add(btnAssignToChildWelfareOfficer, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 504, 232, -1));
+
+        lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Safety Head WorkArea");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 31, 408, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
+
+    }//GEN-LAST:event_btnRequestMoreDetailsActionPerformed
 
     private void btnAssignToChildWelfareOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficerActionPerformed
         ChildMaltreatmentAttributes cma = (ChildMaltreatmentAttributes) tblSafetyHeadWorkRequest.getValueAt(tblSafetyHeadWorkRequest.getSelectedRow(), 0);
@@ -215,12 +206,7 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
             }
         }
         JOptionPane.showMessageDialog(null, "Assigned To ChildWelfare Admin", "Success", JOptionPane.INFORMATION_MESSAGE);
-        
     }//GEN-LAST:event_btnAssignToChildWelfareOfficerActionPerformed
-
-    private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRequestMoreDetailsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -232,6 +218,7 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblReporterDetails;
     private javax.swing.JTable tblSafetyHeadWorkRequest;
     private javax.swing.JTable tblVictimDetaiils;
