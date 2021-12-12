@@ -22,7 +22,13 @@ public class UtilityClass {
 
     public enum ChildWelfareOrganizations {
         ChildMaltreatment("Child Maltreatment"),
-        ChildHealth("Child Health");
+        MentalHealth("Mental Health"),
+        ChildHealth("Child Health"),
+        AdoptionServices("Adoption Services"),
+        AdolescentYoungAdultServices("Adolescent & Young Adult Services"),
+        FosterCare("Foster Care"),
+        IntlOrgColabComplaints("International Organization Collaboration & Complaints"),
+        Volunteering("Volunteer");
 
         private String value;
 

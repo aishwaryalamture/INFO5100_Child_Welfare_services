@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.PoliceWorkArea;
+package userinterface.HospitalUnit;
 
+import Business.ChildHealth.ChildHealthAttributes;
+import Business.ChildHealth.ChildMentalHealthAttributes;
+import userinterface.PoliceWorkArea.*;
 import userinterface.ChildWelfareAdmin.*;
 import Business.ChildMaltreatment.ChildMaltreatmentAttributes;
 import Business.Enterprises.Enterprise;
@@ -29,7 +32,7 @@ import userinterface.UtilityClass;
  *
  * @author ChildWelfareServicesTeam
  */
-public class PoliceDeptRequestDetails extends javax.swing.JPanel {
+public class HospitalUnitRequestDetails extends javax.swing.JPanel {
 
     private JPanel displayPanel;
     private Entity entity;
@@ -40,7 +43,7 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
     /**
      * Creates new form ChildWelfareRequestDetails
      */
-    public PoliceDeptRequestDetails(JPanel displayPanel, Entity entity, Enterprise enterprise, User user, WorkRequest workRequest) {
+    public HospitalUnitRequestDetails(JPanel displayPanel, Entity entity, Enterprise enterprise, User user, WorkRequest workRequest) {
         initComponents();
         this.displayPanel = displayPanel;
         this.entity = entity;
@@ -63,82 +66,205 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
                 }
             }
         }
-        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
-            ChildMaltreatmentAttributes maltreatmentWorkReq = (ChildMaltreatmentAttributes) workRequest;
+
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
+            ChildHealthAttributes childHealthAttributes = (ChildHealthAttributes) workRequest;
             Object[] row = new Object[2];
             row[0] = "Request Date";
-            row[1] = Validator.getInstance().convertLocalDateToString(maltreatmentWorkReq.getRequestDate());
+            row[1] = Validator.getInstance().convertLocalDateToString(childHealthAttributes.getRequestDate());
 
             row = new Object[2];
             row[0] = "Status";
-            row[1] = maltreatmentWorkReq.getStatus();
+            row[1] = childHealthAttributes.getStatus();
             delModel.addRow(row);
 
             row = new Object[2];
             row[0] = "Message";
-            row[1] = maltreatmentWorkReq.getMessage();
+            row[1] = childHealthAttributes.getMessage();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Name";
-            row[1] = maltreatmentWorkReq.getFullNameVictim();
+            row[0] = "Child Name";
+            row[1] = childHealthAttributes.getChildFullName();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Location";
-            row[1] = maltreatmentWorkReq.getLocationVictim();
+            row[0] = "Child Location";
+            row[1] = childHealthAttributes.getChildLocation();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Relationship";
-            row[1] = maltreatmentWorkReq.getRelationshipVictimOffender();
+            row[0] = "Child Age";
+            row[1] = childHealthAttributes.getChildAge();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Name";
-            row[1] = maltreatmentWorkReq.getStatus();
+            row[0] = "Child Gender";
+            row[1] = childHealthAttributes.getChildGender();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Age";
-            row[1] = maltreatmentWorkReq.getAgeVictim();
+            row[0] = "Parent Full Name";
+            row[1] = childHealthAttributes.getParentFullName();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Gender";
-            row[1] = maltreatmentWorkReq.getGenderVictim();
+            row[0] = "Parent Contact No";
+            row[1] = childHealthAttributes.getParentMobileNumber();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Name";
-            row[1] = maltreatmentWorkReq.getStatus();
+            row[0] = "Child Insurance Number";
+            row[1] = childHealthAttributes.getChildInsuranceNumber();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Type Of Disease";
+            row[1] = childHealthAttributes.getTypeOfDisease();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Disease Duration";
+            row[1] = childHealthAttributes.getDiseasePeriod();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Peferred Health Care Location";
+            row[1] = childHealthAttributes.getPreferredHealthCareLocation();
             delModel.addRow(row);
 
             row = new Object[2];
             row[0] = "Remarks (Reporting Person)";
-            row[1] = maltreatmentWorkReq.getRemarks();
+            row[1] = childHealthAttributes.getRemarks();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Type Of Abuse";
-            row[1] = maltreatmentWorkReq.getTypeOfAbuse();
+            row[0] = "Child Physician Name";
+            row[1] = childHealthAttributes.getChildPhysicianName();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Sender Contact No";
-            row[1] = maltreatmentWorkReq.getSender().getMobileNumber();
+            row[0] = "Child Physician Location";
+            row[1] = childHealthAttributes.getChildPhysicianLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Check up Date";
+            row[1] = childHealthAttributes.getLastCheckUpDate().toString();
             delModel.addRow(row);
 
             row = new Object[2];
             row[0] = "Resolve Date";
-            if (maltreatmentWorkReq.getResolveDate() != null) {
-                row[1] = Validator.getInstance().convertLocalDateToString(maltreatmentWorkReq.getResolveDate());
+            if (childHealthAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childHealthAttributes.getResolveDate());
             } else {
                 row[1] = "Yet To Be Resolved";
             }
 
             delModel.addRow(row);
 
+        }
+
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
+            ChildMentalHealthAttributes childMentalHealthAttributes = (ChildMentalHealthAttributes) workRequest;
+            Object[] row = new Object[2];
+            row[0] = "Request Date";
+            row[1] = Validator.getInstance().convertLocalDateToString(childMentalHealthAttributes.getRequestDate());
+
+            row = new Object[2];
+            row[0] = "Status";
+            row[1] = childMentalHealthAttributes.getStatus();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Message";
+            row[1] = childMentalHealthAttributes.getMessage();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Name";
+            row[1] = childMentalHealthAttributes.getChildFullName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Location";
+            row[1] = childMentalHealthAttributes.getChildLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Age";
+            row[1] = childMentalHealthAttributes.getChildAge();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Gender";
+            row[1] = childMentalHealthAttributes.getChildGender();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Parent Full Name";
+            row[1] = childMentalHealthAttributes.getParentFullName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Parent Contact No";
+            row[1] = childMentalHealthAttributes.getParentMobileNumber();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Insurance Number";
+            row[1] = childMentalHealthAttributes.getChildInsuranceNumber();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Type Of Disease";
+            row[1] = childMentalHealthAttributes.getTypeOfDisease();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Disease Duration";
+            row[1] = childMentalHealthAttributes.getDiseasePeriod();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Peferred Health Care Location";
+            row[1] = childMentalHealthAttributes.getPreferredHealthCareLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Remarks (Reporting Person)";
+            row[1] = childMentalHealthAttributes.getRemarks();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Physician Name";
+            row[1] = childMentalHealthAttributes.getChildPhysicianName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Physician Location";
+            row[1] = childMentalHealthAttributes.getChildPhysicianLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Mental Health Diagnosis Type";
+            row[1] = childMentalHealthAttributes.getChildPhysicianLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Check up Date";
+            row[1] = childMentalHealthAttributes.getLastCheckUpDate().toString();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Resolve Date";
+            if (childMentalHealthAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childMentalHealthAttributes.getResolveDate());
+            } else {
+                row[1] = "Yet To Be Resolved";
+            }
+
+            delModel.addRow(row);
         }
 
     }
@@ -231,6 +357,7 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
         workRequest.setStatus(Status.StatusType.INPROGRESS.getValue());
         JOptionPane.showMessageDialog(null, "Progress Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
+
     }//GEN-LAST:event_btnInProgressActionPerformed
 
     private void btnResolvedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolvedActionPerformed
@@ -253,7 +380,7 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
         displayPanel.remove(this);
         Component[] componentArray = displayPanel.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ChildWelfarePoliceRequestsJPanel workArea = (ChildWelfarePoliceRequestsJPanel) component;
+        ChildWelfareHospitalRequestsJPanel workArea = (ChildWelfareHospitalRequestsJPanel) component;
         workArea.populateTable();
         CardLayout layout = (CardLayout) displayPanel.getLayout();
         layout.previous(displayPanel);

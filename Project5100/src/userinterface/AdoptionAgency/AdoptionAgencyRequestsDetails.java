@@ -3,13 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.PoliceWorkArea;
+package userinterface.AdoptionAgency;
 
+import Business.ChildAdoption.ChildAdoptionAttributes;
+import userinterface.HospitalUnit.*;
+import Business.ChildHealth.ChildHealthAttributes;
+import Business.ChildHealth.ChildMentalHealthAttributes;
+import userinterface.PoliceWorkArea.*;
 import userinterface.ChildWelfareAdmin.*;
 import Business.ChildMaltreatment.ChildMaltreatmentAttributes;
 import Business.Enterprises.Enterprise;
 import Business.Entity;
 import Business.Enums.Status;
+import Business.FosterCare.FosterCareAttributes;
 import Business.Organizations.Organization;
 import Business.Role.Role;
 import Business.Users.User;
@@ -29,7 +35,7 @@ import userinterface.UtilityClass;
  *
  * @author ChildWelfareServicesTeam
  */
-public class PoliceDeptRequestDetails extends javax.swing.JPanel {
+public class AdoptionAgencyRequestsDetails extends javax.swing.JPanel {
 
     private JPanel displayPanel;
     private Entity entity;
@@ -40,7 +46,7 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
     /**
      * Creates new form ChildWelfareRequestDetails
      */
-    public PoliceDeptRequestDetails(JPanel displayPanel, Entity entity, Enterprise enterprise, User user, WorkRequest workRequest) {
+    public AdoptionAgencyRequestsDetails(JPanel displayPanel, Entity entity, Enterprise enterprise, User user, WorkRequest workRequest) {
         initComponents();
         this.displayPanel = displayPanel;
         this.entity = entity;
@@ -63,82 +69,179 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
                 }
             }
         }
-        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
-            ChildMaltreatmentAttributes maltreatmentWorkReq = (ChildMaltreatmentAttributes) workRequest;
+
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdoptionServices.getValue())) {
+            ChildAdoptionAttributes childAttributes = (ChildAdoptionAttributes) workRequest;
             Object[] row = new Object[2];
             row[0] = "Request Date";
-            row[1] = Validator.getInstance().convertLocalDateToString(maltreatmentWorkReq.getRequestDate());
+            row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getRequestDate());
 
             row = new Object[2];
             row[0] = "Status";
-            row[1] = maltreatmentWorkReq.getStatus();
+            row[1] = childAttributes.getStatus();
             delModel.addRow(row);
 
             row = new Object[2];
             row[0] = "Message";
-            row[1] = maltreatmentWorkReq.getMessage();
+            row[1] = childAttributes.getMessage();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Name";
-            row[1] = maltreatmentWorkReq.getFullNameVictim();
+            row[0] = "Child Name";
+            row[1] = childAttributes.getChildFullName();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Location";
-            row[1] = maltreatmentWorkReq.getLocationVictim();
+            row[0] = "Child Location";
+            row[1] = childAttributes.getChildLocation();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Relationship";
-            row[1] = maltreatmentWorkReq.getRelationshipVictimOffender();
+            row[0] = "Child Age";
+            row[1] = childAttributes.getChildAge();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Name";
-            row[1] = maltreatmentWorkReq.getStatus();
+            row[0] = "Child Gender";
+            row[1] = childAttributes.getChildGender();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Age";
-            row[1] = maltreatmentWorkReq.getAgeVictim();
+            row[0] = "Child Race";
+            row[1] = childAttributes.getRace();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Gender";
-            row[1] = maltreatmentWorkReq.getGenderVictim();
+            row[0] = "Child Ethnicity";
+            row[1] = childAttributes.getEthnicity();
             delModel.addRow(row);
 
             row = new Object[2];
-            row[0] = "Victim Name";
-            row[1] = maltreatmentWorkReq.getStatus();
+            row[0] = "Contact No";
+            row[1] = childAttributes.getContactNo();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Preferred Agency Location";
+            row[1] = childAttributes.getPreferredAgencyLocation();
             delModel.addRow(row);
 
             row = new Object[2];
             row[0] = "Remarks (Reporting Person)";
-            row[1] = maltreatmentWorkReq.getRemarks();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Type Of Abuse";
-            row[1] = maltreatmentWorkReq.getTypeOfAbuse();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Sender Contact No";
-            row[1] = maltreatmentWorkReq.getSender().getMobileNumber();
+            row[1] = childAttributes.getRemarks();
             delModel.addRow(row);
 
             row = new Object[2];
             row[0] = "Resolve Date";
-            if (maltreatmentWorkReq.getResolveDate() != null) {
-                row[1] = Validator.getInstance().convertLocalDateToString(maltreatmentWorkReq.getResolveDate());
+            if (childAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getResolveDate());
             } else {
                 row[1] = "Yet To Be Resolved";
             }
 
             delModel.addRow(row);
 
+        }
+
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.FosterCare.getValue())) {
+            FosterCareAttributes childAttributes = (FosterCareAttributes) workRequest;
+            Object[] row = new Object[2];
+            row[0] = "Request Date";
+            row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getRequestDate());
+
+            row = new Object[2];
+            row[0] = "Status";
+            row[1] = childAttributes.getStatus();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Message";
+            row[1] = childAttributes.getMessage();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Name";
+            row[1] = childAttributes.getChildFullName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Location";
+            row[1] = childAttributes.getChildLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Age";
+            row[1] = childAttributes.getChildAge();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Gender";
+            row[1] = childAttributes.getChildGender();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Race";
+            row[1] = childAttributes.getRace();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Ethnicity";
+            row[1] = childAttributes.getEthnicity();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Name";
+            row[1] = childAttributes.getLegalGuardianName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Contact No";
+            row[1] = childAttributes.getLegalGuardianMobile();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Email";
+            row[1] = childAttributes.getLegalGuardianMobile();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Location";
+            row[1] = childAttributes.getLegalGuardianLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Open For Adoption";
+            String openToAdoption = "No";
+            if(childAttributes.isOpenToAdoption()) {
+                openToAdoption = "Yes";
+            }
+            row[1] = openToAdoption;
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Preferred Agency Location";
+            row[1] = childAttributes.getPreferredAgencyLocation();
+            delModel.addRow(row);
+            
+            row = new Object[2];
+            row[0] = "Temporary Stay Duration";
+            row[1] = childAttributes.getTemporaryStayExpectedDays()+"";
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Remarks (Reporting Person)";
+            row[1] = childAttributes.getRemarks();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Resolve Date";
+            if (childAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getResolveDate());
+            } else {
+                row[1] = "Yet To Be Resolved";
+            }
+
+            delModel.addRow(row);
         }
 
     }
@@ -231,6 +334,7 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
         workRequest.setStatus(Status.StatusType.INPROGRESS.getValue());
         JOptionPane.showMessageDialog(null, "Progress Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
+
     }//GEN-LAST:event_btnInProgressActionPerformed
 
     private void btnResolvedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolvedActionPerformed
@@ -253,7 +357,7 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
         displayPanel.remove(this);
         Component[] componentArray = displayPanel.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ChildWelfarePoliceRequestsJPanel workArea = (ChildWelfarePoliceRequestsJPanel) component;
+        ChildWelfareHospitalRequestsJPanel workArea = (ChildWelfareHospitalRequestsJPanel) component;
         workArea.populateTable();
         CardLayout layout = (CardLayout) displayPanel.getLayout();
         layout.previous(displayPanel);

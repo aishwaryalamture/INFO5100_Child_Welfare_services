@@ -24,4 +24,5 @@ public class ChildAdoptionAttributes extends WorkRequest {
     private String race;
     private String ethnicity;
     private String preferredAgencyLocation;
+    private String contactNo;
 }
