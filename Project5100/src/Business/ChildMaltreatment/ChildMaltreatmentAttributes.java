@@ -24,5 +24,9 @@ public class ChildMaltreatmentAttributes extends WorkRequest {
     private String remarks;
     private String genderVictim;
     private String typeOfAbuse;
+    private String offenderName;
+    private String offenderLocation;
+    private String offenderGender;
+    private String offenderDescription;
       
 }
