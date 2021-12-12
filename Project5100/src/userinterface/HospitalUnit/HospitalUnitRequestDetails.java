@@ -41,7 +41,7 @@ public class HospitalUnitRequestDetails extends javax.swing.JPanel {
     private WorkRequest workRequest;
 
     /**
-     * Creates new form HospitalUnitRequestDetails
+     * Creates new form ChildWelfareRequestDetails
      */
     public HospitalUnitRequestDetails(JPanel displayPanel, Entity entity, Enterprise enterprise, User user, WorkRequest workRequest) {
         initComponents();
@@ -67,7 +67,6 @@ public class HospitalUnitRequestDetails extends javax.swing.JPanel {
             }
         }
 
-        //showing details of CHildHEalth Organization
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
             ChildHealthAttributes childHealthAttributes = (ChildHealthAttributes) workRequest;
             Object[] row = new Object[2];
@@ -165,8 +164,6 @@ public class HospitalUnitRequestDetails extends javax.swing.JPanel {
             delModel.addRow(row);
 
         }
-        
-        //showing details of Mentalhealth Organization
 
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
             ChildMentalHealthAttributes childMentalHealthAttributes = (ChildMentalHealthAttributes) workRequest;
