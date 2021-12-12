@@ -58,8 +58,8 @@ public class ChildWelfareAdminWorkArea extends javax.swing.JPanel {
             CardLayout cardLayout = (CardLayout) jPanelAdminRoles.getLayout();
             cardLayout.next(jPanelAdminRoles);
         } else {
-            SysAdminRolesWorkArea adminRolesWorkArea = new SysAdminRolesWorkArea(jPanelWorkRequests, user, entity);
-            jPanelWorkRequests.add(adminRolesWorkArea);
+            ResolveChildWelfareRequestsJPanel requestWorkPanel = new ResolveChildWelfareRequestsJPanel(jPanelWorkRequests, entity,enterprise,user);
+            jPanelWorkRequests.add(requestWorkPanel);
             CardLayout cardLayout = (CardLayout) jPanelWorkRequests.getLayout();
             cardLayout.next(jPanelWorkRequests);
         }
