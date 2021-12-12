@@ -11,9 +11,13 @@ import Business.Entity;
 import Business.Enums.Status;
 import Business.Organizations.Organization;
 import Business.Users.User;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.SystemUser.SystemUserWorkAreaJPanel;
 
 /**
  *
@@ -31,7 +35,8 @@ public class ChildAdoptionRequestForm extends javax.swing.JPanel {
     /**
      * Creates new form ChildAdoptionRequestForm
      */
-    public ChildAdoptionRequestForm() {
+    public ChildAdoptionRequestForm(JPanel userProcessContainer, Entity entity, Organization organization,
+            Enterprise enterprise, User user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.entity = entity;
@@ -50,7 +55,7 @@ public class ChildAdoptionRequestForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSubmitRequest = new javax.swing.JButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtChildLocation = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -58,143 +63,229 @@ public class ChildAdoptionRequestForm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtChildAge = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtChildGender = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtRemarks = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtEthnicity = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtRace = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtPreferredAgencyLocation = new javax.swing.JTextField();
+        btnSubmitRequest = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        comboEthnicity = new javax.swing.JComboBox<>();
+        comboRace = new javax.swing.JComboBox<>();
+        btnBoy = new javax.swing.JRadioButton();
+        btnGirl = new javax.swing.JRadioButton();
+        btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(172, 208, 192));
+
+        jLabel1.setText("Child Location");
+
+        jLabel2.setText("Child Full Name");
+
+        jLabel3.setText("Child Age");
+
+        jLabel4.setText("Child Gender");
+
+        jLabel10.setText("Remarks");
+
+        jLabel11.setText("Ethnicity");
+
+        jLabel12.setText("Race");
+
+        jLabel14.setText("Preferred Agency Location");
+
+        btnSubmitRequest.setBackground(new java.awt.Color(217, 180, 74));
+        btnSubmitRequest.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnSubmitRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmitRequest.setText("Submit Request");
+        btnSubmitRequest.setContentAreaFilled(false);
+        btnSubmitRequest.setOpaque(true);
+        btnSubmitRequest.setPreferredSize(new java.awt.Dimension(210, 34));
         btnSubmitRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitRequestActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Child Location");
+        lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Child Adoption Request Form");
 
-        txtChildLocation.setText("jTextField1");
+        comboEthnicity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Irish", "Moroccan", "Caucasian", "Nigerian", "Asian Indian", "Chinese", "Korean", " " }));
 
-        jLabel2.setText("Child Full Name");
+        comboRace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "African American", "Native American / Alaskan Native", "Pacific Islander", "Asian", "Native Hawaian", " " }));
 
-        txtChildFullName.setText("jTextField1");
+        btnBoy.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup1.add(btnBoy);
+        btnBoy.setText("Boy");
 
-        jLabel3.setText("Child Age");
+        btnGirl.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup1.add(btnGirl);
+        btnGirl.setText("Girl");
 
-        txtChildAge.setText("jTextField1");
-
-        jLabel4.setText("Child Gender");
-
-        txtChildGender.setText("jTextField1");
-
-        jLabel10.setText("Remarks");
-
-        txtRemarks.setText("jTextField5");
-
-        jLabel11.setText("Ethnicity");
-
-        txtEthnicity.setText("jTextField5");
-
-        jLabel12.setText("Race");
-
-        txtRace.setText("jTextField5");
-
-        jLabel14.setText("Preferred Agency Location");
-
-        txtPreferredAgencyLocation.setText("jTextField5");
+        btnBack.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("<< Back");
+        btnBack.setContentAreaFilled(false);
+        btnBack.setOpaque(true);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnSubmitRequest)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel12))
-                            .addGap(90, 90, 90))))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addGap(160, 160, 160)
+                .addComponent(lblTitle))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel2)
+                .addGap(79, 79, 79)
+                .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(jLabel1)
+                .addGap(77, 77, 77)
+                .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(jLabel3)
+                .addGap(77, 77, 77)
+                .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(jLabel4)
+                .addGap(72, 72, 72)
+                .addComponent(btnBoy)
+                .addGap(59, 59, 59)
+                .addComponent(btnGirl))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jLabel10)
+                .addGap(70, 70, 70)
+                .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(jLabel11)
+                .addGap(72, 72, 72)
+                .addComponent(comboEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(jLabel12)
+                .addGap(68, 68, 68)
+                .addComponent(comboRace, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jLabel14)
+                .addGap(70, 70, 70)
+                .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(btnSubmitRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(lblTitle)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1))
+                    .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel3))
+                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel4))
+                    .addComponent(btnBoy)
+                    .addComponent(btnGirl))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84)
-                .addComponent(btnSubmitRequest)
-                .addContainerGap(140, Short.MAX_VALUE))
+                    .addComponent(comboRace, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
+                .addComponent(btnSubmitRequest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
-
-        //save form
+        
+        if ( txtChildFullName.getText().isEmpty() || txtChildAge.getText().isEmpty() ||comboEthnicity.getSelectedItem().toString().isEmpty() || comboRace.getSelectedItem().toString().isEmpty()
+                || (!btnBoy.isEnabled() && !btnGirl.isEnabled())) {
+            JOptionPane.showMessageDialog(null, "Name, Age, Ethnicity, Race and Gender cannot be empty ",
+                    "Empty Fields", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+         //save form
         saveAdoptionRequestForm();
         saveWorkRequest();
 
         //add work request
         organization.getWorkQueue().addWorkRequest(childAdoptionAttributes);
         entity.getWorkQueue().addWorkRequest(childAdoptionAttributes);
-        JOptionPane.showMessageDialog(null, "Your Request Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnSubmitRequestActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemUserWorkAreaJPanel workArea = (SystemUserWorkAreaJPanel) component;
+        workArea.setVisible(true);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JRadioButton btnBoy;
+    private javax.swing.JRadioButton btnGirl;
     private javax.swing.JButton btnSubmitRequest;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> comboEthnicity;
+    private javax.swing.JComboBox<String> comboRace;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -203,25 +294,31 @@ public class ChildAdoptionRequestForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtChildAge;
     private javax.swing.JTextField txtChildFullName;
-    private javax.swing.JTextField txtChildGender;
     private javax.swing.JTextField txtChildLocation;
-    private javax.swing.JTextField txtEthnicity;
     private javax.swing.JTextField txtPreferredAgencyLocation;
-    private javax.swing.JTextField txtRace;
     private javax.swing.JTextField txtRemarks;
     // End of variables declaration//GEN-END:variables
 
     private void saveAdoptionRequestForm() {
         childAdoptionAttributes.setChildFullName(txtChildFullName.getText());
         childAdoptionAttributes.setChildAge(Integer.parseInt(txtChildAge.getText()));
-        childAdoptionAttributes.setChildGender(txtChildGender.getText());
-        childAdoptionAttributes.setChildLocation(txtChildLocation.getText());
-        childAdoptionAttributes.setEthnicity(txtEthnicity.getText());
-        childAdoptionAttributes.setRace(txtRace.getText());
-        childAdoptionAttributes.setPreferredAgencyLocation(txtPreferredAgencyLocation.getText());
-        childAdoptionAttributes.setRemarks(txtRemarks.getText());
+        childAdoptionAttributes.setChildLocation(
+        Optional.of(txtChildLocation.getText()).orElse(""));
+        childAdoptionAttributes.setEthnicity(comboEthnicity.getSelectedItem().toString());
+        childAdoptionAttributes.setRace(comboRace.getSelectedItem().toString());
+        childAdoptionAttributes.setPreferredAgencyLocation(
+        Optional.of(txtPreferredAgencyLocation.getText()).orElse(""));
+        childAdoptionAttributes.setRemarks(
+        Optional.of(txtRemarks.getText()).orElse(""));
+        
+        if (btnBoy.isEnabled()) {
+            childAdoptionAttributes.setChildGender("Male");
+        } else {
+            childAdoptionAttributes.setChildGender("Female");
+        }
     }
 
     private void saveWorkRequest() {

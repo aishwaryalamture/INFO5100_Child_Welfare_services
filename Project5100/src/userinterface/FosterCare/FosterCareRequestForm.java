@@ -12,9 +12,13 @@ import Business.FosterCare.FosterCareAttributes;
 import Business.Organizations.Organization;
 import Business.Users.User;
 import Business.Validator.Validator;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.SystemUser.SystemUserWorkAreaJPanel;
 
 /**
  *
@@ -67,9 +71,7 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         txtChildAge = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtEthnicity = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtRace = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtRemarks = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -87,264 +89,165 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         txtTemporaryStayExpectedDays = new javax.swing.JTextField();
         btnYes = new javax.swing.JRadioButton();
         btnNo = new javax.swing.JRadioButton();
-        btnSubmitRequest = new javax.swing.JButton();
         btnBoy = new javax.swing.JRadioButton();
         btnGirl = new javax.swing.JRadioButton();
+        btnSubmitRequest = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        comboEthnicity = new javax.swing.JComboBox<>();
+        comboRace = new javax.swing.JComboBox<>();
+
+        setBackground(new java.awt.Color(172, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Child Full Name");
-
-        txtChildFullName.setText("jTextField1");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 105, -1, -1));
+        add(txtChildFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 95, 186, 33));
 
         jLabel1.setText("Child Location");
-
-        txtChildLocation.setText("jTextField1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 148, -1, -1));
+        add(txtChildLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 138, 186, 33));
 
         jLabel3.setText("Child Age");
-
-        txtChildAge.setText("jTextField1");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 191, -1, -1));
+        add(txtChildAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 181, 186, 33));
 
         jLabel4.setText("Child Gender");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 224, -1, -1));
 
         jLabel11.setText("Ethnicity");
-
-        txtEthnicity.setText("jTextField5");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(557, 252, -1, 21));
 
         jLabel12.setText("Race");
-
-        txtRace.setText("jTextField5");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(571, 292, -1, 21));
 
         jLabel10.setText("Remarks");
-
-        txtRemarks.setText("jTextField5");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(553, 546, -1, 21));
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 547, 186, -1));
 
         jLabel14.setText("Preferred Agency Location");
-
-        txtPreferredAgencyLocation.setText("jTextField5");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(473, 577, -1, 21));
+        add(txtPreferredAgencyLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 578, 186, -1));
 
         jLabel13.setText("Legal Guardian Name");
-
-        txtLegalGuardianName.setText("jTextField5");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 401, -1, 21));
+        add(txtLegalGuardianName, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 401, 186, 22));
 
         jLabel15.setText("Legal Guardian Mobile");
-
-        txtLegalGuardianMobile.setText("jTextField5");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 484, -1, 21));
+        add(txtLegalGuardianMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 484, 186, 21));
 
         jLabel16.setText("Legal Guardian Email");
-
-        txtLegalGuardianEmail.setText("jTextField5");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(497, 515, -1, 21));
+        add(txtLegalGuardianEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 516, 186, -1));
 
         jLabel17.setText("Legal Guardian Location");
-
-        txtLegalGuardianLocation.setText("jTextField5");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 441, -1, 21));
+        add(txtLegalGuardianLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 441, 186, 25));
 
         jLabel18.setText("Is Open To Adoption?");
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 327, -1, 21));
 
         jLabel19.setText("Expected Duration of Foster Stay");
+        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 362, -1, 21));
+        add(txtTemporaryStayExpectedDays, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 358, 186, 25));
 
-        txtTemporaryStayExpectedDays.setText("jTextField5");
-
+        btnYes.setBackground(new java.awt.Color(172, 208, 192));
         buttonGroup1.add(btnYes);
         btnYes.setText("Yes");
+        add(btnYes, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 327, -1, -1));
 
+        btnNo.setBackground(new java.awt.Color(172, 208, 192));
         buttonGroup1.add(btnNo);
         btnNo.setText("No");
+        add(btnNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(812, 327, -1, -1));
 
+        btnBoy.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup1.add(btnBoy);
+        btnBoy.setText("Boy");
+        add(btnBoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 220, -1, -1));
+
+        btnGirl.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup1.add(btnGirl);
+        btnGirl.setText("Girl");
+        add(btnGirl, new org.netbeans.lib.awtextra.AbsoluteConstraints(793, 220, -1, -1));
+
+        btnSubmitRequest.setBackground(new java.awt.Color(217, 180, 74));
+        btnSubmitRequest.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnSubmitRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmitRequest.setText("Submit Request");
+        btnSubmitRequest.setContentAreaFilled(false);
+        btnSubmitRequest.setOpaque(true);
         btnSubmitRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitRequestActionPerformed(evt);
             }
         });
+        add(btnSubmitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(637, 646, 136, 49));
 
-        buttonGroup1.add(btnBoy);
-        btnBoy.setText("Boy");
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Foster Care Registration Form");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 21, -1, 49));
 
-        buttonGroup1.add(btnGirl);
-        btnGirl.setText("Girl");
+        btnBack.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("<< Back");
+        btnBack.setContentAreaFilled(false);
+        btnBack.setOpaque(true);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 25, 95, 49));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jLabel18))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addComponent(txtTemporaryStayExpectedDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(btnYes)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(btnNo))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel13))
-                                .addGap(106, 106, 106)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLegalGuardianName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLegalGuardianMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel12))
-                                .addGap(128, 128, 128)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel16)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel14))
-                                .addGap(95, 95, 95)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLegalGuardianEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLegalGuardianLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(btnSubmitRequest))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(btnBoy)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnGirl)))
-                .addContainerGap(328, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(88, 88, 88)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2))
-                    .addGap(95, 95, 95)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(381, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBoy)
-                    .addComponent(btnGirl))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnYes)
-                    .addComponent(btnNo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTemporaryStayExpectedDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLegalGuardianName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLegalGuardianMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLegalGuardianEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLegalGuardianLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSubmitRequest)
-                .addContainerGap(49, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(34, 34, 34)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(13, 13, 13)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabel4)
-                    .addContainerGap(429, Short.MAX_VALUE)))
-        );
+        comboEthnicity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Irish", "Moroccan", "Caucasian", "Nigerian", "Asian Indian", "Chinese", "Korean", " " }));
+        add(comboEthnicity, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 247, 186, 30));
+
+        comboRace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "African American", "Native American / Alaskan Native", "Pacific Islander", "Asian", "Native Hawaian", " " }));
+        add(comboRace, new org.netbeans.lib.awtextra.AbsoluteConstraints(689, 287, 186, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
-
+        // TODO add your handling code here:
         //validations for emtpy fields
         if (txtChildFullName.getText().isEmpty() || (!btnBoy.isEnabled() && !btnGirl.isEnabled()) || txtChildLocation.getText().isEmpty()
-                || txtChildAge.getText().isEmpty() || txtEthnicity.getText().isEmpty() || txtRace.getText().isEmpty()) {
+                || txtChildAge.getText().isEmpty() || comboEthnicity.getSelectedItem().toString().isEmpty() || comboRace.getSelectedItem().toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Full Name, Gender, Location, Age, Ethnicity and Race of the child cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        if (txtLegalGuardianName.getText().isEmpty() || txtLegalGuardianMobile.getText().isEmpty() || 
-                txtLegalGuardianEmail.getText().isEmpty() || txtLegalGuardianLocation.getText().isEmpty() ) {
+
+        if (txtLegalGuardianName.getText().isEmpty() || txtLegalGuardianMobile.getText().isEmpty()
+                || txtLegalGuardianEmail.getText().isEmpty() || txtLegalGuardianLocation.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Legal Guardian's name, mobile, email, location cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        if (txtTemporaryStayExpectedDays.getText().isEmpty() || (!btnYes.isEnabled() && !btnNo.isEnabled()) ) {
+
+        if (txtTemporaryStayExpectedDays.getText().isEmpty() || (!btnYes.isEnabled() && !btnNo.isEnabled())) {
             JOptionPane.showMessageDialog(null, "Expected Duration of Foster Stay and Open To Adoption cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         boolean isValid;
         isValid = Validator.getInstance().validateEmailAddr(txtLegalGuardianEmail.getText());
-        if(!isValid){
+        if (!isValid) {
             JOptionPane.showMessageDialog(null, "Please enter email address in format - a@b.c", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         isValid = Validator.getInstance().validateAllDigits(txtTemporaryStayExpectedDays.getText());
-        if(!isValid){
+        if (!isValid) {
             JOptionPane.showMessageDialog(null, "Please enter expected duration of foster day in days", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         isValid = Validator.getInstance().validateAllDigits(txtChildAge.getText());
-        if(!isValid){
+        if (!isValid) {
             JOptionPane.showMessageDialog(null, "Child Age should consist of digits only", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -357,16 +260,31 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         organization.getWorkQueue().addWorkRequest(fosterCareAttributes);
         entity.getWorkQueue().addWorkRequest(fosterCareAttributes);
         JOptionPane.showMessageDialog(null, "Your Request Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+
     }//GEN-LAST:event_btnSubmitRequestActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemUserWorkAreaJPanel workArea = (SystemUserWorkAreaJPanel) component;
+        workArea.setVisible(true);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JRadioButton btnBoy;
     private javax.swing.JRadioButton btnGirl;
     private javax.swing.JRadioButton btnNo;
     private javax.swing.JButton btnSubmitRequest;
     private javax.swing.JRadioButton btnYes;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> comboEthnicity;
+    private javax.swing.JComboBox<String> comboRace;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -381,16 +299,15 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtChildAge;
     private javax.swing.JTextField txtChildFullName;
     private javax.swing.JTextField txtChildLocation;
-    private javax.swing.JTextField txtEthnicity;
     private javax.swing.JTextField txtLegalGuardianEmail;
     private javax.swing.JTextField txtLegalGuardianLocation;
     private javax.swing.JTextField txtLegalGuardianMobile;
     private javax.swing.JTextField txtLegalGuardianName;
     private javax.swing.JTextField txtPreferredAgencyLocation;
-    private javax.swing.JTextField txtRace;
     private javax.swing.JTextField txtRemarks;
     private javax.swing.JTextField txtTemporaryStayExpectedDays;
     // End of variables declaration//GEN-END:variables
@@ -399,20 +316,21 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         fosterCareAttributes.setChildFullName(txtChildFullName.getText());
         fosterCareAttributes.setChildAge(Integer.parseInt(txtChildAge.getText()));
         fosterCareAttributes.setChildLocation(txtChildLocation.getText());
-        fosterCareAttributes.setEthnicity(txtEthnicity.getText());
-        fosterCareAttributes.setRace(txtRace.getText());
-        fosterCareAttributes.setPreferredAgencyLocation(txtPreferredAgencyLocation.getText());
-        fosterCareAttributes.setRemarks(txtRemarks.getText());
+        fosterCareAttributes.setEthnicity(comboEthnicity.getSelectedItem().toString());
+        fosterCareAttributes.setRace(comboRace.getSelectedItem().toString());
+        fosterCareAttributes.setPreferredAgencyLocation(
+                Optional.of(txtPreferredAgencyLocation.getText()).orElse(""));
+        fosterCareAttributes.setRemarks(
+                Optional.of(txtRemarks.getText()).orElse(""));
         fosterCareAttributes.setLegalGuardianName(txtLegalGuardianName.getText());
         fosterCareAttributes.setLegalGuardianMobile(txtLegalGuardianMobile.getText());
         fosterCareAttributes.setLegalGuardianEmail(txtLegalGuardianEmail.getText());
         fosterCareAttributes.setLegalGuardianLocation(txtLegalGuardianLocation.getText());
         fosterCareAttributes.setTemporaryStayExpectedDays(Integer.parseInt(txtTemporaryStayExpectedDays.getText()));
-        
-        if(btnBoy.isEnabled()){
+
+        if (btnBoy.isEnabled()) {
             fosterCareAttributes.setChildGender("Male");
-        }
-        else{
+        } else {
             fosterCareAttributes.setChildGender("Female");
         }
 

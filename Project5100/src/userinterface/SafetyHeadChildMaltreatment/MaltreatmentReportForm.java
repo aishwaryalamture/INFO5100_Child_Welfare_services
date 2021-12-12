@@ -10,18 +10,20 @@ import Business.Entity;
 import Business.Enums.Status;
 import Business.Organizations.Organization;
 import Business.Users.User;
-import Business.Validator.Validator;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.SystemUser.SystemUserWorkAreaJPanel;
 
 /**
  *
  * @author ChildWelfareServicesTeam
  */
 public class MaltreatmentReportForm extends javax.swing.JPanel {
-
+    
     private ChildMaltreatmentAttributes childMaltreatmentAttributes;
     private JPanel userProcessContainer;
     private Entity entity;
@@ -38,7 +40,7 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
      * @param enterprise
      * @param user
      */
-    public MaltreatmentReportForm(JPanel userProcessContainer, Entity entity, Organization organization, 
+    public MaltreatmentReportForm(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -89,6 +91,8 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         btnFemaleO = new javax.swing.JRadioButton();
         btnMaleV = new javax.swing.JRadioButton();
         btnFemaleV = new javax.swing.JRadioButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1600, 1012));
 
@@ -162,15 +166,19 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
             }
         });
 
+        btnMaleO.setBackground(new java.awt.Color(172, 208, 192));
         buttonGroup1.add(btnMaleO);
         btnMaleO.setText("Male");
 
+        btnFemaleO.setBackground(new java.awt.Color(172, 208, 192));
         buttonGroup1.add(btnFemaleO);
         btnFemaleO.setText("Female");
 
+        btnMaleV.setBackground(new java.awt.Color(172, 208, 192));
         buttonGroup2.add(btnMaleV);
         btnMaleV.setText("Male");
 
+        btnFemaleV.setBackground(new java.awt.Color(172, 208, 192));
         buttonGroup2.add(btnFemaleV);
         btnFemaleV.setText("Female");
 
@@ -178,15 +186,20 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(694, 694, 694))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(523, 523, 523)
+                        .addGap(211, 211, 211)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(249, 249, 249)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(503, 503, 503)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(266, 266, 266)
+                                .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84))
                             .addComponent(jLabel12)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,102 +224,94 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
                                     .addComponent(txtRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtAbuseType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtVictimAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
                                         .addComponent(btnMaleO)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnFemaleO, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnFemaleO)
+                                        .addGap(27, 27, 27))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(19, 19, 19)
                                         .addComponent(btnMaleV)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnFemaleV, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(327, 327, 327)
-                        .addComponent(jLabel5)))
-                .addContainerGap(605, Short.MAX_VALUE))
+                                        .addGap(45, 45, 45)
+                                        .addComponent(btnFemaleV, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(25, 25, 25)))))))
+                .addContainerGap(630, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtFullNameReporter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtLocationOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(btnMaleO)
                     .addComponent(btnFemaleO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtDescriptionOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFullNameVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLocationVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRelationshipVictimOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtVictimAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnMaleV)
-                        .addComponent(btnFemaleV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnFemaleV))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAbuseType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(43, 43, 43)
+                .addGap(52, 52, 52)
                 .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(183, 183, 183))
+                .addGap(301, 301, 301))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBack, jLabel5});
 
         jScrollPane1.setViewportView(jPanel1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemUserWorkAreaJPanel workArea = (SystemUserWorkAreaJPanel) component;
+        workArea.setVisible(true);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
@@ -322,7 +327,7 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Gender of the victim cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
-        } 
+        }
 
         //save form
         saveChildMaltreatmentForm();
@@ -334,49 +339,48 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Your Report Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
         btnBack.doClick();
     }//GEN-LAST:event_btnReportActionPerformed
-
     
     private void saveChildMaltreatmentForm() {
-
+        
         childMaltreatmentAttributes.setFullNameVictim(
-        Optional.of(txtFullNameVictim.getText()).orElse(""));
+                Optional.of(txtFullNameVictim.getText()).orElse(""));
         childMaltreatmentAttributes.setLocationVictim(
-        Optional.of(txtLocationVictim.getText()).orElse(""));
+                Optional.of(txtLocationVictim.getText()).orElse(""));
         childMaltreatmentAttributes.setRelationshipVictimOffender(
-        Optional.of(txtRelationshipVictimOffender.getText()).orElse(""));
+                Optional.of(txtRelationshipVictimOffender.getText()).orElse(""));
         childMaltreatmentAttributes.setRemarks(
-        Optional.of(txtRemarks.getText()).orElse(""));
+                Optional.of(txtRemarks.getText()).orElse(""));
         childMaltreatmentAttributes.setTypeOfAbuse(
-        Optional.of(txtDescriptionOffender.getText()).orElse(""));
+                Optional.of(txtDescriptionOffender.getText()).orElse(""));
         
         if (btnMaleV.isEnabled()) {
             childMaltreatmentAttributes.setGenderVictim("Male");
         } else {
             childMaltreatmentAttributes.setGenderVictim("Female");
         }
-
+        
         String age = txtVictimAge.getText();
         if (age != null) {
             childMaltreatmentAttributes.setAgeVictim(Integer.parseInt(age));
         }
         
         childMaltreatmentAttributes.setOffenderDescription(
-        Optional.of(txtDescriptionOffender.getText()).orElse(""));
+                Optional.of(txtDescriptionOffender.getText()).orElse(""));
         childMaltreatmentAttributes.setOffenderLocation(
-        Optional.of(txtLocationOffender.getText()).orElse(""));
+                Optional.of(txtLocationOffender.getText()).orElse(""));
         childMaltreatmentAttributes.setOffenderName(
-        Optional.of(txtFullNameReporter.getText()).orElse(""));
+                Optional.of(txtFullNameReporter.getText()).orElse(""));
         
         if (btnMaleO.isEnabled()) {
             childMaltreatmentAttributes.setOffenderGender("Male");
         } else {
             childMaltreatmentAttributes.setOffenderGender("Female");
         }
-
+        
     }
-
+    
     private void saveWorkRequest() {
-
+        
         childMaltreatmentAttributes.setSender(user);
         childMaltreatmentAttributes.setReceiver(organization.getOrganizationAdmin());
         childMaltreatmentAttributes.setRequestDate(LocalDateTime.now());
@@ -418,7 +422,5 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
     private javax.swing.JTextField txtRemarks;
     private javax.swing.JTextField txtVictimAge;
     // End of variables declaration//GEN-END:variables
-
-    
 
 }
