@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -17,6 +18,8 @@ import java.util.regex.Pattern;
 public class Validator {
 
     private static Validator validator;
+    //initializing the logger
+    static Logger log = Logger.getLogger(Validator.class.getName());
 
     public static Validator getInstance() {
         if (validator == null) {
@@ -34,6 +37,7 @@ public class Validator {
         if (Pattern.matches(emailIdRegex, emailId)) {
             return true;
         } else {
+            log.error("invalid input - email address: "+ emailId);
             return false;
         }
     }
@@ -53,6 +57,7 @@ public class Validator {
         if (Pattern.matches(dobRegex, dob)) {
             return true;
         } else {
+            log.error("invalid input - date of birth: "+ dob);
             return false;
         }
     }
@@ -126,6 +131,7 @@ public class Validator {
         if (Pattern.matches(inputRegex, input)) {
             return true;
         } else {
+            log.error("invalid input - inputted value : "+ input+ " - digits only value expected");
             return false;
         }
 
