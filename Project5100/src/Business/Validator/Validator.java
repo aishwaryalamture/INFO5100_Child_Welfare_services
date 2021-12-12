@@ -115,9 +115,9 @@ public class Validator {
 
     }
     
-    public boolean validateMonth(String month) {
-        String monthRegex = "^[0-9]*$";
-        if (Pattern.matches(monthRegex, month)) {
+    public boolean validateAllDigits(String input) {
+        String inputRegex = "^[0-9]*$";
+        if (Pattern.matches(inputRegex, input)) {
             return true;
         } else {
             return false;
