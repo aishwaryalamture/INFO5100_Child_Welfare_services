@@ -153,7 +153,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtUserName">
               <Properties>
-                <Property name="text" type="java.lang.String" value="sysadmin"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder roundedCorners="true" thickness="2">
@@ -192,7 +191,6 @@
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtPassword">
               <Properties>
-                <Property name="text" type="java.lang.String" value="sysadmin"/>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[6, 27]"/>
                 </Property>

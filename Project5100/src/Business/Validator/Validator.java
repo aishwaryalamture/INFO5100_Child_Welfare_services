@@ -107,17 +107,23 @@ public class Validator {
         LocalDateTime date = LocalDateTime.parse(strDate, formatter);
         return date;
     }
-    
+
     public LocalDate convertStringToDate(String strDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(strDate, formatter);
         return date;
 
     }
-    
-    public boolean validateMonth(String month) {
-        String monthRegex = "^[0-9]*$";
-        if (Pattern.matches(monthRegex, month)) {
+
+    public String convertLocalDateToString(LocalDateTime date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+        return date.format(formatter);
+
+    }
+
+    public boolean validateAllDigits(String input) {
+        String inputRegex = "^[0-9]*$";
+        if (Pattern.matches(inputRegex, input)) {
             return true;
         } else {
             return false;

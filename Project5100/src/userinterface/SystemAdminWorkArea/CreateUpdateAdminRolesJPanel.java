@@ -7,6 +7,8 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.Enterprises.Enterprise;
 import Business.Entity;
+import Business.Role.ChildWelfareAdmin;
+import Business.Role.PoliceDeptAdmin;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import Business.Users.User;
@@ -23,10 +25,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.UtilityClass;
 
 /**
  *
- * @author Ketki Kule <kule.k@northeastern.edu>
+ * @author ChildWelfareServicesTeam
  */
 public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
 
@@ -53,6 +56,12 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
     }
 
     private void loadData() {
+        for (Enterprise p : entity.getEnterpriseDirectory().getEnterpriseList()) {
+            comboEnterprise.addItem(p.getEnterpriseName());
+            if (operationId == UPDATE_OPERATION && p.getEnterpriseName().equals(enterprise.getEnterpriseName())) {
+                comboEnterprise.setSelectedItem(p.getEnterpriseName());
+            }
+        }
         if (operationId == UPDATE_OPERATION) {
             btnCreate.setText("Update");
             lblTitle.setText("Update Admin");
@@ -64,11 +73,9 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
             txtPassword.setText(user.getPassword());
             txtEmail.setText(user.getEmailId());
             comboEnterprise.setEnabled(false);
+            
         }
 
-        for (Enterprise p : entity.getEnterpriseDirectory().getEnterpriseList()) {
-            comboEnterprise.addItem(p.getEnterpriseName());
-        }
         //loadMapData();
     }
 
@@ -149,11 +156,13 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
         comboEnterprise = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(172, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Create Admin");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(557, 74, 280, 49));
 
         btnBack.setBackground(new java.awt.Color(217, 180, 74));
         btnBack.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -167,34 +176,49 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 74, 115, 49));
 
         lblFirstName.setText("First Name:");
+        add(lblFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 234, 111, 34));
 
         txtFirstName.setSelectionColor(new java.awt.Color(117, 177, 169));
+        add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 232, 155, 38));
 
         lblLastName.setText("Last Name:");
+        add(lblLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 283, 111, 34));
 
         txtLastName.setSelectionColor(new java.awt.Color(117, 177, 169));
+        add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 281, 155, 38));
 
         txtLocation.setSelectionColor(new java.awt.Color(117, 177, 169));
+        add(txtLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 330, 155, 38));
 
         lblLocation.setText("Location:");
+        add(lblLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 332, 111, 34));
 
         lblMobileNo.setText("Mobile Number:");
+        add(lblMobileNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 381, 111, 34));
 
         txtMobileNo.setSelectionColor(new java.awt.Color(117, 177, 169));
+        add(txtMobileNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 379, 155, 38));
 
         lblUsername.setText("Username:");
+        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 430, 111, 34));
 
         txtUsername.setSelectionColor(new java.awt.Color(117, 177, 169));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 428, 155, 38));
 
         lblPassword.setText("Password:");
+        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 479, 111, 34));
 
         txtPassword.setSelectionColor(new java.awt.Color(117, 177, 169));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 477, 155, 38));
 
         lblEmail.setText("Email Id:");
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 528, 111, 34));
 
         txtEmail.setSelectionColor(new java.awt.Color(117, 177, 169));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 526, 155, 38));
 
         btnCreate.setBackground(new java.awt.Color(217, 180, 74));
         btnCreate.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -207,109 +231,17 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(638, 616, 115, 49));
 
         lblFirstName1.setText("Select Enterprise:");
+        add(lblFirstName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 185, 111, 34));
 
         comboEnterprise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboEnterpriseActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(231, 231, 231)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(493, 493, 493)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(144, 144, 144)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(144, 144, 144)
-                                .addComponent(txtMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(144, 144, 144)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(144, 144, 144)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(144, 144, 144)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(145, 145, 145)
-                                .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(144, 144, 144)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(595, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboEnterprise, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMobileNo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(275, Short.MAX_VALUE))
-        );
+        add(comboEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(748, 183, 155, 38));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -337,12 +269,11 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please Enter Valid Email Address ", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         if (!Validator.getInstance().validateTelNum(txtMobileNo.getText())) {
             JOptionPane.showMessageDialog(null, "Please Enter Valid Tel No ", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
 
         switch (operationId) {
             case CREATE_OPERATION:
@@ -361,28 +292,32 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
                     return;
                 }
 
-                if (selectedEnterprise.getEnterpriseName().equalsIgnoreCase("Child Welfare Services")) {
-                    User user = entity.getUserDirectory().createUserAccount(txtFirstName.getText(), txtLastName.getText(), txtLocation.getText(),
-                            txtMobileNo.getText(), txtUsername.getText(), txtPassword.getText(),txtEmail.getText(), new SystemAdminRole());
-                    selectedEnterprise.setAdmin(user);
+                Role role = new ChildWelfareAdmin();
+                if (selectedEnterprise.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                    role = new ChildWelfareAdmin();
+
+                } else if (selectedEnterprise.getEnterpriseName().equals(UtilityClass.Enterprises.PoliceDept.getValue())) {
+                    role = new PoliceDeptAdmin();
                 }
-                
-                
-                
+
+                User user = entity.getUserDirectory().createUserAccount(txtFirstName.getText(), txtLastName.getText(), txtLocation.getText(),
+                        txtMobileNo.getText(), txtUsername.getText(), txtPassword.getText(), txtEmail.getText(), role);
+                selectedEnterprise.setAdmin(user);
+
                 JOptionPane.showMessageDialog(null, "New Admin Registered", "Success", JOptionPane.INFORMATION_MESSAGE);
                 btnBack.doClick();
                 break;
             case UPDATE_OPERATION:
                 //validate if new username is updated to other entries with same username
                 for (User ur : entity.getUserDirectory().getUserList()) {
-                    if (ur.getUsername().equals(txtUsername.getText()) && !txtUsername.getText().equals(user.getUsername())) {
+                    if (ur.getUsername().equals(txtUsername.getText()) && !txtUsername.getText().equals(this.user.getUsername())) {
                         JOptionPane.showMessageDialog(null, "User Name Already Exists ", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
                         return;
                     }
                 }
 
                 for (User ur : entity.getUserDirectory().getUserList()) {
-                    if (ur.getUserId() == user.getUserId()) {
+                    if (ur.getUserId() == this.user.getUserId()) {
                         ur.setEmailId(txtEmail.getText());
                         ur.setFirstName(txtFirstName.getText());
                         ur.setLastName(txtLastName.getText());
@@ -390,10 +325,11 @@ public class CreateUpdateAdminRolesJPanel extends javax.swing.JPanel {
                         ur.setUsername(txtUsername.getText());
                         ur.setPassword(txtPassword.getText());
                         ur.setMobileNumber(txtMobileNo.getText());
+                        
                     }
                 }
 
-                JOptionPane.showMessageDialog(null, "Enterprise Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Admin Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
                 btnBack.doClick();
 
                 break;

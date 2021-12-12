@@ -5,17 +5,65 @@
  */
 package userinterface.ChildWelfareAdmin;
 
+import Business.ChildMaltreatment.ChildMaltreatmentAttributes;
+import Business.Enterprises.Enterprise;
+import Business.Entity;
+import Business.Enums.Status;
+import Business.Organizations.Organization;
+import Business.Users.User;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+import userinterface.SystemAdminWorkArea.SysAdminEnterprisesWorkArea;
+import userinterface.SystemAdminWorkArea.SysAdminRolesWorkArea;
+
 /**
  *
- * @author Ketki Kule <kule.k@northeastern.edu>
+ * @author ChildWelfareServicesTeam
  */
 public class ChildWelfareAdminWorkArea extends javax.swing.JPanel {
+
+    private JPanel displayPanel;
+    private Entity entity;
+    private User user;
+    private Enterprise enterprise;
 
     /**
      * Creates new form ChildWelfareAdminWorkArea
      */
-    public ChildWelfareAdminWorkArea() {
+    public ChildWelfareAdminWorkArea(JPanel displayPanel, Entity entity, Enterprise enterprise, User user) {
         initComponents();
+        this.displayPanel = displayPanel;
+        this.entity = entity;
+        this.user = user;
+        this.enterprise = enterprise;
+        loadView();
+
+    }
+
+    private void loadView() {
+        int selectedIndex = jTabbedSystemAdmin.getSelectedIndex();
+        if (selectedIndex == 0 || selectedIndex == -1) {
+            ChildWelfareOrganizationWorkArea childWelfareOrgWorkArea = new ChildWelfareOrganizationWorkArea(jPanelEnterprise, user, entity, enterprise);
+            jPanelEnterprise.add(childWelfareOrgWorkArea);
+            CardLayout cardLayout = (CardLayout) jPanelEnterprise.getLayout();
+            cardLayout.next(jPanelEnterprise);
+        } else if (selectedIndex == 1) {
+            ChildWelfareOrgAdminRolesWorkArea adminRolesWorkArea = new ChildWelfareOrgAdminRolesWorkArea(jPanelAdminRoles, user, entity, enterprise);
+            jPanelAdminRoles.add(adminRolesWorkArea);
+            CardLayout cardLayout = (CardLayout) jPanelAdminRoles.getLayout();
+            cardLayout.next(jPanelAdminRoles);
+        } else {
+            ResolveChildWelfareRequestsJPanel requestWorkPanel = new ResolveChildWelfareRequestsJPanel(jPanelWorkRequests, entity,enterprise,user);
+            jPanelWorkRequests.add(requestWorkPanel);
+            CardLayout cardLayout = (CardLayout) jPanelWorkRequests.getLayout();
+            cardLayout.next(jPanelWorkRequests);
+        }
+
     }
 
     /**
@@ -27,95 +75,65 @@ public class ChildWelfareAdminWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblTitle = new javax.swing.JLabel();
-        comboEnterprise = new javax.swing.JComboBox<>();
-        lblFirstName1 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblAdminRoles = new javax.swing.JTable();
+        jTabbedSystemAdmin = new javax.swing.JTabbedPane();
+        jPanelEnterprise = new javax.swing.JPanel();
+        jPanelAdminRoles = new javax.swing.JPanel();
+        jPanelWorkRequests = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(172, 208, 192));
 
-        lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Child Welfare Admin Portal");
-
-        comboEnterprise.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEnterpriseActionPerformed(evt);
+        jTabbedSystemAdmin.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        jTabbedSystemAdmin.setToolTipText("Manage Enterprises");
+        jTabbedSystemAdmin.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedSystemAdminStateChanged(evt);
             }
         });
 
-        lblFirstName1.setText("Select Organization:");
+        jPanelEnterprise.setBackground(new java.awt.Color(172, 208, 192));
+        jPanelEnterprise.setPreferredSize(new java.awt.Dimension(1030, 700));
+        jPanelEnterprise.setLayout(new java.awt.CardLayout());
+        jTabbedSystemAdmin.addTab("Organization", new javax.swing.ImageIcon(getClass().getResource("/res/organization_logo.png")), jPanelEnterprise); // NOI18N
 
-        tblAdminRoles.setBorder(new javax.swing.border.MatteBorder(null));
-        tblAdminRoles.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        tblAdminRoles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Registration No", " Enterprise Name", "Admin Name"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
+        jPanelAdminRoles.setBackground(new java.awt.Color(172, 208, 192));
+        jPanelAdminRoles.setPreferredSize(new java.awt.Dimension(1030, 700));
+        jPanelAdminRoles.setLayout(new java.awt.CardLayout());
+        jTabbedSystemAdmin.addTab("Admins", new javax.swing.ImageIcon(getClass().getResource("/res/admin_logo.png")), jPanelAdminRoles); // NOI18N
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblAdminRoles.setSelectionBackground(new java.awt.Color(117, 177, 169));
-        jScrollPane5.setViewportView(tblAdminRoles);
+        jPanelWorkRequests.setBackground(new java.awt.Color(172, 208, 192));
+        jPanelWorkRequests.setLayout(new java.awt.CardLayout());
+        jTabbedSystemAdmin.addTab("Work Requests", new javax.swing.ImageIcon(getClass().getResource("/res/task_management.png")), jPanelWorkRequests); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(510, 510, 510)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(460, 460, 460)
-                        .addComponent(lblFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(133, 133, 133)
-                        .addComponent(comboEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(213, Short.MAX_VALUE))
+            .addGap(0, 1531, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(jTabbedSystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 1531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFirstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboEnterprise, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 924, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jTabbedSystemAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 924, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEnterpriseActionPerformed
+    private void jTabbedSystemAdminStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedSystemAdminStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboEnterpriseActionPerformed
+        if (entity != null) {
+            loadView();
+        }
+    }//GEN-LAST:event_jTabbedSystemAdminStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> comboEnterprise;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lblFirstName1;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblAdminRoles;
+    private javax.swing.JPanel jPanelAdminRoles;
+    private javax.swing.JPanel jPanelEnterprise;
+    private javax.swing.JPanel jPanelWorkRequests;
+    private javax.swing.JTabbedPane jTabbedSystemAdmin;
     // End of variables declaration//GEN-END:variables
 }

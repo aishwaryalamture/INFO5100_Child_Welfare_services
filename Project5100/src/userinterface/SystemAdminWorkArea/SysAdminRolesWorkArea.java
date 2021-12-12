@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Ketki Kule <kule.k@northeastern.edu>
+ * @author ChildWelfareServicesTeam
  */
 public class SysAdminRolesWorkArea extends javax.swing.JPanel {
 
@@ -43,7 +43,7 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
 
         DefaultTableModel model = (DefaultTableModel) tblAdminRoles.getModel();
         model.setRowCount(0);
-        ArrayList<Enterprise> enterprises = new ArrayList<>();
+        //ArrayList<Enterprise> enterprises = new ArrayList<>();
         for (Enterprise enterprise : entity.getEnterpriseDirectory().getEnterpriseList()) {
             if (enterprise.getAdmin() != null) {
                 Object[] row = new Object[3];
@@ -100,7 +100,7 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
         tblAdminRoles.setSelectionBackground(new java.awt.Color(117, 177, 169));
         jScrollPane5.setViewportView(tblAdminRoles);
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 1007, 208));
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 1007, 208));
 
         btnCreate.setBackground(new java.awt.Color(217, 180, 74));
         btnCreate.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -148,7 +148,7 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
         lblTitleAdminRoles.setMaximumSize(new java.awt.Dimension(210, 34));
         lblTitleAdminRoles.setMinimumSize(new java.awt.Dimension(210, 34));
         lblTitleAdminRoles.setPreferredSize(new java.awt.Dimension(280, 34));
-        add(lblTitleAdminRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, -1, 53));
+        add(lblTitleAdminRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 64, -1, 53));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed

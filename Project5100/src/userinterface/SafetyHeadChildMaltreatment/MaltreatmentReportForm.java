@@ -12,6 +12,7 @@ import Business.Organizations.Organization;
 import Business.Users.User;
 import Business.Validator.Validator;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -57,6 +58,8 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,11 +67,9 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtFullNameReporter = new javax.swing.JTextField();
-        txtLocationReporter = new javax.swing.JTextField();
-        txtContactReporter = new javax.swing.JTextField();
-        txtEmailReporter = new javax.swing.JTextField();
+        txtLocationOffender = new javax.swing.JTextField();
+        txtDescriptionOffender = new javax.swing.JTextField();
         txtFullNameVictim = new javax.swing.JTextField();
-        btnReport = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -79,34 +80,35 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         txtVictimAge = new javax.swing.JTextField();
         txtRemarks = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtVictimGender = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtAbuseType = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        btnReport = new javax.swing.JButton();
+        btnMaleO = new javax.swing.JRadioButton();
+        btnFemaleO = new javax.swing.JRadioButton();
+        btnMaleV = new javax.swing.JRadioButton();
+        btnFemaleV = new javax.swing.JRadioButton();
 
-        jLabel1.setText("Full Name of Reporter");
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1600, 1012));
 
-        jLabel2.setText("Location of Reporter");
+        jPanel1.setBackground(new java.awt.Color(172, 208, 192));
 
-        jLabel3.setText("Contact of Reporter");
+        jLabel1.setText("Full Name of Offender");
 
-        jLabel4.setText("Email of Reporter");
+        jLabel2.setText("Location of Offender");
 
-        txtFullNameReporter.setText("jTextField1");
+        jLabel3.setText("Gender of offender");
 
-        txtLocationReporter.setText("jTextField2");
+        jLabel4.setText("Description of Offender");
 
-        txtContactReporter.setText("jTextField3");
+        txtFullNameReporter.setPreferredSize(new java.awt.Dimension(155, 38));
 
-        txtEmailReporter.setText("jTextField4");
+        txtLocationOffender.setPreferredSize(new java.awt.Dimension(155, 38));
 
-        txtFullNameVictim.setText("jTextField5");
+        txtDescriptionOffender.setPreferredSize(new java.awt.Dimension(155, 38));
 
-        btnReport.setText("Report");
-        btnReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportActionPerformed(evt);
-            }
-        });
+        txtFullNameVictim.setPreferredSize(new java.awt.Dimension(155, 38));
 
         jLabel6.setText("Full Name of Victim");
 
@@ -118,38 +120,74 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
 
         jLabel10.setText("Remarks");
 
-        txtLocationVictim.setText("jTextField5");
+        txtLocationVictim.setPreferredSize(new java.awt.Dimension(155, 38));
 
-        txtRelationshipVictimOffender.setText("jTextField5");
+        txtRelationshipVictimOffender.setPreferredSize(new java.awt.Dimension(155, 38));
 
-        txtVictimAge.setText("jTextField5");
+        txtVictimAge.setPreferredSize(new java.awt.Dimension(155, 38));
 
-        txtRemarks.setText("jTextField5");
+        txtRemarks.setPreferredSize(new java.awt.Dimension(155, 38));
 
         jLabel11.setText("Gender of Victim");
 
-        txtVictimGender.setText("jTextField5");
-
         jLabel12.setText("Type of abuse");
 
-        txtAbuseType.setText("jTextField5");
+        txtAbuseType.setPreferredSize(new java.awt.Dimension(155, 38));
+
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Maltreatment Report Form");
+
+        btnBack.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("<< Back");
+        btnBack.setContentAreaFilled(false);
+        btnBack.setOpaque(true);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        btnReport.setBackground(new java.awt.Color(217, 180, 74));
+        btnReport.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnReport.setForeground(new java.awt.Color(255, 255, 255));
+        btnReport.setText("Report");
+        btnReport.setContentAreaFilled(false);
+        btnReport.setOpaque(true);
+        btnReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(btnMaleO);
+        btnMaleO.setText("Male");
+
+        buttonGroup1.add(btnFemaleO);
+        btnFemaleO.setText("Female");
+
+        buttonGroup2.add(btnMaleV);
+        btnMaleV.setText("Male");
+
+        buttonGroup2.add(btnFemaleV);
+        btnFemaleV.setText("Female");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(694, 694, 694))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(btnReport))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtAbuseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(523, 523, 523)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -160,75 +198,94 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
                                 .addGap(77, 77, 77)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtFullNameVictim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmailReporter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtContactReporter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLocationReporter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFullNameReporter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLocationVictim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRelationshipVictimOffender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVictimAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtVictimGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(238, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFullNameVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtDescriptionOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtLocationOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtLocationVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtRelationshipVictimOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFullNameReporter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtAbuseType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtVictimAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnMaleO)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnFemaleO, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnMaleV)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnFemaleV, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(327, 327, 327)
+                        .addComponent(jLabel5)))
+                .addContainerGap(605, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtFullNameReporter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFullNameReporter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtLocationReporter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                    .addComponent(txtLocationOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtContactReporter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtEmailReporter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMaleO)
+                    .addComponent(btnFemaleO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFullNameVictim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtDescriptionOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFullNameVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLocationVictim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtLocationVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRelationshipVictimOffender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRelationshipVictimOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVictimAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtVictimAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtVictimGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnMaleV)
+                        .addComponent(btnFemaleV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAbuseType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btnReport)
-                .addGap(23, 23, 23))
+                    .addComponent(txtAbuseType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(183, 183, 183))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBack, jLabel5});
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -237,76 +294,83 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1012, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
 
-        //validate input
-        boolean isValid = Validator.getInstance().validateEmailAddr(txtEmailReporter.getText());
-        if(!isValid){
-            JOptionPane.showMessageDialog(null, "Please enter email address in format - a@b.c", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
+        //Validate for emtpy fields
+        if ((!btnFemaleO.isEnabled() && !btnMaleO.isEnabled())) {
+            JOptionPane.showMessageDialog(null, "Gender of the Offender cannot be empty ",
+                    "Empty Fields", JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        
+        if (!btnMaleV.isEnabled() && !btnFemaleV.isEnabled()) {
+            JOptionPane.showMessageDialog(null, "Gender of the victim cannot be empty ",
+                    "Empty Fields", JOptionPane.WARNING_MESSAGE);
+            return;
+        } 
 
         //save form
         saveChildMaltreatmentForm();
         saveWorkRequest();
-        
+
         //add work request
         organization.getWorkQueue().addWorkRequest(childMaltreatmentAttributes);
         entity.getWorkQueue().addWorkRequest(childMaltreatmentAttributes);
         JOptionPane.showMessageDialog(null, "Your Report Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
+        btnBack.doClick();
     }//GEN-LAST:event_btnReportActionPerformed
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnReport;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtAbuseType;
-    private javax.swing.JTextField txtContactReporter;
-    private javax.swing.JTextField txtEmailReporter;
-    private javax.swing.JTextField txtFullNameReporter;
-    private javax.swing.JTextField txtFullNameVictim;
-    private javax.swing.JTextField txtLocationReporter;
-    private javax.swing.JTextField txtLocationVictim;
-    private javax.swing.JTextField txtRelationshipVictimOffender;
-    private javax.swing.JTextField txtRemarks;
-    private javax.swing.JTextField txtVictimAge;
-    private javax.swing.JTextField txtVictimGender;
-    // End of variables declaration//GEN-END:variables
-
+    
     private void saveChildMaltreatmentForm() {
 
-        childMaltreatmentAttributes.setFullNameVictim(txtFullNameVictim.getText());
-        childMaltreatmentAttributes.setGenderVictim(txtVictimGender.getText());
-        childMaltreatmentAttributes.setLocationVictim(txtLocationVictim.getText());
-        childMaltreatmentAttributes.setRelationshipVictimOffender(txtRelationshipVictimOffender.getText());
-        childMaltreatmentAttributes.setRemarks(txtRemarks.getText());
-        childMaltreatmentAttributes.setTypeOfAbuse(txtAbuseType.getText());
+        childMaltreatmentAttributes.setFullNameVictim(
+        Optional.of(txtFullNameVictim.getText()).orElse(""));
+        childMaltreatmentAttributes.setLocationVictim(
+        Optional.of(txtLocationVictim.getText()).orElse(""));
+        childMaltreatmentAttributes.setRelationshipVictimOffender(
+        Optional.of(txtRelationshipVictimOffender.getText()).orElse(""));
+        childMaltreatmentAttributes.setRemarks(
+        Optional.of(txtRemarks.getText()).orElse(""));
+        childMaltreatmentAttributes.setTypeOfAbuse(
+        Optional.of(txtDescriptionOffender.getText()).orElse(""));
+        
+        if (btnMaleV.isEnabled()) {
+            childMaltreatmentAttributes.setGenderVictim("Male");
+        } else {
+            childMaltreatmentAttributes.setGenderVictim("Female");
+        }
 
         String age = txtVictimAge.getText();
         if (age != null) {
             childMaltreatmentAttributes.setAgeVictim(Integer.parseInt(age));
+        }
+        
+        childMaltreatmentAttributes.setOffenderDescription(
+        Optional.of(txtDescriptionOffender.getText()).orElse(""));
+        childMaltreatmentAttributes.setOffenderLocation(
+        Optional.of(txtLocationOffender.getText()).orElse(""));
+        childMaltreatmentAttributes.setOffenderName(
+        Optional.of(txtFullNameReporter.getText()).orElse(""));
+        
+        if (btnMaleO.isEnabled()) {
+            childMaltreatmentAttributes.setOffenderGender("Male");
+        } else {
+            childMaltreatmentAttributes.setOffenderGender("Female");
         }
 
     }
@@ -320,5 +384,41 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         childMaltreatmentAttributes.setEnterpriseId(enterprise.getEnterpriseId());
         childMaltreatmentAttributes.setStatus(Status.StatusType.NEW.getValue());
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JRadioButton btnFemaleO;
+    private javax.swing.JRadioButton btnFemaleV;
+    private javax.swing.JRadioButton btnMaleO;
+    private javax.swing.JRadioButton btnMaleV;
+    private javax.swing.JButton btnReport;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtAbuseType;
+    private javax.swing.JTextField txtDescriptionOffender;
+    private javax.swing.JTextField txtFullNameReporter;
+    private javax.swing.JTextField txtFullNameVictim;
+    private javax.swing.JTextField txtLocationOffender;
+    private javax.swing.JTextField txtLocationVictim;
+    private javax.swing.JTextField txtRelationshipVictimOffender;
+    private javax.swing.JTextField txtRemarks;
+    private javax.swing.JTextField txtVictimAge;
+    // End of variables declaration//GEN-END:variables
+
+    
 
 }

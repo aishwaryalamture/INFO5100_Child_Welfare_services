@@ -4,17 +4,51 @@
  */
 package userinterface.PoliceWorkArea;
 
+import Business.Enterprises.Enterprise;
+import Business.Entity;
+import Business.Users.User;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import userinterface.ChildWelfareAdmin.ChildWelfareOrgAdminRolesWorkArea;
+import userinterface.ChildWelfareAdmin.ChildWelfareOrganizationWorkArea;
+import userinterface.ChildWelfareAdmin.ResolveChildWelfareRequestsJPanel;
+
 /**
  *
  * @author aishwarya_30111
  */
 public class PoliceWorkArea extends javax.swing.JPanel {
 
+    private JPanel displayPanel;
+    private Entity entity;
+    private User user;
+    private Enterprise enterprise;
+
     /**
      * Creates new form PoliceWorkArea
      */
-    public PoliceWorkArea() {
+    public PoliceWorkArea(JPanel displayPanel, Entity entity, Enterprise enterprise, User user) {
         initComponents();
+        this.displayPanel = displayPanel;
+        this.entity = entity;
+        this.user = user;
+        this.enterprise = enterprise;
+        loadView();
+    }
+
+    private void loadView() {
+        int selectedIndex = jTabbedPoliceArea.getSelectedIndex();
+        if (selectedIndex == 0 || selectedIndex == -1) {
+            ChildWelfarePoliceRequestsJPanel workArea = new ChildWelfarePoliceRequestsJPanel(jPanelHomepage, entity, enterprise, user);
+            jPanelHomepage.add(workArea);
+            CardLayout cardLayout = (CardLayout) jPanelHomepage.getLayout();
+            cardLayout.next(jPanelHomepage);
+        } else if (selectedIndex == 1) {
+
+        } else {
+
+        }
+
     }
 
     /**
@@ -26,32 +60,40 @@ public class PoliceWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jButton3 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        jTabbedPoliceArea = new javax.swing.JTabbedPane();
+        jPanelHomepage = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jTable7 = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jCheckBox8 = new javax.swing.JCheckBox();
+        jButton6 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jTable8 = new javax.swing.JTable();
+        jLabel11 = new javax.swing.JLabel();
+        jCheckBox9 = new javax.swing.JCheckBox();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jButton7 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jTable9 = new javax.swing.JTable();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jLabel13 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
+        jCheckBox12 = new javax.swing.JCheckBox();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        setBackground(new java.awt.Color(172, 208, 192));
+
+        jTabbedPoliceArea.setBackground(new java.awt.Color(172, 208, 192));
+
+        jPanelHomepage.setBackground(new java.awt.Color(172, 208, 192));
+        jPanelHomepage.setLayout(new java.awt.CardLayout());
+        jTabbedPoliceArea.addTab("Homepage", new javax.swing.ImageIcon(getClass().getResource("/res/policeman_logo.png")), jPanelHomepage); // NOI18N
+
+        jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -62,62 +104,62 @@ public class PoliceWorkArea extends javax.swing.JPanel {
                 "Problem", "Description", "Address", "City", "Request Status "
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane8.setViewportView(jTable7);
 
-        jLabel1.setText("Child Maltreatment");
+        jLabel9.setText("Child Maltreatment");
 
-        jLabel3.setText("Custody taken ? ");
+        jLabel10.setText("Custody taken ? ");
 
-        jCheckBox1.setText("YES");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox8.setText("YES");
+        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                jCheckBox8ActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Submit ");
+        jButton6.setText("Submit ");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(182, 182, 182)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(jLabel3)
+                        .addComponent(jLabel10)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBox8))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(214, 214, 214)
-                        .addComponent(jButton1)))
-                .addContainerGap(769, Short.MAX_VALUE))
+                        .addComponent(jButton6)))
+                .addContainerGap(913, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(jLabel1)
+                .addComponent(jLabel9)
                 .addGap(67, 67, 67)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jCheckBox1))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jCheckBox8))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addComponent(jButton6)
+                .addContainerGap(563, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Child Maltreatment", jPanel1);
+        jTabbedPoliceArea.addTab("Child Maltreatment", jPanel6);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,60 +170,60 @@ public class PoliceWorkArea extends javax.swing.JPanel {
                 "First Name", "Last Name", "Address", "Verification Status"
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane9.setViewportView(jTable8);
 
-        jLabel5.setText("Applicant Verified ? ");
+        jLabel11.setText("Applicant Verified ? ");
 
-        jCheckBox4.setText("YES");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox9.setText("YES");
+        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                jCheckBox9ActionPerformed(evt);
             }
         });
 
-        jCheckBox5.setText("NO");
+        jCheckBox10.setText("NO");
 
-        jButton3.setText("Submit");
+        jButton7.setText("Submit");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel11)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox4)
+                        .addComponent(jCheckBox9)
                         .addGap(38, 38, 38)
-                        .addComponent(jCheckBox5)
+                        .addComponent(jCheckBox10)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
-                .addContainerGap(857, Short.MAX_VALUE))
+                        .addComponent(jButton7)))
+                .addContainerGap(1001, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jButton3))
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jCheckBox9)
+                    .addComponent(jCheckBox10)
+                    .addComponent(jButton7))
+                .addContainerGap(643, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Foster", jPanel3);
+        jTabbedPoliceArea.addTab("Foster", jPanel7);
 
-        jLabel2.setText("Adolescentand Young Background Verification");
+        jLabel12.setText("Adolescentand Young Background Verification");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable9.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -192,113 +234,111 @@ public class PoliceWorkArea extends javax.swing.JPanel {
                 "first name", "last name", "address", "verification Status"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane10.setViewportView(jTable9);
 
-        jCheckBox2.setText("YES");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        jCheckBox11.setText("YES");
+        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                jCheckBox11ActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Verification  ");
+        jLabel13.setText("Verification  ");
 
-        jButton2.setText("Submit");
+        jButton8.setText("Submit");
 
-        jCheckBox3.setText("NO");
+        jCheckBox12.setText("NO");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel12))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
-                        .addComponent(jLabel4)
+                        .addComponent(jLabel13)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox2)
+                        .addComponent(jCheckBox11)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox3)
+                        .addComponent(jCheckBox12)
                         .addGap(64, 64, 64)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton8))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(843, Short.MAX_VALUE))
+                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(987, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(jLabel2)
+                .addComponent(jLabel12)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jLabel4)
-                    .addComponent(jButton2)
-                    .addComponent(jCheckBox3))
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBox11)
+                    .addComponent(jLabel13)
+                    .addComponent(jButton8)
+                    .addComponent(jCheckBox12))
+                .addContainerGap(597, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Youth Background Verification", jPanel2);
-
-        jScrollPane1.setViewportView(jTabbedPane1);
+        jTabbedPoliceArea.addTab("Youth Background Verification", jPanel8);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+            .addComponent(jTabbedPoliceArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jTabbedPoliceArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_jCheckBox8ActionPerformed
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_jCheckBox9ActionPerformed
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_jCheckBox11ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox8;
+    private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanelHomepage;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTabbedPane jTabbedPoliceArea;
+    private javax.swing.JTable jTable7;
+    private javax.swing.JTable jTable8;
+    private javax.swing.JTable jTable9;
     // End of variables declaration//GEN-END:variables
 }

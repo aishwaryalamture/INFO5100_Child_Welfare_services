@@ -9,6 +9,7 @@ import Business.Entity;
 import Business.Organizations.Organization;
 import Business.Users.User;
 import javax.swing.JPanel;
+import userinterface.ChildWelfareAdmin.ChildWelfareAdminWorkArea;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ChildWelfareAdmin extends Role {
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
             Enterprise enterprise, User user) {
 
-        return null;
+        return new ChildWelfareAdminWorkArea(userProcessContainer,entity,enterprise,user);
     }
     
      @Override
