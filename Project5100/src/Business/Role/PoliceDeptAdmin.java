@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package Business.Role;
@@ -15,23 +16,22 @@ import userinterface.ChildWelfareAdmin.ChildWelfareAdminWorkArea;
  *
  * @author ChildWelfareServicesTeam
  */
-
-public class ChildWelfareAdmin extends Role {
-    
-    RoleType roleType;
-    public ChildWelfareAdmin() {
-        roleType = RoleType.ChildWelfareAdmin;
+public class PoliceDeptAdmin extends Role {
+    Role.RoleType roleType;
+    public PoliceDeptAdmin() {
+        roleType = Role.RoleType.PoliceDeptAdmin;
     }
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, 
             Enterprise enterprise, User user) {
 
-        return new ChildWelfareAdminWorkArea(userProcessContainer,entity,enterprise,user);
+       // return new ChildWelfareAdminWorkArea(userProcessContainer,entity,enterprise,user);
+       return null;
     }
     
      @Override
-    public RoleType getRoleType(){
+    public Role.RoleType getRoleType(){
         return roleType;
     }
 }

@@ -10,6 +10,7 @@ import Business.Entity;
 import Business.Organizations.Organization;
 import Business.Users.User;
 import javax.swing.JPanel;
+import userinterface.SystemUser.SystemUserWorkAreaJPanel;
 
 /**
  *
@@ -26,8 +27,8 @@ public class SystemUserRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
+        return new SystemUserWorkAreaJPanel(userProcessContainer,entity,enterprise,user);
 
-        return null;
     }
 
     @Override

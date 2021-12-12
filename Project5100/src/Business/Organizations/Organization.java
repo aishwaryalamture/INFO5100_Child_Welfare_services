@@ -16,16 +16,24 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Organization {
-    
+
     public Organization(int id) {
-        this.organizationId = id++;
+        this.organizationId = id+1;
     }
-    
+
     private String organizationName;
     private String organizationAdminName;
+    private String organizationDesciption;
     private User organizationAdmin;
     private String organizationUsername;
     private String password;
-    private int organizationId; 
+    private int organizationId;
+    private String organizationRegistrationNo;
+
     private WorkQueue workQueue;
+    
+    @Override
+    public String toString() {
+        return organizationRegistrationNo;
+    }
 }

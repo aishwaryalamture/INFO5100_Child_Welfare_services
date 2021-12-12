@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkArea;
+package userinterface.ChildWelfareAdmin;
 
+import userinterface.SystemAdminWorkArea.*;
 import Business.Enterprises.Enterprise;
 import Business.Entity;
+import Business.Organizations.Organization;
 import Business.Users.User;
 import java.awt.CardLayout;
 import java.text.SimpleDateFormat;
@@ -19,22 +21,24 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ChildWelfareServicesTeam
  */
-public class SysAdminRolesWorkArea extends javax.swing.JPanel {
+public class ChildWelfareOrgAdminRolesWorkArea extends javax.swing.JPanel {
 
-    private JPanel enterprisePanel;
+    private JPanel childWelfarePanel;
     private Entity entity;
     private User user;
+    private Enterprise enterprise;
     private static final int CREATE_OPERATION = 0;
     private static final int UPDATE_OPERATION = 1;
 
     /**
      * Creates new form SysAdminRolesWorkArea
      */
-    public SysAdminRolesWorkArea(JPanel displayPanel, User user, Entity entity) {
+    public ChildWelfareOrgAdminRolesWorkArea(JPanel displayPanel, User user, Entity entity,Enterprise enterprise) {
         initComponents();
-        this.enterprisePanel = displayPanel;
+        this.childWelfarePanel = displayPanel;
         this.entity = entity;
         this.user = user;
+        this.enterprise = enterprise;
         populateTable();
     }
 
@@ -43,14 +47,13 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
 
         DefaultTableModel model = (DefaultTableModel) tblAdminRoles.getModel();
         model.setRowCount(0);
-        //ArrayList<Enterprise> enterprises = new ArrayList<>();
-        for (Enterprise enterprise : entity.getEnterpriseDirectory().getEnterpriseList()) {
-            if (enterprise.getAdmin() != null) {
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getOrganizationAdmin()!= null) {
                 Object[] row = new Object[3];
 
-                row[0] = enterprise;
-                row[1] = enterprise.getEnterpriseName();
-                row[2] = enterprise.getAdmin().getFullName();
+                row[0] = org;
+                row[1] = org.getOrganizationName();
+                row[2] = org.getOrganizationAdmin().getFullName();
                 model.addRow(row);
             }
 
@@ -86,7 +89,7 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Registration No", " Enterprise Name", "Admin Name"
+                "Registration No", "Organization Name", "Admin Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -153,10 +156,10 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        CreateUpdateAdminRolesJPanel createUpdateAdminRoles = new CreateUpdateAdminRolesJPanel(enterprisePanel, user, entity, CREATE_OPERATION, null, null);
-        enterprisePanel.add(createUpdateAdminRoles);
-        CardLayout layout = (CardLayout) enterprisePanel.getLayout();
-        layout.next(enterprisePanel);
+        CreateUpdateOrgAdminJPanel createUpdateAdminRoles = new CreateUpdateOrgAdminJPanel(childWelfarePanel, user, entity, CREATE_OPERATION, enterprise, null);
+        childWelfarePanel.add(createUpdateAdminRoles);
+        CardLayout layout = (CardLayout) childWelfarePanel.getLayout();
+        layout.next(childWelfarePanel);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -167,9 +170,9 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
             return;
         }
 
-        Enterprise enterprise = (Enterprise) tblAdminRoles.getValueAt(selectedRow, 0);
-        User adminUser = enterprise.getAdmin();
-        enterprise.setAdmin(null);
+        Organization organization = (Organization) tblAdminRoles.getValueAt(selectedRow, 0);
+        User adminUser = organization.getOrganizationAdmin();
+        organization.setOrganizationAdmin(null);
         entity.getUserDirectory().getUserList().remove(adminUser);
         populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
@@ -177,12 +180,16 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblAdminRoles.getSelectedRow();
-        Enterprise enterprise = (Enterprise) tblAdminRoles.getValueAt(selectedRow, 0);
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Organization organization = (Organization) tblAdminRoles.getValueAt(selectedRow, 0);
 
-        CreateUpdateAdminRolesJPanel createUpdateAdminRoles = new CreateUpdateAdminRolesJPanel(enterprisePanel, enterprise.getAdmin(), entity, UPDATE_OPERATION, enterprise, enterprise.getAdmin().getRole());
-        enterprisePanel.add(createUpdateAdminRoles);
-        CardLayout layout = (CardLayout) enterprisePanel.getLayout();
-        layout.next(enterprisePanel);
+        CreateUpdateOrgAdminJPanel createUpdateAdminRoles = new CreateUpdateOrgAdminJPanel(childWelfarePanel, organization.getOrganizationAdmin(), entity, UPDATE_OPERATION, enterprise, organization);
+        childWelfarePanel.add(createUpdateAdminRoles);
+        CardLayout layout = (CardLayout) childWelfarePanel.getLayout();
+        layout.next(childWelfarePanel);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 

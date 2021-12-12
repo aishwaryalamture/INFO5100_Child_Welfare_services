@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.SystemAdminWorkArea;
+package userinterface.ChildWelfareAdmin;
 
+import userinterface.SystemAdminWorkArea.*;
 import Business.Enterprises.Enterprise;
 import Business.Entity;
+import Business.Organizations.Organization;
 import Business.Users.User;
 import java.awt.CardLayout;
 import java.text.SimpleDateFormat;
@@ -19,41 +21,41 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ChildWelfareServicesTeam
  */
-public class SysAdminRolesWorkArea extends javax.swing.JPanel {
+public class ChildWelfareOrganizationWorkArea extends javax.swing.JPanel {
 
-    private JPanel enterprisePanel;
+    private JPanel childWelfarePanel;
     private Entity entity;
     private User user;
+    private Enterprise enterprise;
     private static final int CREATE_OPERATION = 0;
     private static final int UPDATE_OPERATION = 1;
 
     /**
-     * Creates new form SysAdminRolesWorkArea
+     * Creates new form SysAdminEnterprisesWorkArea
      */
-    public SysAdminRolesWorkArea(JPanel displayPanel, User user, Entity entity) {
+    public ChildWelfareOrganizationWorkArea(JPanel displayPanel, User user, Entity entity, Enterprise enterprise) {
         initComponents();
-        this.enterprisePanel = displayPanel;
+        this.childWelfarePanel = displayPanel;
         this.entity = entity;
         this.user = user;
+        this.enterprise = enterprise;
         populateTable();
     }
 
     public void populateTable() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 
-        DefaultTableModel model = (DefaultTableModel) tblAdminRoles.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblOrganization.getModel();
         model.setRowCount(0);
-        //ArrayList<Enterprise> enterprises = new ArrayList<>();
-        for (Enterprise enterprise : entity.getEnterpriseDirectory().getEnterpriseList()) {
-            if (enterprise.getAdmin() != null) {
-                Object[] row = new Object[3];
+        ArrayList<Enterprise> enterprises = new ArrayList<>();
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            Object[] row = new Object[3];
 
-                row[0] = enterprise;
-                row[1] = enterprise.getEnterpriseName();
-                row[2] = enterprise.getAdmin().getFullName();
-                model.addRow(row);
-            }
+            row[0] = org;
+            row[1] = org.getOrganizationName();
+            row[2] = org.getOrganizationDesciption();
 
+            model.addRow(row);
         }
     }
 
@@ -67,18 +69,19 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane5 = new javax.swing.JScrollPane();
-        tblAdminRoles = new javax.swing.JTable();
+        tblOrganization = new javax.swing.JTable();
         btnCreate = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        lblTitleAdminRoles = new javax.swing.JLabel();
+        lblTitleEnterprises = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(172, 208, 192));
+        setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tblAdminRoles.setBorder(new javax.swing.border.MatteBorder(null));
-        tblAdminRoles.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        tblAdminRoles.setModel(new javax.swing.table.DefaultTableModel(
+        tblOrganization.setBorder(new javax.swing.border.MatteBorder(null));
+        tblOrganization.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        tblOrganization.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -86,7 +89,7 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Registration No", " Enterprise Name", "Admin Name"
+                "Registration No", "Organization Name", "Organization Description"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -97,10 +100,14 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblAdminRoles.setSelectionBackground(new java.awt.Color(117, 177, 169));
-        jScrollPane5.setViewportView(tblAdminRoles);
+        tblOrganization.setSelectionBackground(new java.awt.Color(117, 177, 169));
+        jScrollPane5.setViewportView(tblOrganization);
+        if (tblOrganization.getColumnModel().getColumnCount() > 0) {
+            tblOrganization.getColumnModel().getColumn(0).setResizable(false);
+            tblOrganization.getColumnModel().getColumn(0).setPreferredWidth(10);
+        }
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 1007, 208));
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 177, 1007, 208));
 
         btnCreate.setBackground(new java.awt.Color(217, 180, 74));
         btnCreate.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -113,7 +120,7 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 454, 115, 49));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 444, 115, 49));
 
         btnUpdate.setBackground(new java.awt.Color(217, 180, 74));
         btnUpdate.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -126,7 +133,7 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
-        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 454, 115, 49));
+        add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 444, 115, 49));
 
         btnDelete.setBackground(new java.awt.Color(217, 180, 74));
         btnDelete.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -139,51 +146,54 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(871, 454, 115, 49));
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(871, 444, 115, 49));
 
-        lblTitleAdminRoles.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
-        lblTitleAdminRoles.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitleAdminRoles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitleAdminRoles.setText("Admin Roles");
-        lblTitleAdminRoles.setMaximumSize(new java.awt.Dimension(210, 34));
-        lblTitleAdminRoles.setMinimumSize(new java.awt.Dimension(210, 34));
-        lblTitleAdminRoles.setPreferredSize(new java.awt.Dimension(280, 34));
-        add(lblTitleAdminRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 64, -1, 53));
+        lblTitleEnterprises.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        lblTitleEnterprises.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitleEnterprises.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitleEnterprises.setText("Organizations");
+        lblTitleEnterprises.setMaximumSize(new java.awt.Dimension(210, 34));
+        lblTitleEnterprises.setMinimumSize(new java.awt.Dimension(210, 34));
+        lblTitleEnterprises.setPreferredSize(new java.awt.Dimension(280, 34));
+        add(lblTitleEnterprises, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 64, -1, 53));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        CreateUpdateAdminRolesJPanel createUpdateAdminRoles = new CreateUpdateAdminRolesJPanel(enterprisePanel, user, entity, CREATE_OPERATION, null, null);
-        enterprisePanel.add(createUpdateAdminRoles);
-        CardLayout layout = (CardLayout) enterprisePanel.getLayout();
-        layout.next(enterprisePanel);
+        CreateUpdateOrganizationJPanel createUpdateOrgJPanel = new CreateUpdateOrganizationJPanel(childWelfarePanel, user, entity, CREATE_OPERATION, enterprise, null);
+        childWelfarePanel.add(createUpdateOrgJPanel);
+        CardLayout layout = (CardLayout) childWelfarePanel.getLayout();
+        layout.next(childWelfarePanel);
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+
+        int selectedRow = tblOrganization.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please Select a row from table", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Organization org = (Organization) tblOrganization.getValueAt(selectedRow, 0);
+
+        CreateUpdateOrganizationJPanel createUpdateOrganizationJPanel = new CreateUpdateOrganizationJPanel(childWelfarePanel, user, entity, UPDATE_OPERATION, enterprise,org);
+        childWelfarePanel.add(createUpdateOrganizationJPanel);
+        CardLayout layout = (CardLayout) childWelfarePanel.getLayout();
+        layout.next(childWelfarePanel);
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tblAdminRoles.getSelectedRow();
+        int selectedRow = tblOrganization.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please Select a row from table", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        Enterprise enterprise = (Enterprise) tblAdminRoles.getValueAt(selectedRow, 0);
-        User adminUser = enterprise.getAdmin();
-        enterprise.setAdmin(null);
-        entity.getUserDirectory().getUserList().remove(adminUser);
+        Enterprise enterprise = (Enterprise) tblOrganization.getValueAt(selectedRow, 0);
+        entity.getEnterpriseDirectory().getEnterpriseList().remove(enterprise);
         populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblAdminRoles.getSelectedRow();
-        Enterprise enterprise = (Enterprise) tblAdminRoles.getValueAt(selectedRow, 0);
-
-        CreateUpdateAdminRolesJPanel createUpdateAdminRoles = new CreateUpdateAdminRolesJPanel(enterprisePanel, enterprise.getAdmin(), entity, UPDATE_OPERATION, enterprise, enterprise.getAdmin().getRole());
-        enterprisePanel.add(createUpdateAdminRoles);
-        CardLayout layout = (CardLayout) enterprisePanel.getLayout();
-        layout.next(enterprisePanel);
-    }//GEN-LAST:event_btnUpdateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -191,7 +201,7 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lblTitleAdminRoles;
-    private javax.swing.JTable tblAdminRoles;
+    private javax.swing.JLabel lblTitleEnterprises;
+    private javax.swing.JTable tblOrganization;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Ketki Kule <kule.k@northeastern.edu>
+ * @author ChildWelfareServicesTeam
  */
 public class CreateUpdateEnterpriseJPanel extends javax.swing.JPanel {
 
@@ -194,7 +194,7 @@ public class CreateUpdateEnterpriseJPanel extends javax.swing.JPanel {
             case CREATE_OPERATION:
                 //validate for registration number
                 for (Enterprise er : entity.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseRegistrationNo().equals(txtEnterpriseName.getText())) {
+                    if (er.getEnterpriseRegistrationNo().equals(txtRegistrationNo.getText())) {
                         JOptionPane.showMessageDialog(null, "Registration Number Already Exists ", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
                         return;
                     }

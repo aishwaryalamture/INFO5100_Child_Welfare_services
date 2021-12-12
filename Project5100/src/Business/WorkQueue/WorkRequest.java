@@ -26,5 +26,14 @@ public class WorkRequest {
     private LocalDateTime requestDate;
     private int organizationId;
     private int enterpriseId;
+
+    @Override
+    public String toString() {
+        return requestDate.toString();
+    }
+
+    
+    
+    
     
 }

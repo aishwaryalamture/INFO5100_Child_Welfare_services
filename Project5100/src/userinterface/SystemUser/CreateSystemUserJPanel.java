@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Ketki Kule <kule.k@northeastern.edu>
+ * @author ChildWelfareServicesTeam
  */
 public class CreateSystemUserJPanel extends javax.swing.JPanel {
 
