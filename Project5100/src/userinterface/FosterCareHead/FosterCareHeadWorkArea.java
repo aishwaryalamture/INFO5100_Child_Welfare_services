@@ -36,8 +36,8 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form FosterCareHeadWorkArea
      */
-    public FosterCareHeadWorkArea(JPanel userProcessContainer, Entity entity, Enterprise enterprise,
-            User user, Organization organization) {
+    public FosterCareHeadWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, Enterprise enterprise,
+            User user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.entity = entity;
@@ -186,7 +186,7 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
-        
+
     }//GEN-LAST:event_btnRequestMoreDetailsActionPerformed
 
     private void btnAssignToChildWelfareOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficerActionPerformed

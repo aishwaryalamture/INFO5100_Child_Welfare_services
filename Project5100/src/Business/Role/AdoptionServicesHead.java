@@ -10,25 +10,26 @@ import Business.Entity;
 import Business.Organizations.Organization;
 import Business.Users.User;
 import javax.swing.JPanel;
+import userinterface.AdoptionServicesHead.AdoptionServicesHeadWorkArea;
 import userinterface.SafetyHeadWorkArea.SafetyHeadAdminWorkArea;
 
 /**
  *
  * @author ChildWelfareServicesTeam
  */
-public class SafetyHeadRole extends Role {
+public class AdoptionServicesHead extends Role {
 
     RoleType roleType;
 
-    public SafetyHeadRole() {
-        roleType = RoleType.SafetyHead;
+    public AdoptionServicesHead() {
+        roleType = RoleType.AdoptionServicesHead;
     }
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
 
-        return new SafetyHeadAdminWorkArea(userProcessContainer, entity, organization,
+        return new AdoptionServicesHeadWorkArea(userProcessContainer, entity, organization,
                 enterprise, user);
     }
 
