@@ -315,7 +315,7 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please enter email address in format - a@b.c", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
         }
         //validate diseasePeriod
-        isValid = Validator.getInstance().validateMonth(txtDiseasePeriod.getText());
+        isValid = Validator.getInstance().validateAllDigits(txtDiseasePeriod.getText());
         if (!isValid) {
             JOptionPane.showMessageDialog(null, "Please enter valid disease period in number of months", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
         }

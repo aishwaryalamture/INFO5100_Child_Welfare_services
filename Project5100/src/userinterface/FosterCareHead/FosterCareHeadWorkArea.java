@@ -5,17 +5,43 @@
  */
 package userinterface.FosterCareHead;
 
+import Business.Enterprises.Enterprise;
+import Business.Entity;
+import Business.Enums.Status;
+import Business.FosterCare.FosterCareAttributes;
+import Business.Organizations.Organization;
+import Business.Users.User;
+import Business.WorkQueue.WorkRequest;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ChildWelfareServicesTeam
  */
 public class FosterCareHeadWorkArea extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private Entity entity;
+    private Enterprise enterprise;
+    private User user;
+    private Organization organization;
+
     /**
      * Creates new form FosterCareHeadWorkArea
      */
-    public FosterCareHeadWorkArea() {
+    public FosterCareHeadWorkArea(JPanel userProcessContainer, Entity entity, Enterprise enterprise,
+            User user, Organization organization) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.entity = entity;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.user = user;
+        populateFostercareHeadRequests();
     }
 
     /**
@@ -27,19 +53,249 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblChildDetails = new javax.swing.JTable();
+        btnAssignToChildWelfareOfficer = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblFosterCareHeadWorkRequest = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnRequestMoreDetails = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblGuardianDetails = new javax.swing.JTable();
+
+        tblChildDetails.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Gender", "Age", "Ethnicity", "Race", "Location", "Expected Duration", "Open To Adoption"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tblChildDetails);
+        if (tblChildDetails.getColumnModel().getColumnCount() > 0) {
+            tblChildDetails.getColumnModel().getColumn(4).setHeaderValue("Race");
+            tblChildDetails.getColumnModel().getColumn(5).setHeaderValue("Location");
+            tblChildDetails.getColumnModel().getColumn(6).setHeaderValue("Expected Duration");
+            tblChildDetails.getColumnModel().getColumn(7).setHeaderValue("Open To Adoption");
+        }
+
+        btnAssignToChildWelfareOfficer.setText("Assign to Child Welfare Officer");
+        btnAssignToChildWelfareOfficer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignToChildWelfareOfficerActionPerformed(evt);
+            }
+        });
+
+        tblFosterCareHeadWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Request Date", "Status", "Remarks", "Preferred Agency Location"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(tblFosterCareHeadWorkRequest);
+
+        jLabel1.setText("Child Details:");
+
+        jLabel3.setText("Work Requests: ");
+
+        btnRequestMoreDetails.setText("Request More Details");
+        btnRequestMoreDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestMoreDetailsActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Guardian Details:");
+
+        tblGuardianDetails.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null}
+            },
+            new String [] {
+                "Name", "Location", "Mobile Number", "Email Address"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(tblGuardianDetails);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(btnAssignToChildWelfareOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132)
+                        .addComponent(btnRequestMoreDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAssignToChildWelfareOfficer)
+                    .addComponent(btnRequestMoreDetails))
+                .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAssignToChildWelfareOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficerActionPerformed
+        //todo aish/ketki
+    }//GEN-LAST:event_btnAssignToChildWelfareOfficerActionPerformed
+
+    private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRequestMoreDetailsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAssignToChildWelfareOfficer;
+    private javax.swing.JButton btnRequestMoreDetails;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable tblChildDetails;
+    private javax.swing.JTable tblFosterCareHeadWorkRequest;
+    private javax.swing.JTable tblGuardianDetails;
     // End of variables declaration//GEN-END:variables
+
+    private void populateFostercareHeadRequests() {
+        DefaultTableModel delModel = (DefaultTableModel) tblFosterCareHeadWorkRequest.getModel();
+        delModel.setRowCount(0);
+        ArrayList<WorkRequest> workRequestList = organization.getWorkQueue().getWorkRequestList();
+        for (WorkRequest workRequest : workRequestList) {
+            if (workRequest.getStatus().equalsIgnoreCase(Status.StatusType.NEW.getValue())
+                    || workRequest.getStatus().equalsIgnoreCase(Status.StatusType.INPROGRESS.getValue())) {
+
+                FosterCareAttributes cha = (FosterCareAttributes) workRequest;
+                Object[] row = new Object[6];
+                row[0] = cha;
+                row[1] = cha.getRequestDate();
+                row[2] = cha.getStatus();
+                row[3] = cha.getRemarks();
+                row[4] = cha.getPreferredAgencyLocation();
+                delModel.addRow(row);
+            }
+        }
+
+        tblFosterCareHeadWorkRequest.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                populateDetailsTable();
+            }
+        });
+    }
+
+    private void populateDetailsTable() {
+        populateChildTable();
+        populateGuardianTable();
+    }
+
+    private void populateChildTable() {
+        try {
+            FosterCareAttributes cha = (FosterCareAttributes) tblFosterCareHeadWorkRequest.getValueAt(tblFosterCareHeadWorkRequest.getSelectedRow(), 0);
+            DefaultTableModel model = (DefaultTableModel) tblChildDetails.getModel();
+            model.setRowCount(0);
+            Object[] row = new Object[8];
+            row[0] = cha.getChildFullName();
+            row[1] = cha.getChildGender();
+            row[2] = cha.getChildAge();
+            row[3] = cha.getEthnicity();
+            row[4] = cha.getRace();
+            row[5] = cha.getChildLocation();
+            row[6] = cha.getTemporaryStayExpectedDays();
+
+            if (cha.isOpenToAdoption()) {
+                row[7] = "Yes";
+            } else {
+                row[7] = "No";
+            }
+
+            model.addRow(row);
+
+        } catch (Exception e) {
+            return;
+        }
+    }
+
+    private void populateGuardianTable() {
+        try {
+            FosterCareAttributes cha = (FosterCareAttributes) tblFosterCareHeadWorkRequest.getValueAt(tblFosterCareHeadWorkRequest.getSelectedRow(), 0);
+            DefaultTableModel model = (DefaultTableModel) tblGuardianDetails.getModel();
+            model.setRowCount(0);
+            Object[] row = new Object[4];
+            row[0] = cha.getLegalGuardianName();
+            row[1] = cha.getLegalGuardianLocation();
+            row[2] = cha.getLegalGuardianMobile();
+            row[3] = cha.getLegalGuardianEmail();
+
+            model.addRow(row);
+
+        } catch (Exception e) {
+            return;
+        }
+    }
 }

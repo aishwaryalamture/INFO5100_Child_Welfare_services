@@ -10,6 +10,7 @@ import Business.Entity;
 import Business.Enums.Status;
 import Business.Organizations.Organization;
 import Business.Users.User;
+import Business.Validator.Validator;
 import Business.YouthCare.YouthCareAttributes;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,7 +22,7 @@ import javax.swing.JPanel;
  * @author ChildWelfareServicesTeam
  */
 public class YouthCareServicesRequestForm extends javax.swing.JPanel {
-    
+
     private JPanel userProcessContainer;
     private Entity entity;
     private Enterprise enterprise;
@@ -31,8 +32,14 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
 
     /**
      * Creates new form YouthCareServicesRequestForm
+     *
+     * @param userProcessContainer
+     * @param entity
+     * @param enterprise
+     * @param user
+     * @param organization
      */
-    public YouthCareServicesRequestForm(JPanel userProcessContainer, Entity entity, Enterprise enterprise, 
+    public YouthCareServicesRequestForm(JPanel userProcessContainer, Entity entity, Enterprise enterprise,
             User user, Organization organization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -247,13 +254,25 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
     private void btnSubmitRequest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequest1ActionPerformed
 
         //validations for emtpy fields
-        if (txtLegalGuardianName.getText().isEmpty() || txtLegalGuardianMobile.getText().isEmpty() || txtAge.getText().isEmpty()
-                || (!btnBoy.isEnabled() && !btnGirl.isEnabled())) {
-            JOptionPane.showMessageDialog(null, "Legal Guardian details, Date of birth, full name, age, gender cannot be empty ",
+        if (txtLegalGuardianName.getText().isEmpty() || txtLegalGuardianMobile.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Legal Guardian name and mobile cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
+        if (txtFullName.getText().isEmpty() || txtAge.getText().isEmpty() || txtLocation.getText().isEmpty()
+                || (!btnBoy.isEnabled() && !btnGirl.isEnabled())) {
+            JOptionPane.showMessageDialog(null, "Name, Date of birth, age, gender cannot be empty ",
+                    "Empty Fields", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        boolean isValid;
+        isValid = Validator.getInstance().validateAllDigits(txtAge.getText());
+        if (!isValid) {
+            JOptionPane.showMessageDialog(null, "Age should consists of digits only", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         //save form
         saveYouthCareRequestForm();
@@ -298,7 +317,7 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void saveYouthCareRequestForm() {
-        
+
         youthCareAttributes.setFullName(txtFullName.getText());
         youthCareAttributes.setAge(Integer.parseInt(txtAge.getText()));
         youthCareAttributes.setLocation(txtLocation.getText());
@@ -310,24 +329,23 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
         youthCareAttributes.setSchoolName(txtSchoolName.getText());
         youthCareAttributes.setGrade(txtSchoolGrade.getText());
         youthCareAttributes.setPreviousYouthCareAgency(txtPreviousYouthcareAgency.getText());
-        
-        if(btnBoy.isEnabled()){
+
+        if (btnBoy.isEnabled()) {
             youthCareAttributes.setGender("Male");
-        }
-        else{
+        } else {
             youthCareAttributes.setGender("Female");
         }
-        
+
     }
 
     private void saveWorkRequest() {
-        
+
         youthCareAttributes.setSender(user);
         youthCareAttributes.setReceiver(organization.getOrganizationAdmin());
         youthCareAttributes.setRequestDate(LocalDateTime.now());
         youthCareAttributes.setOrganizationId(organization.getOrganizationId());
         youthCareAttributes.setEnterpriseId(enterprise.getEnterpriseId());
         youthCareAttributes.setStatus(Status.StatusType.NEW.getValue());
-        
+
     }
 }

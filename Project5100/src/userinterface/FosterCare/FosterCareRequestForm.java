@@ -66,7 +66,6 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtChildAge = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtChildGender = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtEthnicity = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -89,6 +88,8 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         btnYes = new javax.swing.JRadioButton();
         btnNo = new javax.swing.JRadioButton();
         btnSubmitRequest = new javax.swing.JButton();
+        btnBoy = new javax.swing.JRadioButton();
+        btnGirl = new javax.swing.JRadioButton();
 
         jLabel2.setText("Child Full Name");
 
@@ -103,8 +104,6 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         txtChildAge.setText("jTextField1");
 
         jLabel4.setText("Child Gender");
-
-        txtChildGender.setText("jTextField1");
 
         jLabel11.setText("Ethnicity");
 
@@ -156,6 +155,12 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
                 btnSubmitRequestActionPerformed(evt);
             }
         });
+
+        buttonGroup1.add(btnBoy);
+        btnBoy.setText("Boy");
+
+        buttonGroup1.add(btnGirl);
+        btnGirl.setText("Girl");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -209,7 +214,12 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
                                     .addComponent(txtLegalGuardianLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(176, 176, 176)
-                        .addComponent(btnSubmitRequest)))
+                        .addComponent(btnSubmitRequest))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(btnBoy)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnGirl)))
                 .addContainerGap(328, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -221,7 +231,6 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
                         .addComponent(jLabel2))
                     .addGap(95, 95, 95)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -230,7 +239,11 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(115, 115, 115)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBoy)
+                    .addComponent(btnGirl))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -289,26 +302,24 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(txtChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(423, Short.MAX_VALUE)))
+                    .addComponent(jLabel4)
+                    .addContainerGap(429, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
 
         //validations for emtpy fields
-        if (txtChildFullName.getText().isEmpty() || txtChildGender.getText().isEmpty() || txtChildLocation.getText().isEmpty()
+        if (txtChildFullName.getText().isEmpty() || (!btnBoy.isEnabled() && !btnGirl.isEnabled()) || txtChildLocation.getText().isEmpty()
                 || txtChildAge.getText().isEmpty() || txtEthnicity.getText().isEmpty() || txtRace.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Full Name, Gender, location, Age, Ethnicity and Race of the child cannot be empty ",
+            JOptionPane.showMessageDialog(null, "Full Name, Gender, Location, Age, Ethnicity and Race of the child cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         if (txtLegalGuardianName.getText().isEmpty() || txtLegalGuardianMobile.getText().isEmpty() || 
                 txtLegalGuardianEmail.getText().isEmpty() || txtLegalGuardianLocation.getText().isEmpty() ) {
-            JOptionPane.showMessageDialog(null, "Legal Guardian name, mobile, email, location cannot be empty ",
+            JOptionPane.showMessageDialog(null, "Legal Guardian's name, mobile, email, location cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -321,7 +332,22 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         
         boolean isValid;
         isValid = Validator.getInstance().validateEmailAddr(txtLegalGuardianEmail.getText());
-        isValid = 
+        if(!isValid){
+            JOptionPane.showMessageDialog(null, "Please enter email address in format - a@b.c", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        isValid = Validator.getInstance().validateAllDigits(txtTemporaryStayExpectedDays.getText());
+        if(!isValid){
+            JOptionPane.showMessageDialog(null, "Please enter expected duration of foster day in days", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        isValid = Validator.getInstance().validateAllDigits(txtChildAge.getText());
+        if(!isValid){
+            JOptionPane.showMessageDialog(null, "Child Age should consist of digits only", "Invalid Entry", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         //save form
         saveFosterCareRequestForm();
@@ -335,6 +361,8 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton btnBoy;
+    private javax.swing.JRadioButton btnGirl;
     private javax.swing.JRadioButton btnNo;
     private javax.swing.JButton btnSubmitRequest;
     private javax.swing.JRadioButton btnYes;
@@ -355,7 +383,6 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtChildAge;
     private javax.swing.JTextField txtChildFullName;
-    private javax.swing.JTextField txtChildGender;
     private javax.swing.JTextField txtChildLocation;
     private javax.swing.JTextField txtEthnicity;
     private javax.swing.JTextField txtLegalGuardianEmail;
@@ -371,7 +398,6 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
     private void saveFosterCareRequestForm() {
         fosterCareAttributes.setChildFullName(txtChildFullName.getText());
         fosterCareAttributes.setChildAge(Integer.parseInt(txtChildAge.getText()));
-        fosterCareAttributes.setChildGender(txtChildGender.getText());
         fosterCareAttributes.setChildLocation(txtChildLocation.getText());
         fosterCareAttributes.setEthnicity(txtEthnicity.getText());
         fosterCareAttributes.setRace(txtRace.getText());
@@ -382,6 +408,13 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
         fosterCareAttributes.setLegalGuardianEmail(txtLegalGuardianEmail.getText());
         fosterCareAttributes.setLegalGuardianLocation(txtLegalGuardianLocation.getText());
         fosterCareAttributes.setTemporaryStayExpectedDays(Integer.parseInt(txtTemporaryStayExpectedDays.getText()));
+        
+        if(btnBoy.isEnabled()){
+            fosterCareAttributes.setChildGender("Male");
+        }
+        else{
+            fosterCareAttributes.setChildGender("Female");
+        }
 
         if (btnYes.isEnabled()) {
             fosterCareAttributes.setOpenToAdoption(true);
