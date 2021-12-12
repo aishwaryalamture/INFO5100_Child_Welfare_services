@@ -164,6 +164,11 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
 
         buttonGroup1.add(btnMaleO);
         btnMaleO.setText("Male");
+        btnMaleO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaleOActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(btnFemaleO);
         btnFemaleO.setText("Female");
@@ -334,6 +339,10 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Your Report Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
         btnBack.doClick();
     }//GEN-LAST:event_btnReportActionPerformed
+
+    private void btnMaleOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaleOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMaleOActionPerformed
 
     
     private void saveChildMaltreatmentForm() {

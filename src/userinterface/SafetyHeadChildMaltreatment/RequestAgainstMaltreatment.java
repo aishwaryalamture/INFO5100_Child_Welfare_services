@@ -30,8 +30,8 @@ public class RequestAgainstMaltreatment extends javax.swing.JPanel {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         btnCreate = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         btnCreate1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setPreferredSize(new java.awt.Dimension(516, 493));
@@ -68,6 +68,8 @@ public class RequestAgainstMaltreatment extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SafetyHeadChildMaltreatment/OIP (4).jpg"))); // NOI18N
+
         btnCreate1.setBackground(new java.awt.Color(217, 180, 74));
         btnCreate1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         btnCreate1.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,52 +82,51 @@ public class RequestAgainstMaltreatment extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/SafetyHeadChildMaltreatment/OIP (4).jpg"))); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(133, 133, 133)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jRadioButton2))
-                    .addComponent(jRadioButton1))
-                .addGap(61, 61, 61)
-                .addComponent(jLabel3)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCreate1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton2)
+                            .addComponent(jRadioButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(359, 359, 359))
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(btnCreate1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(421, 421, 421))
+                .addGap(122, 122, 122)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
                         .addComponent(jRadioButton1)
-                        .addGap(112, 112, 112)
+                        .addGap(56, 56, 56)
                         .addComponent(jRadioButton2)
-                        .addGap(91, 91, 91))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(66, 66, 66)))
+                        .addGap(121, 121, 121))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(49, 49, 49)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreate1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(276, 276, 276))
+                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCreate1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -141,7 +142,37 @@ public class RequestAgainstMaltreatment extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         //Validate for emtpy fields
-        
+        if (txtEnterpriseName.getText().isEmpty() || txtEnterpriseDesc.getText().isEmpty() || txtRegistrationNo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please Fill All Fields ", "Empty Fields", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        switch (operationId) {
+            case CREATE_OPERATION:
+            //validate for registration number
+            for (Enterprise er : entity.getEnterpriseDirectory().getEnterpriseList()) {
+                if (er.getEnterpriseRegistrationNo().equals(enterprise.getEnterpriseRegistrationNo())) {
+                    JOptionPane.showMessageDialog(null, "Registration Number Already Exists ", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
+            entity.getEnterpriseDirectory().createEnterprise(txtEnterpriseName.getText(), txtEnterpriseDesc.getText(), txtRegistrationNo.getText());
+            JOptionPane.showMessageDialog(null, "New Enterprise Registered", "Success", JOptionPane.INFORMATION_MESSAGE);
+            btnBack.doClick();
+            break;
+            case UPDATE_OPERATION:
+            for (Enterprise er : entity.getEnterpriseDirectory().getEnterpriseList()) {
+                if (er.getEnterpriseRegistrationNo().equals(enterprise.getEnterpriseRegistrationNo())) {
+                    enterprise.setEnterpriseName(txtEnterpriseName.getText());
+                    enterprise.setEnterpriseDesciption(txtEnterpriseDesc.getText());
+                    enterprise.setEnterpriseRegistrationNo(txtRegistrationNo.getText());
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Enterprise Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
+            btnBack.doClick();
+
+            break;
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnCreate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreate1ActionPerformed
@@ -153,7 +184,7 @@ public class RequestAgainstMaltreatment extends javax.swing.JPanel {
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnCreate1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration//GEN-END:variables

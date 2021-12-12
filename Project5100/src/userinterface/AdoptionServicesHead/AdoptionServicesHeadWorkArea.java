@@ -54,12 +54,16 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
 
         jScrollPane4 = new javax.swing.JScrollPane();
         tblChildDetails2 = new javax.swing.JTable();
-        btnAssignToChildWelfareOfficer3 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblAdoptionHeadWorkRequest = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnRequestMoreDetails1 = new javax.swing.JButton();
+        btnAssignToChildWelfareOfficer3 = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        btnBack2 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(172, 208, 192));
 
         tblChildDetails2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -78,13 +82,6 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
             }
         });
         jScrollPane4.setViewportView(tblChildDetails2);
-
-        btnAssignToChildWelfareOfficer3.setText("Assign to Child Welfare Officer");
-        btnAssignToChildWelfareOfficer3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignToChildWelfareOfficer3ActionPerformed(evt);
-            }
-        });
 
         tblAdoptionHeadWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,14 +104,52 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(tblAdoptionHeadWorkRequest);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Child Details:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Work Requests: ");
 
+        btnRequestMoreDetails1.setBackground(new java.awt.Color(217, 180, 74));
+        btnRequestMoreDetails1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnRequestMoreDetails1.setForeground(new java.awt.Color(255, 255, 255));
         btnRequestMoreDetails1.setText("Request More Details");
+        btnRequestMoreDetails1.setContentAreaFilled(false);
+        btnRequestMoreDetails1.setOpaque(true);
+        btnRequestMoreDetails1.setPreferredSize(new java.awt.Dimension(210, 34));
         btnRequestMoreDetails1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestMoreDetails1ActionPerformed(evt);
+            }
+        });
+
+        btnAssignToChildWelfareOfficer3.setBackground(new java.awt.Color(217, 180, 74));
+        btnAssignToChildWelfareOfficer3.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnAssignToChildWelfareOfficer3.setForeground(new java.awt.Color(255, 255, 255));
+        btnAssignToChildWelfareOfficer3.setText("Assign to Child Welfare Officer");
+        btnAssignToChildWelfareOfficer3.setContentAreaFilled(false);
+        btnAssignToChildWelfareOfficer3.setOpaque(true);
+        btnAssignToChildWelfareOfficer3.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnAssignToChildWelfareOfficer3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignToChildWelfareOfficer3ActionPerformed(evt);
+            }
+        });
+
+        lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Adoption Service Head WorkArea");
+
+        btnBack2.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack2.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack2.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack2.setText("<< Back");
+        btnBack2.setContentAreaFilled(false);
+        btnBack2.setOpaque(true);
+        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack2ActionPerformed(evt);
             }
         });
 
@@ -123,73 +158,85 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
-                .addComponent(btnAssignToChildWelfareOfficer3)
-                .addGap(68, 68, 68)
-                .addComponent(btnRequestMoreDetails1)
-                .addContainerGap(246, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3))
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane4)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addContainerGap()))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
+                            .addComponent(jScrollPane5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(btnAssignToChildWelfareOfficer3, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75)
+                                .addComponent(btnRequestMoreDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(50, 50, 50)
+                                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAssignToChildWelfareOfficer3, btnRequestMoreDetails1});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(323, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssignToChildWelfareOfficer3)
-                    .addComponent(btnRequestMoreDetails1))
-                .addGap(125, 125, 125))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(28, 28, 28)
-                    .addComponent(jLabel3)
-                    .addGap(18, 18, 18)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(46, 46, 46)
-                    .addComponent(jLabel1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(208, Short.MAX_VALUE)))
+                    .addComponent(lblTitle)
+                    .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAssignToChildWelfareOfficer3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRequestMoreDetails1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAssignToChildWelfareOfficer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficer3ActionPerformed
-        //todo aish/ketki
-    }//GEN-LAST:event_btnAssignToChildWelfareOfficer3ActionPerformed
-
     private void btnRequestMoreDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetails1ActionPerformed
         // TODO add your handling code here:
+        //save form
+
     }//GEN-LAST:event_btnRequestMoreDetails1ActionPerformed
+
+    private void btnAssignToChildWelfareOfficer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficer3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAssignToChildWelfareOfficer3ActionPerformed
+
+    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBack2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssignToChildWelfareOfficer1;
-    private javax.swing.JButton btnAssignToChildWelfareOfficer2;
     private javax.swing.JButton btnAssignToChildWelfareOfficer3;
+    private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnRequestMoreDetails1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTable tblAdoptionHeadWorkRequest;
-    private javax.swing.JTable tblChildDetails;
-    private javax.swing.JTable tblChildDetails1;
     private javax.swing.JTable tblChildDetails2;
     // End of variables declaration//GEN-END:variables
 

@@ -50,7 +50,6 @@ public class ChildAdoptionRequestForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSubmitRequest = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtChildLocation = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -58,143 +57,166 @@ public class ChildAdoptionRequestForm extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtChildAge = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtChildGender = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtRemarks = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtEthnicity = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtRace = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtPreferredAgencyLocation = new javax.swing.JTextField();
+        btnSubmitRequest = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        btnBack2 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
+        setBackground(new java.awt.Color(172, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Child Location");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
+        add(txtChildLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 140, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("Child Full Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
+        add(txtChildFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 140, 30));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("Child Age");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
+        add(txtChildAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 140, 30));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Child Gender");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setText("Remarks");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, 21));
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 140, 30));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setText("Ethnicity");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, 21));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setText("Race");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, -1, 21));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Preferred Agency Location");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 550, -1, 21));
+
+        txtPreferredAgencyLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPreferredAgencyLocationActionPerformed(evt);
+            }
+        });
+        add(txtPreferredAgencyLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, 140, 30));
+
+        btnSubmitRequest.setBackground(new java.awt.Color(217, 180, 74));
+        btnSubmitRequest.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnSubmitRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmitRequest.setText("Submit Request");
+        btnSubmitRequest.setContentAreaFilled(false);
+        btnSubmitRequest.setOpaque(true);
+        btnSubmitRequest.setPreferredSize(new java.awt.Dimension(210, 34));
         btnSubmitRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitRequestActionPerformed(evt);
             }
         });
+        add(btnSubmitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 630, 130, -1));
 
-        jLabel1.setText("Child Location");
+        lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Child Adoption Request Form");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
-        txtChildLocation.setText("jTextField1");
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Irish", "Moroccan", "Caucasian", "Nigerian", "Asian Indian", "Chinese", "Korean", " " }));
+        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 140, 30));
 
-        jLabel2.setText("Child Full Name");
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "African American", "Native American / Alaskan Native", "Pacific Islander", "Asian", "Native Hawaian", " " }));
+        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 490, 140, 30));
 
-        txtChildFullName.setText("jTextField1");
+        btnBack2.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack2.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack2.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack2.setText("<< Back");
+        btnBack2.setContentAreaFilled(false);
+        btnBack2.setOpaque(true);
+        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack2ActionPerformed(evt);
+            }
+        });
+        add(btnBack2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 90, 40));
 
-        jLabel3.setText("Child Age");
+        jRadioButton1.setBackground(new java.awt.Color(172, 208, 192));
+        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton1.setText("Male");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
 
-        txtChildAge.setText("jTextField1");
-
-        jLabel4.setText("Child Gender");
-
-        txtChildGender.setText("jTextField1");
-
-        jLabel10.setText("Remarks");
-
-        txtRemarks.setText("jTextField5");
-
-        jLabel11.setText("Ethnicity");
-
-        txtEthnicity.setText("jTextField5");
-
-        jLabel12.setText("Race");
-
-        txtRace.setText("jTextField5");
-
-        jLabel14.setText("Preferred Agency Location");
-
-        txtPreferredAgencyLocation.setText("jTextField5");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnSubmitRequest)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel12))
-                            .addGap(90, 90, 90))))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(244, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChildFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtChildLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEthnicity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84)
-                .addComponent(btnSubmitRequest)
-                .addContainerGap(140, Short.MAX_VALUE))
-        );
+        jRadioButton2.setBackground(new java.awt.Color(172, 208, 192));
+        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton2.setText("Female");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
+    private void txtPreferredAgencyLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPreferredAgencyLocationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPreferredAgencyLocationActionPerformed
 
-        //save form
+    private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
+        // TODO add your handling code here:
+         //save form
         saveAdoptionRequestForm();
         saveWorkRequest();
 
         //add work request
         organization.getWorkQueue().addWorkRequest(childAdoptionAttributes);
         entity.getWorkQueue().addWorkRequest(childAdoptionAttributes);
-        JOptionPane.showMessageDialog(null, "Your Request Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnSubmitRequestActionPerformed
+
+    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBack2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        if(jRadioButton1.isSelected() ){
+            childAdoptionAttributes.setChildGender(jRadioButton1.getText());
+        }
+
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        if(jRadioButton2.isSelected() ){
+            childAdoptionAttributes.setChildGender(jRadioButton2.getText());
+        }
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnSubmitRequest;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -203,23 +225,22 @@ public class ChildAdoptionRequestForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtChildAge;
     private javax.swing.JTextField txtChildFullName;
-    private javax.swing.JTextField txtChildGender;
     private javax.swing.JTextField txtChildLocation;
-    private javax.swing.JTextField txtEthnicity;
     private javax.swing.JTextField txtPreferredAgencyLocation;
-    private javax.swing.JTextField txtRace;
     private javax.swing.JTextField txtRemarks;
     // End of variables declaration//GEN-END:variables
 
     private void saveAdoptionRequestForm() {
         childAdoptionAttributes.setChildFullName(txtChildFullName.getText());
         childAdoptionAttributes.setChildAge(Integer.parseInt(txtChildAge.getText()));
-        childAdoptionAttributes.setChildGender(txtChildGender.getText());
         childAdoptionAttributes.setChildLocation(txtChildLocation.getText());
-        childAdoptionAttributes.setEthnicity(txtEthnicity.getText());
-        childAdoptionAttributes.setRace(txtRace.getText());
+        childAdoptionAttributes.setEthnicity((String) jComboBox1.getSelectedItem());
+        childAdoptionAttributes.setRace((String) jComboBox2.getSelectedItem());
         childAdoptionAttributes.setPreferredAgencyLocation(txtPreferredAgencyLocation.getText());
         childAdoptionAttributes.setRemarks(txtRemarks.getText());
     }

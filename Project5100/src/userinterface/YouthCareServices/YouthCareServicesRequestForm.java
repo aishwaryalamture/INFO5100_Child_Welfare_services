@@ -60,7 +60,6 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        btnSubmitRequest1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -86,174 +85,145 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
         txtLocation = new javax.swing.JTextField();
         btnBoy = new javax.swing.JRadioButton();
         btnGirl = new javax.swing.JRadioButton();
+        btnSubmitRequest1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(172, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Location");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+
+        txtAge.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 180, 30));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("Full Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+
+        txtFullName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtFullName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 180, 30));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("Age");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Gender");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, -1, -1));
+
+        txtRemarks.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 180, 30));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setText("Remarks");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, 21));
+
+        txtDoB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtDoB, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 180, 30));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setText("Date Of Birth");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, 21));
+
+        txtLegalGuardianName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtLegalGuardianName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 500, 180, 30));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setText("Legal Guardian Name");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 510, -1, 21));
+
+        txtLegalGuardianMobile.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtLegalGuardianMobile, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, 180, 30));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setText("Preferred Agency Location");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 810, -1, 21));
+
+        txtPreferredAgencyLocation.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPreferredAgencyLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPreferredAgencyLocationActionPerformed(evt);
+            }
+        });
+        add(txtPreferredAgencyLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 800, 180, 30));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setText("Legal Guardian Mobile");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, -1, 21));
+
+        txtSchoolName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtSchoolName, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 620, 180, 30));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel15.setText("Previous YouthCare Agency");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 740, -1, 21));
+
+        txtPreviousYouthcareAgency.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtPreviousYouthcareAgency, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 740, 180, 30));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel16.setText("School Name");
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, -1, 21));
+
+        txtSchoolGrade.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtSchoolGrade, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 680, 180, 30));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel17.setText("School Grade");
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 680, -1, 21));
+
+        txtLocation.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        add(txtLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 180, 30));
+
+        btnBoy.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup1.add(btnBoy);
+        btnBoy.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnBoy.setText("Boy");
+        add(btnBoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
+
+        btnGirl.setBackground(new java.awt.Color(172, 208, 192));
+        buttonGroup1.add(btnGirl);
+        btnGirl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnGirl.setText("Girl");
+        add(btnGirl, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, -1, -1));
+
+        btnSubmitRequest1.setBackground(new java.awt.Color(217, 180, 74));
+        btnSubmitRequest1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnSubmitRequest1.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmitRequest1.setText("Submit Request");
+        btnSubmitRequest1.setContentAreaFilled(false);
+        btnSubmitRequest1.setOpaque(true);
         btnSubmitRequest1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitRequest1ActionPerformed(evt);
             }
         });
+        add(btnSubmitRequest1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 880, 220, 50));
 
-        jLabel1.setText("Location");
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel5.setText("Youth Care Service Request Form");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 400, -1));
 
-        txtAge.setText("jTextField1");
-
-        jLabel2.setText("Full Name");
-
-        txtFullName.setText("jTextField1");
-
-        jLabel3.setText("Age");
-
-        jLabel4.setText("Gender");
-
-        txtRemarks.setText("jTextField1");
-
-        jLabel10.setText("Remarks");
-
-        txtDoB.setText("jTextField5");
-
-        jLabel11.setText("Date Of Birth");
-
-        txtLegalGuardianName.setText("jTextField5");
-
-        jLabel12.setText("Legal Guardian Name");
-
-        txtLegalGuardianMobile.setText("jTextField5");
-
-        jLabel14.setText("Preferred Agency Location");
-
-        txtPreferredAgencyLocation.setText("jTextField5");
-
-        jLabel13.setText("Legal Guardian Mobile");
-
-        txtSchoolName.setText("jTextField5");
-
-        jLabel15.setText("Previous YouthCare Agency");
-
-        txtPreviousYouthcareAgency.setText("jTextField5");
-
-        jLabel16.setText("School Name");
-
-        txtSchoolGrade.setText("jTextField5");
-
-        jLabel17.setText("School Grade");
-
-        txtLocation.setText("jTextField1");
-
-        buttonGroup1.add(btnBoy);
-        btnBoy.setText("Boy");
-
-        buttonGroup1.add(btnGirl);
-        btnGirl.setText("Girl");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel16))
-                        .addGap(106, 106, 106)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSchoolName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSchoolGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLegalGuardianName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPreviousYouthcareAgency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBoy)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnGirl))
-                            .addComponent(txtLegalGuardianMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(btnSubmitRequest1)))
-                .addContainerGap(190, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(13, 13, 13))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBoy)
-                        .addComponent(btnGirl)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLegalGuardianName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLegalGuardianMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSchoolName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSchoolGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreviousYouthcareAgency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreferredAgencyLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(btnSubmitRequest1)
-                .addContainerGap(123, Short.MAX_VALUE))
-        );
+        btnBack1.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack1.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack1.setText("<< Back");
+        btnBack1.setContentAreaFilled(false);
+        btnBack1.setOpaque(true);
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 90, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitRequest1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequest1ActionPerformed
-
-        //validations for emtpy fields
+    //validations for emtpy fields
         if (txtLegalGuardianName.getText().isEmpty() || txtLegalGuardianMobile.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Legal Guardian name and mobile cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
@@ -282,13 +252,23 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
         organization.getWorkQueue().addWorkRequest(youthCareAttributes);
         entity.getWorkQueue().addWorkRequest(youthCareAttributes);
         JOptionPane.showMessageDialog(null, "Your Request Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
+    
     }//GEN-LAST:event_btnSubmitRequest1ActionPerformed
+
+    private void txtPreferredAgencyLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPreferredAgencyLocationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPreferredAgencyLocationActionPerformed
+
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBack1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JRadioButton btnBoy;
     private javax.swing.JRadioButton btnGirl;
-    private javax.swing.JButton btnSubmitRequest;
     private javax.swing.JButton btnSubmitRequest1;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
@@ -303,6 +283,7 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtDoB;
     private javax.swing.JTextField txtFullName;
