@@ -12,9 +12,13 @@ import Business.InternationalOrganizationCollaboration.InternationalOrganization
 import Business.Organizations.Organization;
 import Business.Users.User;
 import Business.Validator.Validator;
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.SystemUser.SystemUserWorkAreaJPanel;
 
 /**
  *
@@ -59,7 +63,6 @@ public class IntlOrgCollabRequestForm extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        btnSubmitRequest = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtOrgIntlID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -76,121 +79,78 @@ public class IntlOrgCollabRequestForm extends javax.swing.JPanel {
         txtRemaks = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtPreferredCollabCountry = new javax.swing.JTextField();
+        btnSubmitRequest = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(172, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Organization International ID");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 157, -1, -1));
+        add(txtOrgIntlID, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 154, 166, -1));
+
+        jLabel2.setText("Organization Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 128, -1, -1));
+        add(txtOrgName, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 125, 166, -1));
+
+        jLabel3.setText("Organization Email");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 186, -1, -1));
+        add(txtOrgEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 183, 166, -1));
+
+        jLabel4.setText("Organization City");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 215, -1, -1));
+        add(txtOrgCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 212, 166, -1));
+
+        jLabel10.setText("Organization Country");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 241, -1, 21));
+        add(txtOrgCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 242, 166, -1));
+
+        jLabel11.setText("Organization Type");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 272, -1, 21));
+        add(txtOrgType, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 273, 166, -1));
+
+        jLabel14.setText("Remarks");
+        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 334, -1, 21));
+        add(txtRemaks, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 335, 166, -1));
+
+        jLabel15.setText("Preferred Collaboration Country");
+        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 303, -1, 21));
+        add(txtPreferredCollabCountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 304, 166, -1));
+
+        btnSubmitRequest.setBackground(new java.awt.Color(217, 180, 74));
+        btnSubmitRequest.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnSubmitRequest.setForeground(new java.awt.Color(255, 255, 255));
         btnSubmitRequest.setText("Submit Request");
+        btnSubmitRequest.setContentAreaFilled(false);
+        btnSubmitRequest.setOpaque(true);
         btnSubmitRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitRequestActionPerformed(evt);
             }
         });
+        add(btnSubmitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 407, 220, 50));
 
-        jLabel1.setText("Organization International ID");
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel5.setText("Internaltional Organization Collaboration Form");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 44, -1, -1));
 
-        jLabel2.setText("Organization Name");
-
-        jLabel3.setText("Organization Email");
-
-        jLabel4.setText("Organization City");
-
-        txtOrgCity.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("<< Back");
+        btnBack.setContentAreaFilled(false);
+        btnBack.setOpaque(true);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrgCityActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
-
-        jLabel10.setText("Organization Country");
-
-        jLabel11.setText("Organization Type");
-
-        jLabel14.setText("Remarks");
-
-        jLabel15.setText("Preferred Collaboration Country");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11))
-                                .addGap(73, 73, 73)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtOrgEmail)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtOrgIntlID, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(txtOrgType, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                                                .addComponent(txtOrgCountry, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtOrgCity, javax.swing.GroupLayout.Alignment.LEADING)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(73, 73, 73)
-                                .addComponent(txtRemaks))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(73, 73, 73)
-                                .addComponent(txtPreferredCollabCountry))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
-                        .addComponent(btnSubmitRequest)))
-                .addGap(247, 247, 247))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtOrgIntlID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtOrgEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtOrgCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtOrgCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtOrgType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPreferredCollabCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRemaks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(btnSubmitRequest)
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 48, 91, 34));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
-
         //validations for emtpy fields
         if (txtOrgName.getText().isEmpty() || txtOrgCity.getText().isEmpty()
                 || txtOrgCountry.getText().isEmpty() || txtOrgEmail.getText().isEmpty()
@@ -217,12 +177,19 @@ public class IntlOrgCollabRequestForm extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Your Request Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnSubmitRequestActionPerformed
 
-    private void txtOrgCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrgCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrgCityActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemUserWorkAreaJPanel workArea = (SystemUserWorkAreaJPanel) component;
+        workArea.setVisible(true);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmitRequest;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
@@ -233,6 +200,7 @@ public class IntlOrgCollabRequestForm extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField txtOrgCity;
     private javax.swing.JTextField txtOrgCountry;
     private javax.swing.JTextField txtOrgEmail;
@@ -249,7 +217,7 @@ public class IntlOrgCollabRequestForm extends javax.swing.JPanel {
         attributes.setOrganizationInternationalId(txtOrgIntlID.getText());
         attributes.setOrganizationCountry(txtOrgCountry.getText());
         attributes.setOrganizationEmail(txtOrgEmail.getText());
-        attributes.setRemarks(txtRemaks.getText());
+        attributes.setRemarks(Optional.of(txtRemaks.getText()).orElse(""));
         attributes.setOrganizationType(txtOrgType.getText());
         attributes.setPreferredCollaborationCountry(txtPreferredCollabCountry.getText());
     }
