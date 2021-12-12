@@ -36,8 +36,8 @@ public class YouthServicesHeadWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form YouthServicesHeadWorkArea
      */
-    public YouthServicesHeadWorkArea(JPanel userProcessContainer, Entity entity, Enterprise enterprise,
-            User user, Organization organization) {
+    public YouthServicesHeadWorkArea(JPanel userProcessContainer, Entity entity, Organization organization, Enterprise enterprise,
+            User user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.entity = entity;

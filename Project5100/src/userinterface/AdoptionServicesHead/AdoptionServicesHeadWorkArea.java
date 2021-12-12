@@ -32,11 +32,12 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
     private Enterprise enterprise;
     private User user;
     private Organization organization;
-    
+
     /**
      * Creates new form AdoptionServicesHeadWorkArea
      */
-    public AdoptionServicesHeadWorkArea() {
+    public AdoptionServicesHeadWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
+            Enterprise enterprise, User user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.entity = entity;
@@ -208,6 +209,7 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
             }
         });
     }
+
     private void populateDetailsTable() {
         try {
             ChildAdoptionAttributes cha = (ChildAdoptionAttributes) tblAdoptionHeadWorkRequest.getValueAt(tblAdoptionHeadWorkRequest.getSelectedRow(), 0);

@@ -9,12 +9,17 @@ import userinterface.SystemAdminWorkArea.*;
 import Business.Enterprises.Enterprise;
 import Business.Entity;
 import Business.Organizations.Organization;
+import Business.Role.AdoptionServicesHead;
 import Business.Role.ChildWelfareAdmin;
+import Business.Role.FosterCareHead;
 import Business.Role.HealthcareHeadRole;
+import Business.Role.IntDeptAdmin;
 import Business.Role.PoliceDeptAdmin;
 import Business.Role.Role;
 import Business.Role.SafetyHeadRole;
 import Business.Role.SystemAdminRole;
+import Business.Role.VolunteerHead;
+import Business.Role.YouthCareHead;
 import Business.Users.User;
 import Business.Validator.Validator;
 import java.awt.CardLayout;
@@ -50,7 +55,7 @@ public class CreateUpdateOrgAdminJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateUpdateAdminRolesJPanel
      */
-    public CreateUpdateOrgAdminJPanel(JPanel enterprisePanel, User user, Entity entity, int operationId, Enterprise enterprise,Organization organization) {
+    public CreateUpdateOrgAdminJPanel(JPanel enterprisePanel, User user, Entity entity, int operationId, Enterprise enterprise, Organization organization) {
         initComponents();
         this.childWelfareOrgAdminPanel = enterprisePanel;
         this.entity = entity;
@@ -79,12 +84,10 @@ public class CreateUpdateOrgAdminJPanel extends javax.swing.JPanel {
             txtPassword.setText(user.getPassword());
             txtEmail.setText(user.getEmailId());
             comboEnterprise.setEnabled(false);
-            
+
         }
 
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -326,7 +329,7 @@ public class CreateUpdateOrgAdminJPanel extends javax.swing.JPanel {
 
                 Organization selectedOrg = enterprise.getOrganizationDirectory().getOrganizationList().get(comboEnterprise.getSelectedIndex());
                 //admin already exists for this enterprise 
-                if (selectedOrg.getOrganizationAdmin()!= null) {
+                if (selectedOrg.getOrganizationAdmin() != null) {
                     JOptionPane.showMessageDialog(null, "Admin Already Exists For This Organization", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -335,8 +338,19 @@ public class CreateUpdateOrgAdminJPanel extends javax.swing.JPanel {
                 if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
                     role = new SafetyHeadRole();
 
-                } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
+                } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())
+                        || selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
                     role = new HealthcareHeadRole();
+                } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.Volunteering.getValue())) {
+                    role = new VolunteerHead();
+                }else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdoptionServices.getValue())) {
+                    role = new AdoptionServicesHead();
+                }else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdolescentYoungAdultServices.getValue())) {
+                    role = new YouthCareHead();
+                }else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.FosterCare.getValue())) {
+                    role = new FosterCareHead();
+                }else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.IntlOrgColabComplaints.getValue())) {
+                    role = new IntDeptAdmin();
                 }
 
                 User user = entity.getUserDirectory().createUserAccount(txtFirstName.getText(), txtLastName.getText(), txtLocation.getText(),
@@ -364,7 +378,7 @@ public class CreateUpdateOrgAdminJPanel extends javax.swing.JPanel {
                         ur.setUsername(txtUsername.getText());
                         ur.setPassword(txtPassword.getText());
                         ur.setMobileNumber(txtMobileNo.getText());
-                        
+
                     }
                 }
 

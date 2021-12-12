@@ -10,25 +10,26 @@ import Business.Entity;
 import Business.Organizations.Organization;
 import Business.Users.User;
 import javax.swing.JPanel;
-import userinterface.SafetyHeadWorkArea.SafetyHeadAdminWorkArea;
+import userinterface.FosterCareHead.FosterCareHeadWorkArea;
+import userinterface.YouthServicesHead.YouthServicesHeadWorkArea;
 
 /**
  *
  * @author ChildWelfareServicesTeam
  */
-public class SafetyHeadRole extends Role {
+public class FosterCareHead extends Role {
 
     RoleType roleType;
 
-    public SafetyHeadRole() {
-        roleType = RoleType.SafetyHead;
+    public FosterCareHead() {
+        roleType = RoleType.FosterCareHead;
     }
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, Entity entity, Organization organization,
             Enterprise enterprise, User user) {
 
-        return new SafetyHeadAdminWorkArea(userProcessContainer, entity, organization,
+        return new FosterCareHeadWorkArea(userProcessContainer, entity, organization,
                 enterprise, user);
     }
 
