@@ -55,15 +55,20 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
 
         jScrollPane4 = new javax.swing.JScrollPane();
         tblChildDetails = new javax.swing.JTable();
-        btnAssignToChildWelfareOfficer = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblFosterCareHeadWorkRequest = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnRequestMoreDetails = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblGuardianDetails = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        btnRequestMoreDetails = new javax.swing.JButton();
+        btnAssignToChildWelfareOfficer = new javax.swing.JButton();
+        btnBack1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(172, 208, 192));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblChildDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,12 +94,7 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
             tblChildDetails.getColumnModel().getColumn(7).setHeaderValue("Open To Adoption");
         }
 
-        btnAssignToChildWelfareOfficer.setText("Assign to Child Welfare Officer");
-        btnAssignToChildWelfareOfficer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignToChildWelfareOfficerActionPerformed(evt);
-            }
-        });
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 747, 42));
 
         tblFosterCareHeadWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,18 +117,19 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(tblFosterCareHeadWorkRequest);
 
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 747, 91));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Child Details:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 110, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Work Requests: ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 120, -1));
 
-        btnRequestMoreDetails.setText("Request More Details");
-        btnRequestMoreDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestMoreDetailsActionPerformed(evt);
-            }
-        });
-
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Guardian Details:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 140, 21));
 
         tblGuardianDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,73 +149,74 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
         });
         jScrollPane6.setViewportView(tblGuardianDetails);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(btnAssignToChildWelfareOfficer, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(132, 132, 132)
-                        .addComponent(btnRequestMoreDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAssignToChildWelfareOfficer)
-                    .addComponent(btnRequestMoreDetails))
-                .addGap(33, 33, 33))
-        );
+        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 747, 50));
+
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel4.setText("Foster Care Head Work Area");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 370, -1));
+
+        btnRequestMoreDetails.setBackground(new java.awt.Color(217, 180, 74));
+        btnRequestMoreDetails.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnRequestMoreDetails.setForeground(new java.awt.Color(255, 255, 255));
+        btnRequestMoreDetails.setText("Request More Details");
+        btnRequestMoreDetails.setContentAreaFilled(false);
+        btnRequestMoreDetails.setOpaque(true);
+        btnRequestMoreDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestMoreDetailsActionPerformed(evt);
+            }
+        });
+        add(btnRequestMoreDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 220, 50));
+
+        btnAssignToChildWelfareOfficer.setBackground(new java.awt.Color(217, 180, 74));
+        btnAssignToChildWelfareOfficer.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnAssignToChildWelfareOfficer.setForeground(new java.awt.Color(255, 255, 255));
+        btnAssignToChildWelfareOfficer.setText("Assign to Child Welfare Officer");
+        btnAssignToChildWelfareOfficer.setContentAreaFilled(false);
+        btnAssignToChildWelfareOfficer.setOpaque(true);
+        btnAssignToChildWelfareOfficer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAssignToChildWelfareOfficerActionPerformed(evt);
+            }
+        });
+        add(btnAssignToChildWelfareOfficer, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 240, 50));
+
+        btnBack1.setBackground(new java.awt.Color(217, 180, 74));
+        btnBack1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnBack1.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack1.setText("<< Back");
+        btnBack1.setContentAreaFilled(false);
+        btnBack1.setOpaque(true);
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 90, 40));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
+        
+    }//GEN-LAST:event_btnRequestMoreDetailsActionPerformed
+
     private void btnAssignToChildWelfareOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficerActionPerformed
-        //todo aish/ketki
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnAssignToChildWelfareOfficerActionPerformed
 
-    private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRequestMoreDetailsActionPerformed
+    }//GEN-LAST:event_btnBack1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToChildWelfareOfficer;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnRequestMoreDetails;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
