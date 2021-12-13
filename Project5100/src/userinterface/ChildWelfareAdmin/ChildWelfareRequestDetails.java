@@ -13,14 +13,18 @@ import Business.Enterprises.Enterprise;
 import Business.Entity;
 import Business.Enums.Status;
 import Business.FosterCare.FosterCareAttributes;
+import Business.InternationalOrganizationCollaboration.InternationalOrganizationCollaborationAttributes;
 import Business.Organizations.Organization;
 import Business.Role.Role;
+import Business.SendEmail.EmailUtility;
 import Business.Users.User;
 import Business.Validator.Validator;
 import Business.WorkQueue.WorkRequest;
+import Business.YouthCare.YouthCareAttributes;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -33,7 +37,7 @@ import userinterface.UtilityClass;
  * @author ChildWelfareServicesTeam
  */
 public class ChildWelfareRequestDetails extends javax.swing.JPanel {
-    
+
     private JPanel displayPanel;
     private Entity entity;
     private User user;
@@ -54,11 +58,11 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         this.workRequest = workRequest;
         populateTable();
     }
-    
+
     private void populateTable() {
         DefaultTableModel delModel = (DefaultTableModel) tblRequestDetails.getModel();
         delModel.setRowCount(0);
-        
+
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
             btnAssignToAdoptionAgency.setVisible(false);
             btnAssignToHospital.setVisible(false);
@@ -67,67 +71,67 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
             Object[] row = new Object[2];
             row[0] = "Request Date";
             row[1] = Validator.getInstance().convertLocalDateToString(maltreatmentWorkReq.getRequestDate());
-            
+
             row = new Object[2];
             row[0] = "Status";
             row[1] = maltreatmentWorkReq.getStatus();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Message";
             row[1] = maltreatmentWorkReq.getMessage();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Victim Name";
             row[1] = maltreatmentWorkReq.getFullNameVictim();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Victim Location";
             row[1] = maltreatmentWorkReq.getLocationVictim();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Relationship";
             row[1] = maltreatmentWorkReq.getRelationshipVictimOffender();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Victim Name";
             row[1] = maltreatmentWorkReq.getStatus();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Victim Age";
             row[1] = maltreatmentWorkReq.getAgeVictim();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Victim Gender";
             row[1] = maltreatmentWorkReq.getGenderVictim();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Victim Name";
             row[1] = maltreatmentWorkReq.getStatus();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Remarks (Reporting Person)";
             row[1] = maltreatmentWorkReq.getRemarks();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Type Of Abuse";
             row[1] = maltreatmentWorkReq.getTypeOfAbuse();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Sender Contact No";
             row[1] = maltreatmentWorkReq.getSender().getMobileNumber();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Resolve Date";
             if (maltreatmentWorkReq.getResolveDate() != null) {
@@ -135,11 +139,11 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
             } else {
                 row[1] = "Yet To Be Resolved";
             }
-            
+
             delModel.addRow(row);
-            
+
         }
-        
+
         //showing details of CHildHEalth Organization
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
             btnAssignToAdoptionAgency.setVisible(false);
@@ -236,14 +240,13 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
                 row[1] = Validator.getInstance().convertLocalDateToString(childHealthAttributes.getResolveDate());
             } else {
                 row[1] = "Yet To Be Resolved";
-    }
+            }
 
             delModel.addRow(row);
 
         }
-        
+
         //showing details of Mentalhealth Organization
-
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
             btnAssignToAdoptionAgency.setVisible(false);
             btnAssignToHospital.setVisible(true);
@@ -348,115 +351,11 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
 
             delModel.addRow(row);
         }
-        
-        //showing details of Mental Health Organization
 
-        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
-            btnAssignToAdoptionAgency.setVisible(false);
-            btnAssignToHospital.setVisible(true);
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdoptionServices.getValue())) {
+            btnAssignToAdoptionAgency.setVisible(true);
+            btnAssignToHospital.setVisible(false);
             btnAssignToPolice.setVisible(false);
-            ChildMentalHealthAttributes childMentalHealthAttributes = (ChildMentalHealthAttributes) workRequest;
-            Object[] row = new Object[2];
-            row[0] = "Request Date";
-            row[1] = Validator.getInstance().convertLocalDateToString(childMentalHealthAttributes.getRequestDate());
-
-            row = new Object[2];
-            row[0] = "Status";
-            row[1] = childMentalHealthAttributes.getStatus();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Message";
-            row[1] = childMentalHealthAttributes.getMessage();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Child Name";
-            row[1] = childMentalHealthAttributes.getChildFullName();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Child Location";
-            row[1] = childMentalHealthAttributes.getChildLocation();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Child Age";
-            row[1] = childMentalHealthAttributes.getChildAge();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Child Gender";
-            row[1] = childMentalHealthAttributes.getChildGender();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Parent Full Name";
-            row[1] = childMentalHealthAttributes.getParentFullName();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Parent Contact No";
-            row[1] = childMentalHealthAttributes.getParentMobileNumber();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Child Insurance Number";
-            row[1] = childMentalHealthAttributes.getChildInsuranceNumber();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Type Of Disease";
-            row[1] = childMentalHealthAttributes.getTypeOfDisease();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Disease Duration";
-            row[1] = childMentalHealthAttributes.getDiseasePeriod();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Peferred Health Care Location";
-            row[1] = childMentalHealthAttributes.getPreferredHealthCareLocation();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Remarks (Reporting Person)";
-            row[1] = childMentalHealthAttributes.getRemarks();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Child Physician Name";
-            row[1] = childMentalHealthAttributes.getChildPhysicianName();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Child Physician Location";
-            row[1] = childMentalHealthAttributes.getChildPhysicianLocation();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Child Mental Health Diagnosis Type";
-            row[1] = childMentalHealthAttributes.getChildPhysicianLocation();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Check up Date";
-            row[1] = childMentalHealthAttributes.getLastCheckUpDate().toString();
-            delModel.addRow(row);
-
-            row = new Object[2];
-            row[0] = "Resolve Date";
-            if (childMentalHealthAttributes.getResolveDate() != null) {
-                row[1] = Validator.getInstance().convertLocalDateToString(childMentalHealthAttributes.getResolveDate());
-            } else {
-                row[1] = "Yet To Be Resolved";
-            }
-
-            delModel.addRow(row);
-        }
-        
-         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdoptionServices.getValue())) {
             ChildAdoptionAttributes childAttributes = (ChildAdoptionAttributes) workRequest;
             Object[] row = new Object[2];
             row[0] = "Request Date";
@@ -530,6 +429,9 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         }
 
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.FosterCare.getValue())) {
+            btnAssignToAdoptionAgency.setVisible(true);
+            btnAssignToHospital.setVisible(false);
+            btnAssignToPolice.setVisible(false);
             FosterCareAttributes childAttributes = (FosterCareAttributes) workRequest;
             Object[] row = new Object[2];
             row[0] = "Request Date";
@@ -598,7 +500,7 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
             row = new Object[2];
             row[0] = "Open For Adoption";
             String openToAdoption = "No";
-            if(childAttributes.isOpenToAdoption()) {
+            if (childAttributes.isOpenToAdoption()) {
                 openToAdoption = "Yes";
             }
             row[1] = openToAdoption;
@@ -608,10 +510,10 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
             row[0] = "Preferred Agency Location";
             row[1] = childAttributes.getPreferredAgencyLocation();
             delModel.addRow(row);
-            
+
             row = new Object[2];
             row[0] = "Temporary Stay Duration";
-            row[1] = childAttributes.getTemporaryStayExpectedDays()+"";
+            row[1] = childAttributes.getTemporaryStayExpectedDays() + "";
             delModel.addRow(row);
 
             row = new Object[2];
@@ -629,7 +531,157 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
 
             delModel.addRow(row);
         }
-        
+
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdolescentYoungAdultServices.getValue())) {
+            btnAssignToAdoptionAgency.setVisible(false);
+            btnAssignToHospital.setVisible(false);
+            btnAssignToPolice.setVisible(false);
+            YouthCareAttributes childAttributes = (YouthCareAttributes) workRequest;
+            Object[] row = new Object[2];
+            row[0] = "Request Date";
+            row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getRequestDate());
+
+            row = new Object[2];
+            row[0] = "Status";
+            row[1] = childAttributes.getStatus();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Message";
+            row[1] = childAttributes.getMessage();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Name";
+            row[1] = childAttributes.getFullName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Location";
+            row[1] = childAttributes.getLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Age";
+            row[1] = childAttributes.getAge() + "";
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Gender";
+            row[1] = childAttributes.getGender();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Date Of Birth";
+            row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getDateOfBirth());
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Name";
+            row[1] = childAttributes.getLegalGuardianName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Contact No";
+            row[1] = childAttributes.getLegalGuardianMobile();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Previous youth Care Agency";
+            row[1] = childAttributes.getPreviousYouthCareAgency();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "School Name";
+            row[1] = childAttributes.getSchoolName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Grade";
+            row[1] = childAttributes.getGrade() + "";
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Remarks (Reporting Person)";
+            row[1] = childAttributes.getRemarks();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Resolve Date";
+            if (childAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getResolveDate());
+            } else {
+                row[1] = "Yet To Be Resolved";
+            }
+
+            delModel.addRow(row);
+        }
+
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.IntlOrgColabComplaints.getValue())) {
+            btnAssignToAdoptionAgency.setVisible(false);
+            btnAssignToHospital.setVisible(false);
+            btnAssignToPolice.setVisible(false);
+            InternationalOrganizationCollaborationAttributes childAttributes = (InternationalOrganizationCollaborationAttributes) workRequest;
+            Object[] row = new Object[2];
+            row[0] = "Request Date";
+            row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getRequestDate());
+
+            row = new Object[2];
+            row[0] = "Status";
+            row[1] = childAttributes.getStatus();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Message";
+            row[1] = childAttributes.getMessage();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Name";
+            row[1] = childAttributes.getOrganizationName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "City";
+            row[1] = childAttributes.getOrganizationCity();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Country";
+            row[1] = childAttributes.getOrganizationCountry();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Type";
+            row[1] = childAttributes.getOrganizationType();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Email";
+            row[1] = childAttributes.getOrganizationEmail();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Preferred collaboration country";
+            row[1] = childAttributes.getPreferredCollaborationCountry();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Remarks (Reporting Person)";
+            row[1] = childAttributes.getRemarks();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Resolve Date";
+            if (childAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getResolveDate());
+            } else {
+                row[1] = "Yet To Be Resolved";
+            }
+
+            delModel.addRow(row);
+        }
+
     }
 
     /**
@@ -648,6 +700,9 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         btnAssignToHospital = new javax.swing.JButton();
         btnAssignToPolice = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        txtRemarks = new javax.swing.JTextField();
+        btnAddMsg = new javax.swing.JButton();
+        btnMarkResolved = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -700,7 +755,7 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
                 btnAssignToHospitalActionPerformed(evt);
             }
         });
-        add(btnAssignToHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 670, 241, 49));
+        add(btnAssignToHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 670, 241, 49));
 
         btnAssignToPolice.setBackground(new java.awt.Color(217, 180, 74));
         btnAssignToPolice.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -727,6 +782,33 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 100, 50));
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 750, 240, 50));
+
+        btnAddMsg.setBackground(new java.awt.Color(217, 180, 74));
+        btnAddMsg.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnAddMsg.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddMsg.setText("ADD REMARKS");
+        btnAddMsg.setContentAreaFilled(false);
+        btnAddMsg.setOpaque(true);
+        btnAddMsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMsgActionPerformed(evt);
+            }
+        });
+        add(btnAddMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 750, 241, 49));
+
+        btnMarkResolved.setBackground(new java.awt.Color(217, 180, 74));
+        btnMarkResolved.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnMarkResolved.setForeground(new java.awt.Color(255, 255, 255));
+        btnMarkResolved.setText("MARK RESOLVED");
+        btnMarkResolved.setContentAreaFilled(false);
+        btnMarkResolved.setOpaque(true);
+        btnMarkResolved.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMarkResolvedActionPerformed(evt);
+            }
+        });
+        add(btnMarkResolved, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 750, 241, 49));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToAdoptionAgencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToAdoptionAgencyActionPerformed
@@ -763,7 +845,7 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         }
         JOptionPane.showMessageDialog(null, "Assigned To Police", "Success", JOptionPane.INFORMATION_MESSAGE);
         btnBack.doClick();
-        
+
 
     }//GEN-LAST:event_btnAssignToPoliceActionPerformed
 
@@ -778,14 +860,45 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         layout.previous(displayPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnAddMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMsgActionPerformed
+        // TODO add your handling code here:
+        if (txtRemarks.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Message Entered", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        workRequest.setMessage(txtRemarks.getText());
+        populateTable();
+    }//GEN-LAST:event_btnAddMsgActionPerformed
+
+    private void btnMarkResolvedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarkResolvedActionPerformed
+        // TODO add your handling code here:
+        workRequest.setStatus(Status.StatusType.RESOLVED.getValue());
+        workRequest.setResolveDate(LocalDateTime.now());
+        sendEmail(workRequest.getSender().getEmailId(), "resolved");
+
+        populateTable();
+    }//GEN-LAST:event_btnMarkResolvedActionPerformed
+
+    private void sendEmail(String userEmail, String status) {
+        String requestDate = Validator.getInstance().convertLocalDateToString(workRequest.getRequestDate());
+        String emailmsg = "Hi " + workRequest.getSender().getFullName() + "\n"
+                + "Your ticket raised on date: " + requestDate + " is now marked as " + status.toUpperCase() + "\n"
+                + "Please login in the portal to check details and contact us if you need any additional information.";
+        String emailsubject = "Update on your ticket dated #" + requestDate;
+        EmailUtility.SendMail(userEmail, emailmsg, emailsubject);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddMsg;
     private javax.swing.JButton btnAssignToAdoptionAgency;
     private javax.swing.JButton btnAssignToHospital;
     private javax.swing.JButton btnAssignToPolice;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnMarkResolved;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitleAdminRoles;
     private javax.swing.JTable tblRequestDetails;
+    private javax.swing.JTextField txtRemarks;
     // End of variables declaration//GEN-END:variables
 }

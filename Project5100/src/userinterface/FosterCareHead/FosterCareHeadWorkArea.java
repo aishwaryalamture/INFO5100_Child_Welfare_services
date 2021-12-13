@@ -66,7 +66,6 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
         jScrollPane6 = new javax.swing.JScrollPane();
         tblGuardianDetails = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        btnRequestMoreDetails = new javax.swing.JButton();
         btnAssignToChildWelfareOfficer = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
@@ -158,19 +157,6 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
         jLabel4.setText("Foster Care Head Work Area");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 370, -1));
 
-        btnRequestMoreDetails.setBackground(new java.awt.Color(217, 180, 74));
-        btnRequestMoreDetails.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        btnRequestMoreDetails.setForeground(new java.awt.Color(255, 255, 255));
-        btnRequestMoreDetails.setText("Request More Details");
-        btnRequestMoreDetails.setContentAreaFilled(false);
-        btnRequestMoreDetails.setOpaque(true);
-        btnRequestMoreDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestMoreDetailsActionPerformed(evt);
-            }
-        });
-        add(btnRequestMoreDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 220, 50));
-
         btnAssignToChildWelfareOfficer.setBackground(new java.awt.Color(217, 180, 74));
         btnAssignToChildWelfareOfficer.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         btnAssignToChildWelfareOfficer.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,12 +168,8 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
                 btnAssignToChildWelfareOfficerActionPerformed(evt);
             }
         });
-        add(btnAssignToChildWelfareOfficer, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, 240, 50));
+        add(btnAssignToChildWelfareOfficer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 520, 240, 50));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
-
-    }//GEN-LAST:event_btnRequestMoreDetailsActionPerformed
 
     private void btnAssignToChildWelfareOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficerActionPerformed
         ChildMaltreatmentAttributes cma = (ChildMaltreatmentAttributes) tblFosterCareHeadWorkRequest.getValueAt(tblFosterCareHeadWorkRequest.getSelectedRow(), 0);
@@ -204,7 +186,6 @@ public class FosterCareHeadWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToChildWelfareOfficer;
-    private javax.swing.JButton btnRequestMoreDetails;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

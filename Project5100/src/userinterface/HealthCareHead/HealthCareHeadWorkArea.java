@@ -62,7 +62,6 @@ public class HealthCareHeadWorkArea extends javax.swing.JPanel {
     private void initComponents() {
 
         btnAssignToChildWelfareOfficer3 = new javax.swing.JButton();
-        btnRequestMoreDetails1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblChildDetails = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -89,21 +88,7 @@ public class HealthCareHeadWorkArea extends javax.swing.JPanel {
                 btnAssignToChildWelfareOfficer3ActionPerformed(evt);
             }
         });
-        add(btnAssignToChildWelfareOfficer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 489, 232, -1));
-
-        btnRequestMoreDetails1.setBackground(new java.awt.Color(217, 180, 74));
-        btnRequestMoreDetails1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        btnRequestMoreDetails1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRequestMoreDetails1.setText("Request More Details");
-        btnRequestMoreDetails1.setContentAreaFilled(false);
-        btnRequestMoreDetails1.setOpaque(true);
-        btnRequestMoreDetails1.setPreferredSize(new java.awt.Dimension(210, 34));
-        btnRequestMoreDetails1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestMoreDetails1ActionPerformed(evt);
-            }
-        });
-        add(btnRequestMoreDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(437, 489, 172, -1));
+        add(btnAssignToChildWelfareOfficer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 232, -1));
 
         tblChildDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -204,14 +189,9 @@ public class HealthCareHeadWorkArea extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Assigned To ChildWelfare Admin", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAssignToChildWelfareOfficer3ActionPerformed
 
-    private void btnRequestMoreDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetails1ActionPerformed
-
-    }//GEN-LAST:event_btnRequestMoreDetails1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToChildWelfareOfficer3;
-    private javax.swing.JButton btnRequestMoreDetails1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
