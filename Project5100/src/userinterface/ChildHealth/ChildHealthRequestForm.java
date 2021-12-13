@@ -156,7 +156,7 @@ public class ChildHealthRequestForm extends javax.swing.JPanel {
         add(txtChildPhysicianLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(717, 640, 132, -1));
 
         jLabel5.setText("Are you parent of the child?");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 143, 135, 24));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 180, 24));
 
         radioButtonYes.setBackground(new java.awt.Color(172, 208, 192));
         buttonGroup1.add(radioButtonYes);
@@ -194,9 +194,9 @@ public class ChildHealthRequestForm extends javax.swing.JPanel {
         });
         add(btnSubmitRequest1, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 717, 136, 49));
 
-        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel7.setText("Child Mental HealthCare Service Request Form");
+        jLabel7.setText("Child HealthCare Service Request Form");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(542, 64, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(217, 180, 74));
@@ -210,7 +210,7 @@ public class ChildHealthRequestForm extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 64, 100, 34));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 100, 50));
 
         btnBoy.setBackground(new java.awt.Color(172, 208, 192));
         btnBoy.setText("Boy");

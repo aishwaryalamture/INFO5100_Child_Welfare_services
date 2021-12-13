@@ -5,12 +5,14 @@
  */
 package userinterface.ChildWelfareAdmin;
 
+import Business.ChildAdoption.ChildAdoptionAttributes;
 import Business.ChildHealth.ChildHealthAttributes;
 import Business.ChildHealth.ChildMentalHealthAttributes;
 import Business.ChildMaltreatment.ChildMaltreatmentAttributes;
 import Business.Enterprises.Enterprise;
 import Business.Entity;
 import Business.Enums.Status;
+import Business.FosterCare.FosterCareAttributes;
 import Business.Organizations.Organization;
 import Business.Role.Role;
 import Business.Users.User;
@@ -140,6 +142,9 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         
         //showing details of CHildHEalth Organization
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
+            btnAssignToAdoptionAgency.setVisible(false);
+            btnAssignToHospital.setVisible(true);
+            btnAssignToPolice.setVisible(false);
             ChildHealthAttributes childHealthAttributes = (ChildHealthAttributes) workRequest;
             Object[] row = new Object[2];
             row[0] = "Request Date";
@@ -240,6 +245,9 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
         //showing details of Mentalhealth Organization
 
         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
+            btnAssignToAdoptionAgency.setVisible(false);
+            btnAssignToHospital.setVisible(true);
+            btnAssignToPolice.setVisible(false);
             ChildMentalHealthAttributes childMentalHealthAttributes = (ChildMentalHealthAttributes) workRequest;
             Object[] row = new Object[2];
             row[0] = "Request Date";
@@ -334,6 +342,287 @@ public class ChildWelfareRequestDetails extends javax.swing.JPanel {
             row[0] = "Resolve Date";
             if (childMentalHealthAttributes.getResolveDate() != null) {
                 row[1] = Validator.getInstance().convertLocalDateToString(childMentalHealthAttributes.getResolveDate());
+            } else {
+                row[1] = "Yet To Be Resolved";
+            }
+
+            delModel.addRow(row);
+        }
+        
+        //showing details of Mental Health Organization
+
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
+            btnAssignToAdoptionAgency.setVisible(false);
+            btnAssignToHospital.setVisible(true);
+            btnAssignToPolice.setVisible(false);
+            ChildMentalHealthAttributes childMentalHealthAttributes = (ChildMentalHealthAttributes) workRequest;
+            Object[] row = new Object[2];
+            row[0] = "Request Date";
+            row[1] = Validator.getInstance().convertLocalDateToString(childMentalHealthAttributes.getRequestDate());
+
+            row = new Object[2];
+            row[0] = "Status";
+            row[1] = childMentalHealthAttributes.getStatus();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Message";
+            row[1] = childMentalHealthAttributes.getMessage();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Name";
+            row[1] = childMentalHealthAttributes.getChildFullName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Location";
+            row[1] = childMentalHealthAttributes.getChildLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Age";
+            row[1] = childMentalHealthAttributes.getChildAge();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Gender";
+            row[1] = childMentalHealthAttributes.getChildGender();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Parent Full Name";
+            row[1] = childMentalHealthAttributes.getParentFullName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Parent Contact No";
+            row[1] = childMentalHealthAttributes.getParentMobileNumber();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Insurance Number";
+            row[1] = childMentalHealthAttributes.getChildInsuranceNumber();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Type Of Disease";
+            row[1] = childMentalHealthAttributes.getTypeOfDisease();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Disease Duration";
+            row[1] = childMentalHealthAttributes.getDiseasePeriod();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Peferred Health Care Location";
+            row[1] = childMentalHealthAttributes.getPreferredHealthCareLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Remarks (Reporting Person)";
+            row[1] = childMentalHealthAttributes.getRemarks();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Physician Name";
+            row[1] = childMentalHealthAttributes.getChildPhysicianName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Physician Location";
+            row[1] = childMentalHealthAttributes.getChildPhysicianLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Mental Health Diagnosis Type";
+            row[1] = childMentalHealthAttributes.getChildPhysicianLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Check up Date";
+            row[1] = childMentalHealthAttributes.getLastCheckUpDate().toString();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Resolve Date";
+            if (childMentalHealthAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childMentalHealthAttributes.getResolveDate());
+            } else {
+                row[1] = "Yet To Be Resolved";
+            }
+
+            delModel.addRow(row);
+        }
+        
+         if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdoptionServices.getValue())) {
+            ChildAdoptionAttributes childAttributes = (ChildAdoptionAttributes) workRequest;
+            Object[] row = new Object[2];
+            row[0] = "Request Date";
+            row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getRequestDate());
+
+            row = new Object[2];
+            row[0] = "Status";
+            row[1] = childAttributes.getStatus();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Message";
+            row[1] = childAttributes.getMessage();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Name";
+            row[1] = childAttributes.getChildFullName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Location";
+            row[1] = childAttributes.getChildLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Age";
+            row[1] = childAttributes.getChildAge();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Gender";
+            row[1] = childAttributes.getChildGender();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Race";
+            row[1] = childAttributes.getRace();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Ethnicity";
+            row[1] = childAttributes.getEthnicity();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Contact No";
+            row[1] = childAttributes.getContactNo();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Preferred Agency Location";
+            row[1] = childAttributes.getPreferredAgencyLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Remarks (Reporting Person)";
+            row[1] = childAttributes.getRemarks();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Resolve Date";
+            if (childAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getResolveDate());
+            } else {
+                row[1] = "Yet To Be Resolved";
+            }
+
+            delModel.addRow(row);
+
+        }
+
+        if (organization.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.FosterCare.getValue())) {
+            FosterCareAttributes childAttributes = (FosterCareAttributes) workRequest;
+            Object[] row = new Object[2];
+            row[0] = "Request Date";
+            row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getRequestDate());
+
+            row = new Object[2];
+            row[0] = "Status";
+            row[1] = childAttributes.getStatus();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Message";
+            row[1] = childAttributes.getMessage();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Name";
+            row[1] = childAttributes.getChildFullName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Location";
+            row[1] = childAttributes.getChildLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Age";
+            row[1] = childAttributes.getChildAge();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Gender";
+            row[1] = childAttributes.getChildGender();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Race";
+            row[1] = childAttributes.getRace();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Child Ethnicity";
+            row[1] = childAttributes.getEthnicity();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Name";
+            row[1] = childAttributes.getLegalGuardianName();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Contact No";
+            row[1] = childAttributes.getLegalGuardianMobile();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Email";
+            row[1] = childAttributes.getLegalGuardianMobile();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Legal Guardian Location";
+            row[1] = childAttributes.getLegalGuardianLocation();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Open For Adoption";
+            String openToAdoption = "No";
+            if(childAttributes.isOpenToAdoption()) {
+                openToAdoption = "Yes";
+            }
+            row[1] = openToAdoption;
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Preferred Agency Location";
+            row[1] = childAttributes.getPreferredAgencyLocation();
+            delModel.addRow(row);
+            
+            row = new Object[2];
+            row[0] = "Temporary Stay Duration";
+            row[1] = childAttributes.getTemporaryStayExpectedDays()+"";
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Remarks (Reporting Person)";
+            row[1] = childAttributes.getRemarks();
+            delModel.addRow(row);
+
+            row = new Object[2];
+            row[0] = "Resolve Date";
+            if (childAttributes.getResolveDate() != null) {
+                row[1] = Validator.getInstance().convertLocalDateToString(childAttributes.getResolveDate());
             } else {
                 row[1] = "Yet To Be Resolved";
             }

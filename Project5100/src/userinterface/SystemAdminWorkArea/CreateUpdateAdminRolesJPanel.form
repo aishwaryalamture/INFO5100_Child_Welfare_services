@@ -16,69 +16,73 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,59,0,0,5,-56"/>
   </AuxValues>
 
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="211" pref="211" max="-2" attributes="0"/>
-              <Component id="btnBack" min="-2" pref="115" max="-2" attributes="0"/>
-              <EmptySpace min="231" pref="231" max="-2" attributes="0"/>
-              <Component id="lblTitle" min="-2" pref="280" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
-              <Component id="lblFirstName1" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
-              <Component id="comboEnterprise" min="-2" pref="260" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
-              <Component id="lblFirstName" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
-              <Component id="txtFirstName" min="-2" pref="260" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
-              <Component id="lblLastName" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
-              <Component id="txtLastName" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
-              <Component id="lblLocation" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
-              <Component id="txtLocation" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
-              <Component id="lblMobileNo" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
-              <Component id="txtMobileNo" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
-              <Component id="lblUsername" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
-              <Component id="txtUsername" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
-              <Component id="lblPassword" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
-              <Component id="txtPassword" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
-              <Component id="lblEmail" min="-2" pref="111" max="-2" attributes="0"/>
-              <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
-              <Component id="txtEmail" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="638" pref="638" max="-2" attributes="0"/>
-              <Component id="btnCreate" min="-2" pref="115" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="211" pref="211" max="-2" attributes="0"/>
+                      <Component id="btnBack" min="-2" pref="115" max="-2" attributes="0"/>
+                      <EmptySpace min="231" pref="231" max="-2" attributes="0"/>
+                      <Component id="lblTitle" min="-2" pref="280" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
+                      <Component id="lblFirstName1" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
+                      <Component id="comboEnterprise" min="-2" pref="260" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
+                      <Component id="lblFirstName" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
+                      <Component id="txtFirstName" min="-2" pref="260" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
+                      <Component id="lblLastName" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
+                      <Component id="txtLastName" linkSize="1" min="-2" pref="260" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
+                      <Component id="lblLocation" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
+                      <Component id="txtLocation" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
+                      <Component id="lblMobileNo" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
+                      <Component id="txtMobileNo" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
+                      <Component id="lblUsername" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
+                      <Component id="txtUsername" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
+                      <Component id="lblPassword" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
+                      <Component id="txtPassword" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="493" pref="493" max="-2" attributes="0"/>
+                      <Component id="lblEmail" min="-2" pref="111" max="-2" attributes="0"/>
+                      <EmptySpace min="144" pref="144" max="-2" attributes="0"/>
+                      <Component id="txtEmail" linkSize="1" min="-2" pref="155" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="638" pref="638" max="-2" attributes="0"/>
+                      <Component id="btnCreate" min="-2" pref="115" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="462" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -156,6 +160,7 @@
               </Group>
               <EmptySpace min="52" pref="52" max="-2" attributes="0"/>
               <Component id="btnCreate" min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace pref="255" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

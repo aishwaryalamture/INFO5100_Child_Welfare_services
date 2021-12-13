@@ -33,7 +33,7 @@ public class ChildWelfareOrgAdminRolesWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form SysAdminRolesWorkArea
      */
-    public ChildWelfareOrgAdminRolesWorkArea(JPanel displayPanel, User user, Entity entity,Enterprise enterprise) {
+    public ChildWelfareOrgAdminRolesWorkArea(JPanel displayPanel, User user, Entity entity, Enterprise enterprise) {
         initComponents();
         this.childWelfarePanel = displayPanel;
         this.entity = entity;
@@ -48,7 +48,7 @@ public class ChildWelfareOrgAdminRolesWorkArea extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblAdminRoles.getModel();
         model.setRowCount(0);
         for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            if (org.getOrganizationAdmin()!= null) {
+            if (org.getOrganizationAdmin() != null) {
                 Object[] row = new Object[3];
 
                 row[0] = org;
@@ -174,6 +174,8 @@ public class ChildWelfareOrgAdminRolesWorkArea extends javax.swing.JPanel {
         User adminUser = organization.getOrganizationAdmin();
         organization.setOrganizationAdmin(null);
         entity.getUserDirectory().getUserList().remove(adminUser);
+        JOptionPane.showMessageDialog(null, "Admin Entry Deleted", "Warning", JOptionPane.WARNING_MESSAGE);
+
         populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 

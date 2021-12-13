@@ -80,7 +80,7 @@ public class ChildWelfareHospitalRequestsJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Police Work Area");
+        lblTitle.setText("Hospital Work Area");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(569, 74, 310, 53));
 
         tblRequest.setBorder(new javax.swing.border.MatteBorder(null));
@@ -135,7 +135,7 @@ public class ChildWelfareHospitalRequestsJPanel extends javax.swing.JPanel {
         }
         WorkRequest workRequest = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
 
-        HospitalUnitRequestDetails requestDetails = new HospitalUnitRequestDetails(displayPanel, entity, enterprise, user, workRequest);
+        HospitalUnitReqDetails requestDetails = new HospitalUnitReqDetails(displayPanel, entity, enterprise, user, workRequest);
         displayPanel.add(requestDetails);
         CardLayout layout = (CardLayout) displayPanel.getLayout();
         layout.next(displayPanel);
