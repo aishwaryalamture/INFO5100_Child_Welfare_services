@@ -10,6 +10,7 @@ import Business.Entity;
 import Business.Enums.Status;
 import Business.Organizations.Organization;
 import Business.Users.User;
+import Business.Validator.Validator;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ import userinterface.SystemUser.SystemUserWorkAreaJPanel;
  * @author ChildWelfareServicesTeam
  */
 public class MaltreatmentReportForm extends javax.swing.JPanel {
-    
+
     private ChildMaltreatmentAttributes childMaltreatmentAttributes;
     private JPanel userProcessContainer;
     private Entity entity;
@@ -214,29 +215,29 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel11))
                                 .addGap(77, 77, 77)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFullNameVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtDescriptionOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtLocationOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtLocationVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtRelationshipVictimOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtFullNameReporter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtAbuseType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtVictimAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(btnMaleO)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnFemaleO)
-                                        .addGap(27, 27, 27))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtFullNameVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtDescriptionOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtLocationOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtLocationVictim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtRelationshipVictimOffender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtFullNameReporter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtRemarks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtAbuseType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtVictimAge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addGap(9, 9, 9)
+                                            .addComponent(btnMaleO)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                                            .addComponent(btnFemaleO)
+                                            .addGap(27, 27, 27)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(19, 19, 19)
                                         .addComponent(btnMaleV)
                                         .addGap(45, 45, 45)
-                                        .addComponent(btnFemaleV, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(25, 25, 25)))))))
-                .addContainerGap(630, Short.MAX_VALUE))
+                                        .addComponent(btnFemaleV, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(616, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,13 +323,18 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         if (!btnMaleV.isEnabled() && !btnFemaleV.isEnabled()) {
             JOptionPane.showMessageDialog(null, "Gender of the victim cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
+        if (!Validator.getInstance().validateAllDigits(txtVictimAge.getText())) {
+            JOptionPane.showMessageDialog(null, "Invalid Age Entered ",
+                    "Invalid", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         //save form
         saveChildMaltreatmentForm();
         saveWorkRequest();
@@ -339,9 +345,9 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Your Report Has Been Submitted", "Success", JOptionPane.INFORMATION_MESSAGE);
         btnBack.doClick();
     }//GEN-LAST:event_btnReportActionPerformed
-    
+
     private void saveChildMaltreatmentForm() {
-        
+
         childMaltreatmentAttributes.setFullNameVictim(
                 Optional.of(txtFullNameVictim.getText()).orElse(""));
         childMaltreatmentAttributes.setLocationVictim(
@@ -352,35 +358,35 @@ public class MaltreatmentReportForm extends javax.swing.JPanel {
                 Optional.of(txtRemarks.getText()).orElse(""));
         childMaltreatmentAttributes.setTypeOfAbuse(
                 Optional.of(txtDescriptionOffender.getText()).orElse(""));
-        
+
         if (btnMaleV.isEnabled()) {
             childMaltreatmentAttributes.setGenderVictim("Male");
         } else {
             childMaltreatmentAttributes.setGenderVictim("Female");
         }
-        
+
         String age = txtVictimAge.getText();
         if (age != null) {
             childMaltreatmentAttributes.setAgeVictim(Integer.parseInt(age));
         }
-        
+
         childMaltreatmentAttributes.setOffenderDescription(
                 Optional.of(txtDescriptionOffender.getText()).orElse(""));
         childMaltreatmentAttributes.setOffenderLocation(
                 Optional.of(txtLocationOffender.getText()).orElse(""));
         childMaltreatmentAttributes.setOffenderName(
                 Optional.of(txtFullNameReporter.getText()).orElse(""));
-        
+
         if (btnMaleO.isEnabled()) {
             childMaltreatmentAttributes.setOffenderGender("Male");
         } else {
             childMaltreatmentAttributes.setOffenderGender("Female");
         }
-        
+
     }
-    
+
     private void saveWorkRequest() {
-        
+
         childMaltreatmentAttributes.setSender(user);
         childMaltreatmentAttributes.setReceiver(organization.getOrganizationAdmin());
         childMaltreatmentAttributes.setRequestDate(LocalDateTime.now());

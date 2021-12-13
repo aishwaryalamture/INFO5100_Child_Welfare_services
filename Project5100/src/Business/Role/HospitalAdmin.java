@@ -22,7 +22,7 @@ public class HospitalAdmin extends Role {
     Role.RoleType roleType;
 
     public HospitalAdmin() {
-        roleType = Role.RoleType.PoliceDeptAdmin;
+        roleType = Role.RoleType.HospitalAdmin;
     }
 
     @Override
