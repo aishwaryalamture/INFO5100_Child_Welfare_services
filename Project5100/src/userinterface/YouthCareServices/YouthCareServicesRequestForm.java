@@ -44,8 +44,8 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
      * @param user
      * @param organization
      */
-    public YouthCareServicesRequestForm(JPanel userProcessContainer, Entity entity, Enterprise enterprise,
-            User user, Organization organization) {
+    public YouthCareServicesRequestForm(JPanel userProcessContainer, Entity entity, Organization organization, Enterprise enterprise,
+            User user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.entity = entity;
@@ -217,7 +217,7 @@ public class YouthCareServicesRequestForm extends javax.swing.JPanel {
         }
 
         if (txtFullName.getText().isEmpty() || txtAge.getText().isEmpty() || txtLocation.getText().isEmpty()
-             || jDateChooser1.getDate().toString().isEmpty()   || (!btnBoy.isEnabled() && !btnGirl.isEnabled())) {
+                || jDateChooser1.getDate().toString().isEmpty() || (!btnBoy.isEnabled() && !btnGirl.isEnabled())) {
             JOptionPane.showMessageDialog(null, "Name, Date of birth, age, gender cannot be empty ",
                     "Empty Fields", JOptionPane.WARNING_MESSAGE);
             return;

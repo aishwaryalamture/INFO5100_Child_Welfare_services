@@ -12,8 +12,14 @@ import Business.Organizations.Organization;
 import Business.Users.User;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import userinterface.ChildAdoption.ChildAdoptionRequestForm;
+import userinterface.ChildHealth.ChildHealthRequestForm;
+import userinterface.ChildHealth.ChildMentalHealthRequestForm;
+import userinterface.FosterCare.FosterCareRequestForm;
+import userinterface.InternationalOrganizationCollaboration.IntlOrgCollabRequestForm;
 import userinterface.SafetyHeadChildMaltreatment.MaltreatmentReportForm;
 import userinterface.UtilityClass;
+import userinterface.YouthCareServices.YouthCareServicesRequestForm;
 
 /**
  *
@@ -48,8 +54,13 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
 
         lblTitle = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        btn = new javax.swing.JButton();
+        btnIntDept = new javax.swing.JButton();
         btnReportMaltreatment = new javax.swing.JButton();
+        btnChildMentalHealth = new javax.swing.JButton();
+        btnAdoptionServices = new javax.swing.JButton();
+        btnYouthCare = new javax.swing.JButton();
+        btnFosterCare = new javax.swing.JButton();
+        btnChildHealth = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,21 +71,22 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
         lblTitle.setText("Welcome to Child Welfare");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 74, 310, 53));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/build_brighter_tomorrow.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 220, 260));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/user_panel.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 270, 310));
 
-        btn.setBackground(new java.awt.Color(217, 180, 74));
-        btn.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        btn.setForeground(new java.awt.Color(255, 255, 255));
-        btn.setContentAreaFilled(false);
-        btn.setOpaque(true);
-        btn.setPreferredSize(new java.awt.Dimension(210, 34));
-        btn.addActionListener(new java.awt.event.ActionListener() {
+        btnIntDept.setBackground(new java.awt.Color(217, 180, 74));
+        btnIntDept.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnIntDept.setForeground(new java.awt.Color(255, 255, 255));
+        btnIntDept.setText("Request With Int Dept");
+        btnIntDept.setContentAreaFilled(false);
+        btnIntDept.setOpaque(true);
+        btnIntDept.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnIntDept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActionPerformed(evt);
+                btnIntDeptActionPerformed(evt);
             }
         });
-        add(btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 230, 60));
+        add(btnIntDept, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 660, 230, 60));
 
         btnReportMaltreatment.setBackground(new java.awt.Color(217, 180, 74));
         btnReportMaltreatment.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
@@ -88,21 +100,98 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
                 btnReportMaltreatmentActionPerformed(evt);
             }
         });
-        add(btnReportMaltreatment, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 230, 60));
+        add(btnReportMaltreatment, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 230, 60));
+
+        btnChildMentalHealth.setBackground(new java.awt.Color(217, 180, 74));
+        btnChildMentalHealth.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnChildMentalHealth.setForeground(new java.awt.Color(255, 255, 255));
+        btnChildMentalHealth.setText("Request For Child Mental Health");
+        btnChildMentalHealth.setContentAreaFilled(false);
+        btnChildMentalHealth.setOpaque(true);
+        btnChildMentalHealth.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnChildMentalHealth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChildMentalHealthActionPerformed(evt);
+            }
+        });
+        add(btnChildMentalHealth, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 230, 60));
+
+        btnAdoptionServices.setBackground(new java.awt.Color(217, 180, 74));
+        btnAdoptionServices.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnAdoptionServices.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdoptionServices.setText("Request For Adoption Services");
+        btnAdoptionServices.setContentAreaFilled(false);
+        btnAdoptionServices.setOpaque(true);
+        btnAdoptionServices.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnAdoptionServices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdoptionServicesActionPerformed(evt);
+            }
+        });
+        add(btnAdoptionServices, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 230, 60));
+
+        btnYouthCare.setBackground(new java.awt.Color(217, 180, 74));
+        btnYouthCare.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnYouthCare.setForeground(new java.awt.Color(255, 255, 255));
+        btnYouthCare.setText("Request For Youth Care");
+        btnYouthCare.setContentAreaFilled(false);
+        btnYouthCare.setOpaque(true);
+        btnYouthCare.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnYouthCare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYouthCareActionPerformed(evt);
+            }
+        });
+        add(btnYouthCare, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 500, 230, 60));
+
+        btnFosterCare.setBackground(new java.awt.Color(217, 180, 74));
+        btnFosterCare.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnFosterCare.setForeground(new java.awt.Color(255, 255, 255));
+        btnFosterCare.setText("Request For Foster Care");
+        btnFosterCare.setContentAreaFilled(false);
+        btnFosterCare.setOpaque(true);
+        btnFosterCare.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnFosterCare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFosterCareActionPerformed(evt);
+            }
+        });
+        add(btnFosterCare, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 580, 230, 60));
+
+        btnChildHealth.setBackground(new java.awt.Color(217, 180, 74));
+        btnChildHealth.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnChildHealth.setForeground(new java.awt.Color(255, 255, 255));
+        btnChildHealth.setText("Request For Child Health");
+        btnChildHealth.setContentAreaFilled(false);
+        btnChildHealth.setOpaque(true);
+        btnChildHealth.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnChildHealth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChildHealthActionPerformed(evt);
+            }
+        });
+        add(btnChildHealth, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 230, 60));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
+    private void btnIntDeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntDeptActionPerformed
         // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnActionPerformed
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.IntlOrgColabComplaints.getValue())) {
+                IntlOrgCollabRequestForm requestForm = new IntlOrgCollabRequestForm(displayPanel, entity, org, enterprise, user);
+                displayPanel.add(requestForm);
+                CardLayout layout = (CardLayout) displayPanel.getLayout();
+                layout.next(displayPanel);
+            }
+        }
+    }//GEN-LAST:event_btnIntDeptActionPerformed
 
     private void btnReportMaltreatmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportMaltreatmentActionPerformed
         // TODO add your handling code here:
 
         for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
             if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
-                MaltreatmentReportForm createUpdateEnterpriseJPanel = new MaltreatmentReportForm(displayPanel, entity, org, enterprise, user);
-                displayPanel.add(createUpdateEnterpriseJPanel);
+                MaltreatmentReportForm requestForm = new MaltreatmentReportForm(displayPanel, entity, org, enterprise, user);
+                displayPanel.add(requestForm);
                 CardLayout layout = (CardLayout) displayPanel.getLayout();
                 layout.next(displayPanel);
             }
@@ -111,10 +200,75 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnReportMaltreatmentActionPerformed
 
+    private void btnChildMentalHealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildMentalHealthActionPerformed
+        // TODO add your handling code here:
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
+                ChildMentalHealthRequestForm requestForm = new ChildMentalHealthRequestForm(displayPanel, entity, org, enterprise, user);
+                displayPanel.add(requestForm);
+                CardLayout layout = (CardLayout) displayPanel.getLayout();
+                layout.next(displayPanel);
+            }
+        }
+    }//GEN-LAST:event_btnChildMentalHealthActionPerformed
+
+    private void btnAdoptionServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptionServicesActionPerformed
+        // TODO add your handling code here:
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdoptionServices.getValue())) {
+                ChildAdoptionRequestForm requestForm = new ChildAdoptionRequestForm(displayPanel, entity, org, enterprise, user);
+                displayPanel.add(requestForm);
+                CardLayout layout = (CardLayout) displayPanel.getLayout();
+                layout.next(displayPanel);
+            }
+        }
+    }//GEN-LAST:event_btnAdoptionServicesActionPerformed
+
+    private void btnYouthCareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYouthCareActionPerformed
+        // TODO add your handling code here:
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdolescentYoungAdultServices.getValue())) {
+                YouthCareServicesRequestForm requestForm = new YouthCareServicesRequestForm(displayPanel, entity, org, enterprise, user);
+                displayPanel.add(requestForm);
+                CardLayout layout = (CardLayout) displayPanel.getLayout();
+                layout.next(displayPanel);
+            }
+        }
+    }//GEN-LAST:event_btnYouthCareActionPerformed
+
+    private void btnFosterCareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFosterCareActionPerformed
+        // TODO add your handling code here:
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.FosterCare.getValue())) {
+                FosterCareRequestForm requestForm = new FosterCareRequestForm(displayPanel, entity, org, enterprise, user);
+                displayPanel.add(requestForm);
+                CardLayout layout = (CardLayout) displayPanel.getLayout();
+                layout.next(displayPanel);
+            }
+        }
+    }//GEN-LAST:event_btnFosterCareActionPerformed
+
+    private void btnChildHealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildHealthActionPerformed
+        // TODO add your handling code here:
+        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+            if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
+                ChildHealthRequestForm requestForm = new ChildHealthRequestForm(displayPanel, entity, org, enterprise, user);
+                displayPanel.add(requestForm);
+                CardLayout layout = (CardLayout) displayPanel.getLayout();
+                layout.next(displayPanel);
+            }
+        }
+    }//GEN-LAST:event_btnChildHealthActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn;
+    private javax.swing.JButton btnAdoptionServices;
+    private javax.swing.JButton btnChildHealth;
+    private javax.swing.JButton btnChildMentalHealth;
+    private javax.swing.JButton btnFosterCare;
+    private javax.swing.JButton btnIntDept;
     private javax.swing.JButton btnReportMaltreatment;
+    private javax.swing.JButton btnYouthCare;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
