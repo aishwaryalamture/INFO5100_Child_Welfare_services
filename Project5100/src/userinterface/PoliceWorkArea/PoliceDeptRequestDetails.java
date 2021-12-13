@@ -5,21 +5,18 @@
  */
 package userinterface.PoliceWorkArea;
 
-import userinterface.ChildWelfareAdmin.*;
 import Business.ChildMaltreatment.ChildMaltreatmentAttributes;
 import Business.Enterprises.Enterprise;
 import Business.Entity;
 import Business.Enums.Status;
 import Business.Organizations.Organization;
 import Business.Role.Role;
+import Business.SendEmail.EmailUtility;
 import Business.Users.User;
 import Business.Validator.Validator;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -231,6 +228,7 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
         workRequest.setStatus(Status.StatusType.INPROGRESS.getValue());
         JOptionPane.showMessageDialog(null, "Progress Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
+        sendEmail(workRequest.getSender().getEmailId(), "in progress");
     }//GEN-LAST:event_btnInProgressActionPerformed
 
     private void btnResolvedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolvedActionPerformed
@@ -243,9 +241,8 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
             }
         }
         JOptionPane.showMessageDialog(null, "Marked Resolved", "Success", JOptionPane.INFORMATION_MESSAGE);
+        sendEmail(workRequest.getSender().getEmailId(), "resolved");
         btnBack.doClick();
-
-
     }//GEN-LAST:event_btnResolvedActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -268,4 +265,13 @@ public class PoliceDeptRequestDetails extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitleAdminRoles;
     private javax.swing.JTable tblRequestDetails;
     // End of variables declaration//GEN-END:variables
+
+    private void sendEmail(String userEmail, String status) {
+        String requestDate = Validator.getInstance().convertLocalDateToString(workRequest.getRequestDate());
+        String emailmsg = "Hi " + workRequest.getSender().getFullName()  + "\n" 
+                + "Your ticket raised on date: "+ requestDate + " is now marked as " + status.toUpperCase() + "\n"
+                + "Please login in the portal to check details and contact us if you need any additional information.";
+        String emailsubject = "Update on your ticket dated #" + requestDate;
+        EmailUtility.SendMail(userEmail, emailmsg, emailsubject);
+    }
 }
