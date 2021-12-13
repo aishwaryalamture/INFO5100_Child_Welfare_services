@@ -30,6 +30,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.UtilityClass;
+import Business.SendEmail.EmailUtility;
 
 /**
  *
@@ -334,7 +335,7 @@ public class AdoptionAgencyRequestsDetails extends javax.swing.JPanel {
         workRequest.setStatus(Status.StatusType.INPROGRESS.getValue());
         JOptionPane.showMessageDialog(null, "Progress Updated", "Success", JOptionPane.INFORMATION_MESSAGE);
         populateTable();
-
+         sendEmail(workRequest.getSender().getEmailId(), "in progress");
     }//GEN-LAST:event_btnInProgressActionPerformed
 
     private void btnResolvedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolvedActionPerformed
@@ -347,6 +348,7 @@ public class AdoptionAgencyRequestsDetails extends javax.swing.JPanel {
             }
         }
         JOptionPane.showMessageDialog(null, "Marked Resolved", "Success", JOptionPane.INFORMATION_MESSAGE);
+        sendEmail(workRequest.getSender().getEmailId(), "resolved");
         btnBack.doClick();
 
 
@@ -372,4 +374,12 @@ public class AdoptionAgencyRequestsDetails extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitleAdminRoles;
     private javax.swing.JTable tblRequestDetails;
     // End of variables declaration//GEN-END:variables
+    private void sendEmail(String userEmail, String status) {
+        String requestDate = Validator.getInstance().convertLocalDateToString(workRequest.getRequestDate());
+        String emailmsg = "Hi " + workRequest.getSender().getFullName()  + "\n" 
+                + "Your ticket raised on date: "+ requestDate + " is now marked as " + status.toUpperCase() + "\n"
+                + "Please login in the portal to check details and contact us if you need any additional information.";
+        String emailsubject = "Update on your ticket dated #" + requestDate;
+        EmailUtility.SendMail(userEmail, emailmsg, emailsubject);
+    }
 }
