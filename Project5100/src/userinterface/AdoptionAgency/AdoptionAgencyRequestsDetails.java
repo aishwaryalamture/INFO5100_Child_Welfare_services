@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.UtilityClass;
 import Business.SendEmail.EmailUtility;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -262,6 +263,8 @@ public class AdoptionAgencyRequestsDetails extends javax.swing.JPanel {
         btnInProgress = new javax.swing.JButton();
         btnResolved = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        txtRemarks = new javax.swing.JTextField();
+        btnAddMsg = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -328,6 +331,20 @@ public class AdoptionAgencyRequestsDetails extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 100, 50));
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 740, 240, 50));
+
+        btnAddMsg.setBackground(new java.awt.Color(217, 180, 74));
+        btnAddMsg.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnAddMsg.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddMsg.setText("ADD REMARKS");
+        btnAddMsg.setContentAreaFilled(false);
+        btnAddMsg.setOpaque(true);
+        btnAddMsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMsgActionPerformed(evt);
+            }
+        });
+        add(btnAddMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 740, 241, 49));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInProgressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInProgressActionPerformed
@@ -347,6 +364,8 @@ public class AdoptionAgencyRequestsDetails extends javax.swing.JPanel {
                 break;
             }
         }
+        workRequest.setResolveDate(LocalDateTime.now());
+
         JOptionPane.showMessageDialog(null, "Marked Resolved", "Success", JOptionPane.INFORMATION_MESSAGE);
         sendEmail(workRequest.getSender().getEmailId(), "resolved");
         btnBack.doClick();
@@ -365,14 +384,27 @@ public class AdoptionAgencyRequestsDetails extends javax.swing.JPanel {
         layout.previous(displayPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnAddMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMsgActionPerformed
+        // TODO add your handling code here:
+        if (txtRemarks.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Message Entered", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        workRequest.setMessage(txtRemarks.getText());
+        populateTable();
+    }//GEN-LAST:event_btnAddMsgActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddMsg;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnInProgress;
     private javax.swing.JButton btnResolved;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitleAdminRoles;
     private javax.swing.JTable tblRequestDetails;
+    private javax.swing.JTextField txtRemarks;
     // End of variables declaration//GEN-END:variables
     private void sendEmail(String userEmail, String status) {
         String requestDate = Validator.getInstance().convertLocalDateToString(workRequest.getRequestDate());

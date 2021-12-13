@@ -62,7 +62,6 @@ public class YouthServicesHeadWorkArea extends javax.swing.JPanel {
         tblYouthCareHeadWorkRequest = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnRequestMoreDetails1 = new javax.swing.JButton();
         btnAssignToChildWelfareOfficer3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -126,19 +125,6 @@ public class YouthServicesHeadWorkArea extends javax.swing.JPanel {
         jLabel3.setText("Work Requests: ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 100, -1));
 
-        btnRequestMoreDetails1.setBackground(new java.awt.Color(217, 180, 74));
-        btnRequestMoreDetails1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        btnRequestMoreDetails1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRequestMoreDetails1.setText("Request More Details");
-        btnRequestMoreDetails1.setContentAreaFilled(false);
-        btnRequestMoreDetails1.setOpaque(true);
-        btnRequestMoreDetails1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestMoreDetails1ActionPerformed(evt);
-            }
-        });
-        add(btnRequestMoreDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 220, 50));
-
         btnAssignToChildWelfareOfficer3.setBackground(new java.awt.Color(217, 180, 74));
         btnAssignToChildWelfareOfficer3.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         btnAssignToChildWelfareOfficer3.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,10 +144,6 @@ public class YouthServicesHeadWorkArea extends javax.swing.JPanel {
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 370, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRequestMoreDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetails1ActionPerformed
-
-    }//GEN-LAST:event_btnRequestMoreDetails1ActionPerformed
-
     private void btnAssignToChildWelfareOfficer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficer3ActionPerformed
         ChildMaltreatmentAttributes cma = (ChildMaltreatmentAttributes) tblYouthCareHeadWorkRequest.getValueAt(tblYouthCareHeadWorkRequest.getSelectedRow(), 0);
 
@@ -177,7 +159,6 @@ public class YouthServicesHeadWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToChildWelfareOfficer3;
-    private javax.swing.JButton btnRequestMoreDetails1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

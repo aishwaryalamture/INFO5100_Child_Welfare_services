@@ -6,6 +6,7 @@
 package Business.WorkQueue;
 
 import Business.Users.User;
+import Business.Validator.Validator;
 import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class WorkRequest {
-    
+
     private String message;
     private LocalDateTime resolveDate;
     private User sender;
@@ -29,11 +30,7 @@ public class WorkRequest {
 
     @Override
     public String toString() {
-        return requestDate.toString();
+        return Validator.getInstance().convertLocalDateToString(requestDate.toLocalDate());
     }
 
-    
-    
-    
-    
 }

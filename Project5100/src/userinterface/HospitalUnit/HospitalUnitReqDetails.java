@@ -12,11 +12,13 @@ import Business.Entity;
 import Business.Enums.Status;
 import Business.Organizations.Organization;
 import Business.Role.Role;
+import Business.SendEmail.EmailUtility;
 import Business.Users.User;
 import Business.Validator.Validator;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -280,6 +282,8 @@ public class HospitalUnitReqDetails extends javax.swing.JPanel {
         btnInProgress = new javax.swing.JButton();
         btnResolved = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        txtRemarks = new javax.swing.JTextField();
+        btnAddMsg = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -343,6 +347,20 @@ public class HospitalUnitReqDetails extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 100, 50));
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 740, 240, 50));
+
+        btnAddMsg.setBackground(new java.awt.Color(217, 180, 74));
+        btnAddMsg.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnAddMsg.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddMsg.setText("ADD REMARKS");
+        btnAddMsg.setContentAreaFilled(false);
+        btnAddMsg.setOpaque(true);
+        btnAddMsg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMsgActionPerformed(evt);
+            }
+        });
+        add(btnAddMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 740, 241, 49));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInProgressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInProgressActionPerformed
@@ -361,7 +379,10 @@ public class HospitalUnitReqDetails extends javax.swing.JPanel {
                 break;
             }
         }
+        workRequest.setResolveDate(LocalDateTime.now());
+
         JOptionPane.showMessageDialog(null, "Marked Resolved", "Success", JOptionPane.INFORMATION_MESSAGE);
+        sendEmail(workRequest.getSender().getEmailId(), "resolved");
         btnBack.doClick();
     }//GEN-LAST:event_btnResolvedActionPerformed
 
@@ -376,13 +397,34 @@ public class HospitalUnitReqDetails extends javax.swing.JPanel {
         layout.previous(displayPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnAddMsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMsgActionPerformed
+        // TODO add your handling code here:
+        if (txtRemarks.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No Message Entered", "WARNING", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        workRequest.setMessage(txtRemarks.getText());
+        populateTable();
+    }//GEN-LAST:event_btnAddMsgActionPerformed
+
+    private void sendEmail(String userEmail, String status) {
+        String requestDate = Validator.getInstance().convertLocalDateToString(workRequest.getRequestDate());
+        String emailmsg = "Hi " + workRequest.getSender().getFullName() + "\n"
+                + "Your ticket raised on date: " + requestDate + " is now marked as " + status.toUpperCase() + "\n"
+                + "Please login in the portal to check details and contact us if you need any additional information.";
+        String emailsubject = "Update on your ticket dated #" + requestDate;
+        EmailUtility.SendMail(userEmail, emailmsg, emailsubject);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddMsg;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnInProgress;
     private javax.swing.JButton btnResolved;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitleAdminRoles;
     private javax.swing.JTable tblRequestDetails;
+    private javax.swing.JTextField txtRemarks;
     // End of variables declaration//GEN-END:variables
 }

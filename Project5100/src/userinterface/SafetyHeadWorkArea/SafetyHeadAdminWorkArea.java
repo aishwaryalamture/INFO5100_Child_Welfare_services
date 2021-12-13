@@ -69,7 +69,6 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblReporterDetails = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        btnRequestMoreDetails = new javax.swing.JButton();
         btnAssignToChildWelfareOfficer = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
@@ -157,20 +156,6 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
         jLabel3.setText("Work Requests: ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 94, -1, -1));
 
-        btnRequestMoreDetails.setBackground(new java.awt.Color(217, 180, 74));
-        btnRequestMoreDetails.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        btnRequestMoreDetails.setForeground(new java.awt.Color(255, 255, 255));
-        btnRequestMoreDetails.setText("Request More Details");
-        btnRequestMoreDetails.setContentAreaFilled(false);
-        btnRequestMoreDetails.setOpaque(true);
-        btnRequestMoreDetails.setPreferredSize(new java.awt.Dimension(210, 34));
-        btnRequestMoreDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestMoreDetailsActionPerformed(evt);
-            }
-        });
-        add(btnRequestMoreDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 504, 172, -1));
-
         btnAssignToChildWelfareOfficer.setBackground(new java.awt.Color(217, 180, 74));
         btnAssignToChildWelfareOfficer.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         btnAssignToChildWelfareOfficer.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,7 +168,7 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
                 btnAssignToChildWelfareOfficerActionPerformed(evt);
             }
         });
-        add(btnAssignToChildWelfareOfficer, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 504, 232, -1));
+        add(btnAssignToChildWelfareOfficer, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 232, -1));
 
         lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,10 +176,6 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
         lblTitle.setText("Safety Head WorkArea");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(284, 31, 408, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRequestMoreDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetailsActionPerformed
-
-    }//GEN-LAST:event_btnRequestMoreDetailsActionPerformed
 
     private void btnAssignToChildWelfareOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficerActionPerformed
         ChildMaltreatmentAttributes cma = (ChildMaltreatmentAttributes) tblSafetyHeadWorkRequest.getValueAt(tblSafetyHeadWorkRequest.getSelectedRow(), 0);
@@ -211,7 +192,6 @@ public class SafetyHeadAdminWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToChildWelfareOfficer;
-    private javax.swing.JButton btnRequestMoreDetails;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

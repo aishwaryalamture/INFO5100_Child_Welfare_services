@@ -62,7 +62,6 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
         tblAdoptionHeadWorkRequest = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnRequestMoreDetails1 = new javax.swing.JButton();
         btnAssignToChildWelfareOfficer3 = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
@@ -120,20 +119,6 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
         jLabel3.setText("Work Requests: ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
-        btnRequestMoreDetails1.setBackground(new java.awt.Color(217, 180, 74));
-        btnRequestMoreDetails1.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        btnRequestMoreDetails1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRequestMoreDetails1.setText("Request More Details");
-        btnRequestMoreDetails1.setContentAreaFilled(false);
-        btnRequestMoreDetails1.setOpaque(true);
-        btnRequestMoreDetails1.setPreferredSize(new java.awt.Dimension(210, 34));
-        btnRequestMoreDetails1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestMoreDetails1ActionPerformed(evt);
-            }
-        });
-        add(btnRequestMoreDetails1, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 537, 232, -1));
-
         btnAssignToChildWelfareOfficer3.setBackground(new java.awt.Color(217, 180, 74));
         btnAssignToChildWelfareOfficer3.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
         btnAssignToChildWelfareOfficer3.setForeground(new java.awt.Color(255, 255, 255));
@@ -146,7 +131,7 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
                 btnAssignToChildWelfareOfficer3ActionPerformed(evt);
             }
         });
-        add(btnAssignToChildWelfareOfficer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 537, 232, -1));
+        add(btnAssignToChildWelfareOfficer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 520, 232, -1));
 
         lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,10 +139,6 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
         lblTitle.setText("Adoption Service Head WorkArea");
         add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 43, 408, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnRequestMoreDetails1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestMoreDetails1ActionPerformed
-
-    }//GEN-LAST:event_btnRequestMoreDetails1ActionPerformed
 
     private void btnAssignToChildWelfareOfficer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToChildWelfareOfficer3ActionPerformed
         ChildMaltreatmentAttributes cma = (ChildMaltreatmentAttributes) tblAdoptionHeadWorkRequest.getValueAt(tblAdoptionHeadWorkRequest.getSelectedRow(), 0);
@@ -174,7 +155,6 @@ public class AdoptionServicesHeadWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToChildWelfareOfficer3;
-    private javax.swing.JButton btnRequestMoreDetails1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane4;

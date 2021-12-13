@@ -61,6 +61,7 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
         btnYouthCare = new javax.swing.JButton();
         btnFosterCare = new javax.swing.JButton();
         btnChildHealth = new javax.swing.JButton();
+        btnRaisedRequests = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -171,6 +172,20 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(btnChildHealth, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 230, 60));
+
+        btnRaisedRequests.setBackground(new java.awt.Color(217, 180, 74));
+        btnRaisedRequests.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
+        btnRaisedRequests.setForeground(new java.awt.Color(255, 255, 255));
+        btnRaisedRequests.setText("View Raised Requests");
+        btnRaisedRequests.setContentAreaFilled(false);
+        btnRaisedRequests.setOpaque(true);
+        btnRaisedRequests.setPreferredSize(new java.awt.Dimension(210, 34));
+        btnRaisedRequests.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRaisedRequestsActionPerformed(evt);
+            }
+        });
+        add(btnRaisedRequests, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 740, 230, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIntDeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntDeptActionPerformed
@@ -260,6 +275,14 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnChildHealthActionPerformed
 
+    private void btnRaisedRequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaisedRequestsActionPerformed
+        // TODO add your handling code here:
+        RaisedRequestsJPanel requestForm = new RaisedRequestsJPanel(displayPanel, entity, enterprise, user);
+        displayPanel.add(requestForm);
+        CardLayout layout = (CardLayout) displayPanel.getLayout();
+        layout.next(displayPanel);
+    }//GEN-LAST:event_btnRaisedRequestsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdoptionServices;
@@ -267,6 +290,7 @@ public class SystemUserWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnChildMentalHealth;
     private javax.swing.JButton btnFosterCare;
     private javax.swing.JButton btnIntDept;
+    private javax.swing.JButton btnRaisedRequests;
     private javax.swing.JButton btnReportMaltreatment;
     private javax.swing.JButton btnYouthCare;
     private javax.swing.JLabel jLabel1;

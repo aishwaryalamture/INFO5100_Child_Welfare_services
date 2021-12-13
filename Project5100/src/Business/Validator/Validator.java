@@ -127,6 +127,12 @@ public class Validator {
         return date.format(formatter);
 
     }
+    
+    public String convertLocalDateToString(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        return date.format(formatter);
+
+    }
 
     public boolean validateAllDigits(String input) {
         String inputRegex = "^[0-9]*$";
