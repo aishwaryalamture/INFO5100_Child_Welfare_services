@@ -7,6 +7,7 @@ package userinterface.SystemUser;
 
 import Business.Entity;
 import Business.Role.SystemUserRole;
+import Business.SendEmail.EmailUtility;
 import Business.Users.User;
 import Business.Validator.Validator;
 import java.awt.CardLayout;
@@ -183,6 +184,9 @@ public class CreateSystemUserJPanel extends javax.swing.JPanel {
        
 
         JOptionPane.showMessageDialog(null, "User Registered", "Success", JOptionPane.INFORMATION_MESSAGE);
+        String emailmsg = "Hi " + txtFirstName.getText()+ ", You are successfully registered on Child Welfare Services" ;
+        String emailsubject = "Welcome to Child Welfare Services";
+        EmailUtility.SendMail(txtEmail.getText(), emailmsg, emailsubject);
         btnBack.doClick();
 
 
