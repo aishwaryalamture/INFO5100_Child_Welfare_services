@@ -334,6 +334,11 @@ public class CreateUpdateOrgAdminJPanel extends javax.swing.JPanel {
                     return;
                 }
 
+                if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
+                    JOptionPane.showMessageDialog(null, "Mental health Org Is looked by Health Admin", "Invalid Entry", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
                 Role role = new ChildWelfareAdmin();
                 if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildMaltreatment.getValue())) {
                     role = new SafetyHeadRole();
@@ -343,19 +348,27 @@ public class CreateUpdateOrgAdminJPanel extends javax.swing.JPanel {
                     role = new HealthcareHeadRole();
                 } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.Volunteering.getValue())) {
                     role = new VolunteerHead();
-                }else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdoptionServices.getValue())) {
+                } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdoptionServices.getValue())) {
                     role = new AdoptionServicesHead();
-                }else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdolescentYoungAdultServices.getValue())) {
+                } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.AdolescentYoungAdultServices.getValue())) {
                     role = new YouthCareHead();
-                }else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.FosterCare.getValue())) {
+                } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.FosterCare.getValue())) {
                     role = new FosterCareHead();
-                }else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.IntlOrgColabComplaints.getValue())) {
+                } else if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.IntlOrgColabComplaints.getValue())) {
                     role = new IntDeptAdmin();
                 }
 
                 User user = entity.getUserDirectory().createUserAccount(txtFirstName.getText(), txtLastName.getText(), txtLocation.getText(),
                         txtMobileNo.getText(), txtUsername.getText(), txtPassword.getText(), txtEmail.getText(), role);
                 selectedOrg.setOrganizationAdmin(user);
+                //insert in Mental Health Admin if ChildHealthAdmin is created
+                if (selectedOrg.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.ChildHealth.getValue())) {
+                    for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                        if (org.getOrganizationName().equals(UtilityClass.ChildWelfareOrganizations.MentalHealth.getValue())) {
+                            org.setOrganizationAdmin(user);
+                        }
+                    }
+                }
 
                 JOptionPane.showMessageDialog(null, "New Admin Registered", "Success", JOptionPane.INFORMATION_MESSAGE);
                 btnBack.doClick();

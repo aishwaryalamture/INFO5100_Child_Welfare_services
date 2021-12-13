@@ -116,6 +116,12 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
 
         jLabel3.setText("Child Age");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 223, -1, -1));
+
+        txtChildAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtChildAgeActionPerformed(evt);
+            }
+        });
         add(txtChildAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 223, 132, -1));
 
         jLabel4.setText("Child Gender");
@@ -164,6 +170,11 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
         radioButtonNo.setBackground(new java.awt.Color(172, 208, 192));
         buttonGroup1.add(radioButtonNo);
         radioButtonNo.setText("No");
+        radioButtonNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioButtonNoActionPerformed(evt);
+            }
+        });
         add(radioButtonNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 110, -1, -1));
 
         jLabel17.setText("Last Checkup Date");
@@ -187,7 +198,7 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
         add(btnSubmitRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 686, 136, 49));
         add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(548, 637, 134, -1));
 
-        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("Child Mental HealthCare Service Request Form");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 51, -1, -1));
@@ -268,6 +279,14 @@ public class ChildMentalHealthRequestForm extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void radioButtonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioButtonNoActionPerformed
+
+    private void txtChildAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChildAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtChildAgeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

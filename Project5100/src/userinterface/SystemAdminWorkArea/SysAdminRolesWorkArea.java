@@ -171,6 +171,8 @@ public class SysAdminRolesWorkArea extends javax.swing.JPanel {
         User adminUser = enterprise.getAdmin();
         enterprise.setAdmin(null);
         entity.getUserDirectory().getUserList().remove(adminUser);
+        JOptionPane.showMessageDialog(null, "Admin Entry Deleted", "Warning", JOptionPane.WARNING_MESSAGE);
+
         populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 

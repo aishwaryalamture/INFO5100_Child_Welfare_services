@@ -42,8 +42,8 @@ public class FosterCareRequestForm extends javax.swing.JPanel {
      * @param user
      * @param organization
      */
-    public FosterCareRequestForm(JPanel userProcessContainer, Entity entity, Enterprise enterprise,
-            User user, Organization organization) {
+    public FosterCareRequestForm(JPanel userProcessContainer, Entity entity, Organization organization, Enterprise enterprise,
+            User user) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.entity = entity;

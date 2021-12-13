@@ -176,7 +176,7 @@ public class ChildWelfareOrganizationWorkArea extends javax.swing.JPanel {
         }
         Organization org = (Organization) tblOrganization.getValueAt(selectedRow, 0);
 
-        CreateUpdateOrganizationJPanel createUpdateOrganizationJPanel = new CreateUpdateOrganizationJPanel(childWelfarePanel, user, entity, UPDATE_OPERATION, enterprise,org);
+        CreateUpdateOrganizationJPanel createUpdateOrganizationJPanel = new CreateUpdateOrganizationJPanel(childWelfarePanel, user, entity, UPDATE_OPERATION, enterprise, org);
         childWelfarePanel.add(createUpdateOrganizationJPanel);
         CardLayout layout = (CardLayout) childWelfarePanel.getLayout();
         layout.next(childWelfarePanel);
@@ -190,8 +190,10 @@ public class ChildWelfareOrganizationWorkArea extends javax.swing.JPanel {
             return;
         }
 
-        Enterprise enterprise = (Enterprise) tblOrganization.getValueAt(selectedRow, 0);
-        entity.getEnterpriseDirectory().getEnterpriseList().remove(enterprise);
+        Organization org = (Organization) tblOrganization.getValueAt(selectedRow, 0);
+        enterprise.getOrganizationDirectory().getOrganizationList().remove(org);
+        JOptionPane.showMessageDialog(null, "Entry Deleted", "Success", JOptionPane.WARNING_MESSAGE);
+
         populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 

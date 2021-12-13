@@ -166,129 +166,133 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         // Get user name
-        String userName = txtUserName.getText();
-        char[] passwordCharArr = txtPassword.getPassword();
-        String passwordStr = String.valueOf(passwordCharArr);
+        try {
+            String userName = txtUserName.getText();
+            char[] passwordCharArr = txtPassword.getPassword();
+            String passwordStr = String.valueOf(passwordCharArr);
 
-        User loggedInUser = system.getUserDirectory().authenticateUser(userName, passwordStr);
+            User loggedInUser = system.getUserDirectory().authenticateUser(userName, passwordStr);
 
-        if (loggedInUser != null) {
-            log.info("logged In username & role - " + userName + "/" + loggedInUser.getRole().getRoleType());
-            Enterprise enterprise = null;
-            Organization organization = null;
-            if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemAdmin) {
-                enterprise = null;
-                organization = null;
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemUserRole || loggedInUser.getRole().getRoleType() == Role.RoleType.ChildWelfareAdmin) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                        enterprise = er;
-                        organization = null;
+            if (loggedInUser != null) {
+                log.info("logged In username & role - " + userName + "/" + loggedInUser.getRole().getRoleType());
+                Enterprise enterprise = null;
+                Organization organization = null;
+                if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemAdmin) {
+                    enterprise = null;
+                    organization = null;
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.SystemUserRole || loggedInUser.getRole().getRoleType() == Role.RoleType.ChildWelfareAdmin) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                            enterprise = er;
+                            organization = null;
+                        }
                     }
-                }
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.SafetyHead) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                        enterprise = er;
-                        for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
-                            if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.SafetyHead) {
-                                organization = org;
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.SafetyHead) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                            enterprise = er;
+                            for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
+                                if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.SafetyHead) {
+                                    organization = org;
+                                }
                             }
                         }
                     }
-                }
 
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.PoliceDeptAdmin) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.PoliceDept.getValue())) {
-                        enterprise = er;
-                        organization = null;
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.PoliceDeptAdmin) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.PoliceDept.getValue())) {
+                            enterprise = er;
+                            organization = null;
+                        }
                     }
-                }
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.HospitalAdmin) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.HospitalChildCareUnit.getValue())) {
-                        enterprise = er;
-                        organization = null;
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.HospitalAdmin) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.HospitalChildCareUnit.getValue())) {
+                            enterprise = er;
+                            organization = null;
+                        }
                     }
-                }
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.HealthcareHeadRole) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                        enterprise = er;
-                        for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
-                            if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.HealthcareHeadRole) {
-                                organization = org;
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.HealthcareHeadRole) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                            enterprise = er;
+                            for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
+                                if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.HealthcareHeadRole) {
+                                    organization = org;
+                                }
+                            }
+                        }
+                    }
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.VolunteerHead) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                            enterprise = er;
+                            for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
+                                if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.VolunteerHead) {
+                                    organization = org;
+                                }
+                            }
+                        }
+                    }
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.AdoptionServicesHead) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                            enterprise = er;
+                            for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
+                                if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.AdoptionServicesHead) {
+                                    organization = org;
+                                }
+                            }
+                        }
+                    }
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.YouthCareHead) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                            enterprise = er;
+                            for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
+                                if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.YouthCareHead) {
+                                    organization = org;
+                                }
+                            }
+                        }
+                    }
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.FosterCareHead) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                            enterprise = er;
+                            for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
+                                if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.FosterCareHead) {
+                                    organization = org;
+                                }
+                            }
+                        }
+                    }
+                } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.IntDeptAdmin) {
+                    for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
+                            enterprise = er;
+                            for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
+                                if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.IntDeptAdmin) {
+                                    organization = org;
+                                }
                             }
                         }
                     }
                 }
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.VolunteerHead) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                        enterprise = er;
-                        for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
-                            if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.VolunteerHead) {
-                                organization = org;
-                            }
-                        }
-                    }
-                }
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.AdoptionServicesHead) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                        enterprise = er;
-                        for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
-                            if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.AdoptionServicesHead) {
-                                organization = org;
-                            }
-                        }
-                    }
-                }
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.YouthCareHead) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                        enterprise = er;
-                        for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
-                            if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.YouthCareHead) {
-                                organization = org;
-                            }
-                        }
-                    }
-                }
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.FosterCareHead) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                        enterprise = er;
-                        for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
-                            if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.FosterCareHead) {
-                                organization = org;
-                            }
-                        }
-                    }
-                }
-            } else if (loggedInUser.getRole().getRoleType() == Role.RoleType.IntDeptAdmin) {
-                for (Enterprise er : system.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (er.getEnterpriseName().equals(UtilityClass.Enterprises.ChildWelfare.getValue())) {
-                        enterprise = er;
-                        for (Organization org : er.getOrganizationDirectory().getOrganizationList()) {
-                            if (org.getOrganizationAdmin().getRole().getRoleType() == Role.RoleType.IntDeptAdmin) {
-                                organization = org;
-                            }
-                        }
-                    }
-                }
+                CardLayout cardLayout = (CardLayout) displayPanel.getLayout();
+                displayPanel.add("workPanel", loggedInUser.getRole().createWorkArea(displayPanel, system, organization, enterprise, loggedInUser));
+                cardLayout.next(displayPanel);
+                btnLogout.setEnabled(true);
+                btnRegister.setEnabled(false);
+                txtUserName.setEnabled(false);
+                txtPassword.setEnabled(false);
+                btnLogin.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please Enter Valid Login Credentials ", "Invalid Credentials", JOptionPane.WARNING_MESSAGE);
             }
-            CardLayout cardLayout = (CardLayout) displayPanel.getLayout();
-            displayPanel.add("workPanel", loggedInUser.getRole().createWorkArea(displayPanel, system, organization, enterprise, loggedInUser));
-            cardLayout.next(displayPanel);
-            btnLogout.setEnabled(true);
-            btnRegister.setEnabled(false);
-            txtUserName.setEnabled(false);
-            txtPassword.setEnabled(false);
-            btnLogin.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "Please Enter Valid Login Credentials ", "Invalid Credentials", JOptionPane.WARNING_MESSAGE);
+        } catch (Exception e) {
+            log.error(e);
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
