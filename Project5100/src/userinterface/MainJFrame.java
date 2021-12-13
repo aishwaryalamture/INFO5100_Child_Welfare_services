@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.apache.log4j.Logger;
+import userinterface.ChildWelfareAdmin.ChildWelfareHomePage;
 import userinterface.SystemUser.CreateSystemUserJPanel;
 
 /**
@@ -64,6 +65,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPassword = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnLogout = new javax.swing.JButton();
+        btnRegister1 = new javax.swing.JButton();
         displayPanel = new javax.swing.JPanel();
 
         label1.setText("label1");
@@ -88,13 +90,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        controlPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 240, 55));
+        controlPanel.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 220, 55));
 
         btnRegister.setBackground(new java.awt.Color(217, 180, 74));
         btnRegister.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister.setText("Register");
-        btnRegister.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegister.setText("Home Page");
+        btnRegister.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 51, 0), null));
         btnRegister.setContentAreaFilled(false);
         btnRegister.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRegister.setMinimumSize(new java.awt.Dimension(53, 27));
@@ -104,7 +106,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        controlPanel.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 240, 54));
+        controlPanel.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 54));
 
         lbluserName.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lbluserName.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,7 +116,7 @@ public class MainJFrame extends javax.swing.JFrame {
         txtUserName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         txtUserName.setMinimumSize(new java.awt.Dimension(53, 27));
         txtUserName.setPreferredSize(new java.awt.Dimension(0, 40));
-        controlPanel.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 240, 40));
+        controlPanel.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 220, 50));
 
         lblPassword.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,7 +125,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         txtPassword.setMinimumSize(new java.awt.Dimension(6, 27));
         txtPassword.setPreferredSize(new java.awt.Dimension(0, 40));
-        controlPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 240, 50));
+        controlPanel.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 220, 50));
 
         btnLogout.setBackground(new java.awt.Color(217, 180, 74));
         btnLogout.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -139,7 +141,23 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnLogoutActionPerformed(evt);
             }
         });
-        controlPanel.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 240, 54));
+        controlPanel.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 220, 54));
+
+        btnRegister1.setBackground(new java.awt.Color(217, 180, 74));
+        btnRegister1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnRegister1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister1.setText("Register");
+        btnRegister1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRegister1.setContentAreaFilled(false);
+        btnRegister1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRegister1.setMinimumSize(new java.awt.Dimension(53, 27));
+        btnRegister1.setOpaque(true);
+        btnRegister1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegister1ActionPerformed(evt);
+            }
+        });
+        controlPanel.add(btnRegister1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 220, 54));
 
         jSplitPane1.setLeftComponent(controlPanel);
 
@@ -153,7 +171,7 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1470, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,8 +316,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        CreateSystemUserJPanel createUpdateEnterpriseJPanel = new CreateSystemUserJPanel(displayPanel, system);
-        displayPanel.add(createUpdateEnterpriseJPanel);
+        ChildWelfareHomePage ChildWelfareHomePage = new ChildWelfareHomePage(displayPanel);
+        displayPanel.add(ChildWelfareHomePage);
         CardLayout layout = (CardLayout) displayPanel.getLayout();
         layout.next(displayPanel);
     }//GEN-LAST:event_btnRegisterActionPerformed
@@ -326,6 +344,10 @@ public class MainJFrame extends javax.swing.JFrame {
         picLabel.setPreferredSize(new Dimension(50, 50));
         displayPanel.add(picLabel);
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegister1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,6 +387,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnRegister1;
     private javax.swing.JPanel controlPanel;
     private javax.swing.JPanel displayPanel;
     private javax.swing.JSplitPane jSplitPane1;
