@@ -57,6 +57,11 @@ public class ChildWelfareAdminWorkArea extends javax.swing.JPanel {
             jPanelAdminRoles.add(adminRolesWorkArea);
             CardLayout cardLayout = (CardLayout) jPanelAdminRoles.getLayout();
             cardLayout.next(jPanelAdminRoles);
+        } else if (selectedIndex == 2) {
+            ResolveChildWelfareRequestsJPanel requestWorkPanel = new ResolveChildWelfareRequestsJPanel(jPanelWorkRequests, entity,enterprise,user);
+            jPanelWorkRequests.add(requestWorkPanel);
+            CardLayout cardLayout = (CardLayout) jPanelWorkRequests.getLayout();
+            cardLayout.next(jPanelWorkRequests);
         } else {
             ResolveChildWelfareRequestsJPanel requestWorkPanel = new ResolveChildWelfareRequestsJPanel(jPanelWorkRequests, entity,enterprise,user);
             jPanelWorkRequests.add(requestWorkPanel);
@@ -79,6 +84,7 @@ public class ChildWelfareAdminWorkArea extends javax.swing.JPanel {
         jPanelEnterprise = new javax.swing.JPanel();
         jPanelAdminRoles = new javax.swing.JPanel();
         jPanelWorkRequests = new javax.swing.JPanel();
+        jPanelDashboard = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(172, 208, 192));
 
@@ -103,6 +109,11 @@ public class ChildWelfareAdminWorkArea extends javax.swing.JPanel {
         jPanelWorkRequests.setBackground(new java.awt.Color(172, 208, 192));
         jPanelWorkRequests.setLayout(new java.awt.CardLayout());
         jTabbedSystemAdmin.addTab("Work Requests", new javax.swing.ImageIcon(getClass().getResource("/res/task_management.png")), jPanelWorkRequests); // NOI18N
+
+        jPanelDashboard.setBackground(new java.awt.Color(172, 208, 192));
+        jPanelDashboard.setPreferredSize(new java.awt.Dimension(1030, 700));
+        jPanelDashboard.setLayout(new java.awt.CardLayout());
+        jTabbedSystemAdmin.addTab("Dashboard", new javax.swing.ImageIcon(getClass().getResource("/res/admin_logo.png")), jPanelDashboard); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -132,6 +143,7 @@ public class ChildWelfareAdminWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelAdminRoles;
+    private javax.swing.JPanel jPanelDashboard;
     private javax.swing.JPanel jPanelEnterprise;
     private javax.swing.JPanel jPanelWorkRequests;
     private javax.swing.JTabbedPane jTabbedSystemAdmin;
