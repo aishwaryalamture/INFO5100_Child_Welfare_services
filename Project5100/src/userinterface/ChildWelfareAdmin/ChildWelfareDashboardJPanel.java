@@ -7,21 +7,18 @@ package userinterface.ChildWelfareAdmin;
 
 import Business.Enterprises.Enterprise;
 import Business.Entity;
-import Business.Enums.Status;
 import Business.Organizations.Organization;
-import Business.Role.Role;
 import Business.Users.User;
-import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
-import java.awt.Component;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.util.Rotation;
 
 /**
  *
@@ -35,7 +32,7 @@ public class ChildWelfareDashboardJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
 
     /**
-     * Creates new form ResolveChildWelfareRequestsJPanel
+     * Creates new form ChildWelfareDashboardJPanel
      */
     public ChildWelfareDashboardJPanel(JPanel displayPanel, Entity entity, Enterprise enterprise, User user) {
         initComponents();
@@ -43,27 +40,56 @@ public class ChildWelfareDashboardJPanel extends javax.swing.JPanel {
         this.entity = entity;
         this.user = user;
         this.enterprise = enterprise;
-        loadGraph();
-
-    }
-
-    private void populateData() {
-        for (Organization org : enterprise.getOrganizationDirectory().getOrganizationList()) {
-            comboOrganization.addItem(org.getOrganizationName());
-        }
+        loadCharts();
     }
     
-    private void loadGraph() {
+    private void loadCharts(){
+        pieChartJPanel.removeAll();
+        pieChartJPanel.revalidate();
+        // This will create the dataset
+        PieDataset dataset = createDataset();
+        // based on the dataset we create the chart
+        JFreeChart chart = createChart(dataset, "Requests based on Organizations");
+        // we put the chart into a panel
+        ChartPanel chartPanel = new ChartPanel(chart);
+        // default size
+        chartPanel.setPreferredSize(new java.awt.Dimension(600, 450));
+        // add it to our application
+        pieChartJPanel.setLayout(new BorderLayout());
+        pieChartJPanel.add(chartPanel, BorderLayout.NORTH);
+    }
+    
+    private PieDataset createDataset() {
        
        DefaultPieDataset defaultPieDataset = new DefaultPieDataset();
-       for(Organization org : enterprise.getOrganizationDirectory().getOrganizationList()){
-           defaultPieDataset.setValue(org.getOrganizationName(), org.getWorkQueue().getWorkRequestList().size());
+       ArrayList<Organization> orgList = enterprise.getOrganizationDirectory().getOrganizationList();
+       
+       for(int i =0; i<orgList.size(); i++){
+           defaultPieDataset.setValue(orgList.get(i).getOrganizationName(), orgList.get(i).getWorkQueue().getWorkRequestList().size());
        }
        
-       JFreeChart chart = ChartFactory.createPieChart("Pie Chart", defaultPieDataset, true, true, true);
-       ChartFrame frame = new ChartFrame("Pie Chart", chart);
-       frame.setVisible(true);
-       frame.setSize(600,600);
+       return defaultPieDataset;
+    }
+    
+    /**
+     * Creates a chart
+     */
+    private JFreeChart createChart(PieDataset dataset, String title) {
+
+       JFreeChart chart = ChartFactory.createPieChart3D(
+                title, // chart title
+                dataset, // data
+                true, // include legend
+                true,
+                false
+        );
+
+        PiePlot3D plot = (PiePlot3D) chart.getPlot();
+        plot.setStartAngle(290);
+        plot.setDirection(Rotation.CLOCKWISE);
+        plot.setForegroundAlpha(0.5f);
+        return chart;
+
     }
 
     /**
@@ -76,11 +102,7 @@ public class ChildWelfareDashboardJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
-        lblFirstName1 = new javax.swing.JLabel();
-        comboOrganization = new javax.swing.JComboBox<>();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tblOrganizationRequest = new javax.swing.JTable();
-        btnDetails = new javax.swing.JButton();
+        pieChartJPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(172, 208, 192));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,107 +110,27 @@ public class ChildWelfareDashboardJPanel extends javax.swing.JPanel {
         lblTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setText("Child Welfare Admin Portal");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 74, 310, 53));
+        lblTitle.setText("Request Chart For Organizations");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 400, 53));
 
-        lblFirstName1.setText("Select Organization:");
-        add(lblFirstName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 156, 131, 34));
+        javax.swing.GroupLayout pieChartJPanelLayout = new javax.swing.GroupLayout(pieChartJPanel);
+        pieChartJPanel.setLayout(pieChartJPanelLayout);
+        pieChartJPanelLayout.setHorizontalGroup(
+            pieChartJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
+        );
+        pieChartJPanelLayout.setVerticalGroup(
+            pieChartJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 527, Short.MAX_VALUE)
+        );
 
-        comboOrganization.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboOrganizationActionPerformed(evt);
-            }
-        });
-        add(comboOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(724, 156, 256, 34));
-
-        tblOrganizationRequest.setBorder(new javax.swing.border.MatteBorder(null));
-        tblOrganizationRequest.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        tblOrganizationRequest.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Request Date", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblOrganizationRequest.setSelectionBackground(new java.awt.Color(117, 177, 169));
-        jScrollPane5.setViewportView(tblOrganizationRequest);
-
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 222, 1007, 208));
-
-        btnDetails.setBackground(new java.awt.Color(217, 180, 74));
-        btnDetails.setFont(new java.awt.Font("Comic Sans MS", 0, 13)); // NOI18N
-        btnDetails.setForeground(new java.awt.Color(255, 255, 255));
-        btnDetails.setText("Details");
-        btnDetails.setContentAreaFilled(false);
-        btnDetails.setMaximumSize(new java.awt.Dimension(115, 49));
-        btnDetails.setMinimumSize(new java.awt.Dimension(115, 49));
-        btnDetails.setOpaque(true);
-        btnDetails.setPreferredSize(new java.awt.Dimension(115, 49));
-        btnDetails.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetailsActionPerformed(evt);
-            }
-        });
-        add(btnDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 500, -1, -1));
+        add(pieChartJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrganizationActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-    }//GEN-LAST:event_comboOrganizationActionPerformed
-
-    private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tblOrganizationRequest.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please Select a row from table", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        Organization selectedOrganization = enterprise.getOrganizationDirectory().getOrganizationList().get(comboOrganization.getSelectedIndex());
-        WorkRequest workRequest = (WorkRequest) tblOrganizationRequest.getValueAt(selectedRow, 0);
-        ChildWelfareRequestDetails childWelfareDetailsReq = new ChildWelfareRequestDetails(displayPanel, entity, enterprise, user, selectedOrganization, workRequest);
-        displayPanel.add(childWelfareDetailsReq);
-        CardLayout layout = (CardLayout) displayPanel.getLayout();
-        layout.next(displayPanel);
-    }//GEN-LAST:event_btnDetailsActionPerformed
-
-    public void populateTable() {
-        Organization selectedOrganization = enterprise.getOrganizationDirectory().getOrganizationList().get(comboOrganization.getSelectedIndex());
-
-        DefaultTableModel delModel = (DefaultTableModel) tblOrganizationRequest.getModel();
-        delModel.setRowCount(0);
-        ArrayList<WorkRequest> workRequestList = selectedOrganization.getWorkQueue().getWorkRequestList();
-        for (WorkRequest workRequest : workRequestList) {
-            if (workRequest.getReceiver().getRole().getRoleType() == Role.RoleType.ChildWelfareAdmin || workRequest.getSender().getRole().getRoleType() == Role.RoleType.ChildWelfareAdmin ) {
-
-                Object[] row = new Object[2];
-                row[0] = workRequest;
-                row[1] = workRequest.getStatus();
-                delModel.addRow(row);
-            }
-        }
-
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDetails;
-    private javax.swing.JComboBox<String> comboOrganization;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lblFirstName1;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblOrganizationRequest;
+    private javax.swing.JPanel pieChartJPanel;
     // End of variables declaration//GEN-END:variables
+
 
 }

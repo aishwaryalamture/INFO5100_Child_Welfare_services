@@ -5,21 +5,11 @@
  */
 package userinterface.ChildWelfareAdmin;
 
-import Business.ChildMaltreatment.ChildMaltreatmentAttributes;
 import Business.Enterprises.Enterprise;
 import Business.Entity;
-import Business.Enums.Status;
-import Business.Organizations.Organization;
 import Business.Users.User;
-import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
-import userinterface.SystemAdminWorkArea.SysAdminEnterprisesWorkArea;
-import userinterface.SystemAdminWorkArea.SysAdminRolesWorkArea;
 
 /**
  *
@@ -63,10 +53,10 @@ public class ChildWelfareAdminWorkArea extends javax.swing.JPanel {
             CardLayout cardLayout = (CardLayout) jPanelWorkRequests.getLayout();
             cardLayout.next(jPanelWorkRequests);
         } else {
-            ResolveChildWelfareRequestsJPanel requestWorkPanel = new ResolveChildWelfareRequestsJPanel(jPanelWorkRequests, entity,enterprise,user);
-            jPanelWorkRequests.add(requestWorkPanel);
-            CardLayout cardLayout = (CardLayout) jPanelWorkRequests.getLayout();
-            cardLayout.next(jPanelWorkRequests);
+            ChildWelfareDashboardJPanel requestWorkPanel = new ChildWelfareDashboardJPanel(jPanelDashboard, entity,enterprise,user);
+            jPanelDashboard.add(requestWorkPanel);
+            CardLayout cardLayout = (CardLayout) jPanelDashboard.getLayout();
+            cardLayout.next(jPanelDashboard);
         }
 
     }
